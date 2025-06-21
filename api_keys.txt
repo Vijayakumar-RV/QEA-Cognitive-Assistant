@@ -1,9 +1,0 @@
-xAI - xai-dT1FXEDBx8erCdssqu9fqJK13EnuhHHhmvTvCcKZoHwopLLcRlopE9OPcn81pma8UFuGvOTtIJJtRDuk
-
-Groq - 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
-
-OpenAI Endpoint 04-mini- https://2023a-mc6p2p97-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview
-
-OpenAI API Key - 9E5kngq3RBt7s0N6LIW9ol0XFDP1jNBYoB0FevNQXlj6jeZ3XnjBJQQJ99BFACHYHv6XJ3w3AAAAACOGXjfO
-
-Name - o4-mini
