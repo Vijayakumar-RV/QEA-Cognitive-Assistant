@@ -1,3 +1,4 @@
 cogvenv/
 api_keys.txt
 .env
+test.ipynb
