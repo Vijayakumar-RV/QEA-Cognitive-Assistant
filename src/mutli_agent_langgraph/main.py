@@ -27,14 +27,19 @@ def load_multi_agent_langgraph_ui():
 
     if user_message:
         selected_model = user_input.get("select_llm")
+        print(f"Selected Model: {selected_model}")
         try:
+            if selected_model == "OpenAI":
+                print("OpenAI LLM selected")
+                object_llm_object = OpenAILLM(user_controls_input=user_input)
+                print("OpenAI LLM selected")
             if selected_model == "GROQ_AI":
                 object_llm_object = GroqLLM(user_controls_input=user_input)
-            elif selected_model == "OPEN_AI":
-                object_llm_object = OpenAILLM(user_controls_input=user_input)
-            elif selected_model == "OLLAMA":
+            if selected_model == "OLLAMA":
+                print("Ollama LLM selected")
                 object_llm_object = OllamaLLM(user_controls_input=user_input)
             model = object_llm_object.get_llm_model()
+            print(f"Model: {model}")
 
             if not model:
                 st.error("Error : LLM Model could not be initialized")
@@ -52,6 +57,7 @@ def load_multi_agent_langgraph_ui():
 
             try:
                 graph = graph_builder_.setup_graph(usecase)
+                print(f"graph: {graph}")
                 DisplayResultStreamlit(usecase,graph,user_message).disply_result_on_ui()
             
             except Exception as e:
