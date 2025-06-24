@@ -26,7 +26,7 @@ class GroqLLM:
                 return None
             
             # Initialize the Groq LLM model
-            llm = ChatGroq(model=selected_model, api_key=groq_api_key,temperature=selected_temperature)
+            llm = ChatGroq(model=selected_model, api_key=groq_api_key,temperature=selected_temperature,streaming=True)
         except Exception as e:
             raise ValueError(f"Error initializing Groq LLM: {e}")
             

@@ -57,8 +57,8 @@ def load_multi_agent_langgraph_ui():
 
             try:
                 graph = graph_builder_.setup_graph(usecase)
-                print(f"graph: {graph}")
-                DisplayResultStreamlit(usecase,graph,user_message).disply_result_on_ui()
+                session_id = user_input.get("session_id")
+                DisplayResultStreamlit(usecase,graph,user_message,session_id).disply_result_on_ui()
             
             except Exception as e:
                 st.error(f"Error : Graph setup failed - {e}")

@@ -35,7 +35,7 @@ class OpenAILLM:
                                 azure_endpoint=os.getenv("OPENAI_API_BASE"),
                                 openai_api_version=os.getenv("OPENAI_API_VERSION"),
                                 deployment_name=selected_model,
-                                temperature=1.0)
+                                temperature=1.0,streaming=True)
 
         except Exception as e:
             raise ValueError(f"Error initializing OpenAI LLM: {e}")
