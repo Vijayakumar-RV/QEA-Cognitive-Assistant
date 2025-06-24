@@ -2,3 +2,6 @@ cogvenv/
 api_keys.txt
 .env
 test.ipynb
+# Ignore Python cache files
+*.pyc
+src/multi_agent/*.pyc

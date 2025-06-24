@@ -11,4 +11,6 @@ class QEAAssistantChatbot:
         Process the input state and generate a qea chatbot response
         """
         print(state["messages"])
+        print(f"llm selected: {self.llm}")
         return {"messages":self.llm.invoke(state["messages"])}
+    

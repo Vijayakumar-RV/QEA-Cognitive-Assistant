@@ -60,5 +60,6 @@ class GraphBuilder:
             self.qea_assistant_chatbot()
 
         return self.graph_builder.compile()
+    
 
 

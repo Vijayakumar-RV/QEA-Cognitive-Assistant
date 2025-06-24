@@ -25,3 +25,5 @@ class Config:
     
     def get_ollama_model(self):
         return self.config["DEFAULT"].get("OLLAMA_Model").split(", ")
+    
+    
