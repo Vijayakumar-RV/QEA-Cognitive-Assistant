@@ -48,3 +48,4 @@ class LoadStreamlitUI:
                 self.user_controls["select_temperature"] = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
 
         return self.user_controls
+    

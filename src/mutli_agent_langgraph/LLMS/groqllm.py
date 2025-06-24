@@ -13,6 +13,7 @@ class GroqLLM:
         Returns:
             ChatGroq: An instance of the ChatGroq model configured with the selected model and API key.
         """
+        
         try:
             load_dotenv()
             groq_api_key = self.user_controls_input["GROQ_API_KEY"]

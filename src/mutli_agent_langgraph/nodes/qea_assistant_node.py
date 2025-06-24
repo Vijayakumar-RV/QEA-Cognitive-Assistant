@@ -13,3 +13,4 @@ class QEAAssistantChatbot:
         print(state["messages"])
         print(f"llm selected: {self.llm}")
         return {"messages":self.llm.invoke(state["messages"])}
+    
