@@ -10,7 +10,7 @@ class LoadStreamlitUI:
         self.user_controls ={}
 
     def load_streamlit_ui(self):
-        st.set_page_config(page_title=self.config.get_title(), layout="centered", initial_sidebar_state="collapsed")
+        st.set_page_config(page_title=self.config.get_title(), layout="wide", initial_sidebar_state="expanded")
         st.header("🧠" + self.config.get_title())
 
         with st.sidebar:
@@ -24,7 +24,6 @@ class LoadStreamlitUI:
             if self.user_controls["select_llm"] == "OpenAI":
                 model_options = self.config.get_openai_model()
                 self.user_controls["Selected_OpenAI_Model"] = st.selectbox("Select OpenAI Model", model_options, index=0)
-                self.user_controls["OPENAI_API_KEY"] = st.session_state["OPENAI_API_KEY"] = st.text_input("OpenAI API Key", type="password")
 
             elif self.user_controls["select_llm"] == "GROQ_AI":
                 model_options = self.config.get_groq_model()
@@ -41,5 +40,11 @@ class LoadStreamlitUI:
             #Usecase Selection
 
             self.user_controls["select_usecase"] = st.selectbox("Select Usecase", usecase_option, index=0)
+
+            if self.user_controls["select_llm"]=="OpenAI" and self.user_controls["Selected_OpenAI_Model"]=="o4-mini":
+
+                st.slider("Temperature",disabled=True)
+            else:
+                self.user_controls["select_temperature"] = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
 
         return self.user_controls
