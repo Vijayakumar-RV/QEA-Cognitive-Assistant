@@ -8,7 +8,6 @@ class GraphBuilder:
     def __init__(self,model):
         self.llm = model
         self.graph_builder = StateGraph(State)
-
     
     def qea_assistant_chatbot(self):
 
