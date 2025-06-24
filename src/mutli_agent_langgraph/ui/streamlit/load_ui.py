@@ -1,17 +1,26 @@
 import streamlit as st
 import os
 from src.mutli_agent_langgraph.ui.streamlit.ui_configfile import Config
-
+import uuid
+from src.mutli_agent_langgraph.memory.langchain_conversation import LangchainConversation
 
 class LoadStreamlitUI:
 
     def __init__(self):
         self.config = Config()
         self.user_controls ={}
+        self.session_id = None
+    
 
     def load_streamlit_ui(self):
         st.set_page_config(page_title=self.config.get_title(), layout="wide", initial_sidebar_state="expanded")
         st.header("🧠" + self.config.get_title())
+
+        if "session_id" not in st.session_state:
+            st.session_state["session_id"] = str(uuid.uuid4())
+
+        self.session_id = st.session_state["session_id"]
+        
 
         with st.sidebar:
             #get option from the config file
@@ -46,6 +55,11 @@ class LoadStreamlitUI:
                 st.slider("Temperature",disabled=True)
             else:
                 self.user_controls["select_temperature"] = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
+
+
+        
+
+        self.user_controls["session_id"] = self.session_id
 
         return self.user_controls
     

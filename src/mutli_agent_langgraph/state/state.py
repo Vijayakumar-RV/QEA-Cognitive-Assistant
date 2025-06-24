@@ -7,3 +7,4 @@ class State(TypedDict):
     "Represents the structure of current state used in graph"
 
     messages:Annotated[List,add_messages]
+    session_id : str

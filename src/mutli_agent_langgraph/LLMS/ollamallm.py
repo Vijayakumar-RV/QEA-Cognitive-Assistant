@@ -23,7 +23,7 @@ class OllamaLLM:
                 st.warning("⚠️ Please select an Ollama model.")
                 return None
 
-            llm = ChatOllama(model=selected_model,temperature=selected_temperature)
+            llm = ChatOllama(model=selected_model,temperature=selected_temperature,disable_streaming=False)
             
         except Exception as e:
             raise ValueError(f"Error initializing Ollama LLM: {e}")
