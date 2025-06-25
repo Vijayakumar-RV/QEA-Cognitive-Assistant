@@ -23,7 +23,8 @@ def load_multi_agent_langgraph_ui():
         st.warning("⚠️ Please select a valid LLM and Usecase option.")
         return {}
     
-    user_message = st.text_input("Enter your message:", placeholder="Type your message here...",)
+    
+    user_message = st.text_input("Enter your message:", placeholder="Type your message here...")
 
     if user_message:
         selected_model = user_input.get("select_llm")
@@ -59,6 +60,7 @@ def load_multi_agent_langgraph_ui():
                 graph = graph_builder_.setup_graph(usecase)
                 session_id = user_input.get("session_id")
                 DisplayResultStreamlit(usecase,graph,user_message,session_id).disply_result_on_ui()
+                
             
             except Exception as e:
                 st.error(f"Error : Graph setup failed - {e}")

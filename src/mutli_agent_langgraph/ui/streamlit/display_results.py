@@ -21,15 +21,16 @@ class DisplayResultStreamlit:
             conversation_memory = LangchainConversation(session_id=session_id)
             memory = conversation_memory.get_conversation_memory()
             history = memory.load_memory_variables({})["history"]
-
+            print(f"Conversation History: {history}")
             #Display the conversation history
             if history:
                 st.subheader("Conversation History")
                 for message in history:
+                    print(f"{message.type} : {message.content}")
                     if message.type == "human":
                         with st.chat_message("user"):
                             st.markdown(f"**User:** {message.content}")
-                    if message.type == "assistant":
+                    if message.type == "ai":
                         with st.chat_message("assistant"):
                             st.markdown(f"**Assistant:** {message.content}")
             
