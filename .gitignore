@@ -2,7 +2,7 @@ cogvenv/
 api_keys.txt
 .env
 test.ipynb
-src/multi_agent/resources/conversation_memory.db
+/src/multi_agent_langgraph/resources/**/*.db
 # Ignore Python cache files
 *.pyc
-src/multi_agent/*.pyc
+__pycache__/
