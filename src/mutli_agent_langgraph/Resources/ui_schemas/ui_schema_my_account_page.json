@@ -1,0 +1,103 @@
+{
+  "page": "My Account Page",
+  "schema_id": "UI-MA",
+  "title": "My Account Page UI Schema",
+  "description": "Covers the UI structure and interactions of the My Account page accessible after user login.",
+  "elements": [
+    {
+      "element_id": "welcome_user_banner",
+      "type": "label",
+      "label": "Welcome back {username}",
+      "action": "navigates to My Account when clicked"
+    },
+    {
+      "element_id": "account_dashboard_heading",
+      "type": "heading",
+      "label": "MY ACCOUNT",
+      "action": "page title indicator"
+    },
+    {
+      "element_id": "account_feature_tiles",
+      "type": "icon_tiles",
+      "tiles": [
+        {
+          "label": "Edit Account Details",
+          "icon": "\u270e"
+        },
+        {
+          "label": "Change Password",
+          "icon": "\ud83d\udd12"
+        },
+        {
+          "label": "Wish List",
+          "icon": "\u2605"
+        },
+        {
+          "label": "Order History",
+          "icon": "\ud83d\udcbc"
+        },
+        {
+          "label": "Downloads",
+          "icon": "\u2913"
+        },
+        {
+          "label": "Transaction History",
+          "icon": "\ud83d\udcb3"
+        },
+        {
+          "label": "Notifications",
+          "icon": "\ud83d\udce3"
+        },
+        {
+          "label": "Logoff",
+          "icon": "\ud83d\udd13"
+        }
+      ],
+      "action": "each tile navigates to a specific section"
+    },
+    {
+      "element_id": "account_tiles_colored",
+      "type": "summary_tiles",
+      "tiles": [
+        {
+          "label": "Manage Address Book",
+          "color": "blue",
+          "count": "1"
+        },
+        {
+          "label": "Order History",
+          "color": "purple",
+          "count": "2"
+        },
+        {
+          "label": "Downloads",
+          "color": "yellow",
+          "count": "0"
+        },
+        {
+          "label": "Transaction History",
+          "color": "red",
+          "amount": "$0.00"
+        }
+      ],
+      "action": "shows quick access tiles with summary counts"
+    },
+    {
+      "element_id": "my_account_sidebar_menu",
+      "type": "sidebar_menu",
+      "items": [
+        "Account Dashboard",
+        "My Wish List",
+        "Edit Account Details",
+        "Change Password",
+        "Manage Address Book",
+        "Order History",
+        "Transaction History",
+        "Downloads",
+        "Notifications",
+        "Logoff"
+      ],
+      "action": "navigate to respective dashboard features"
+    }
+  ]
+}

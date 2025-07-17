@@ -1,0 +1,71 @@
+{
+  "page_id": "checkout_login_page",
+  "page_name": "Checkout Entry Page",
+  "description": "Handles the transition from cart to checkout. If the user is logged in, they are directed to the full checkout form. If not, a login form is shown alongside options for Guest Checkout and Registration.",
+  "before_page": ["cart_page"],
+  "after_page": [
+    "checkout_logged_in_page",
+    "checkout_guest_registration_page"
+  ],
+  "tags": ["checkout", "account_gate", "login_or_guest", "authentication_entry"],
+  "variants": [
+    {
+      "variant_id": "user_logged_in",
+      "user_state": "logged_in",
+      "description": "User is already authenticated and redirected directly to checkout steps.",
+      "elements": [
+        {
+          "element_id": "redirect_to_checkout_form",
+          "label": "Redirect to Billing/Shipping",
+          "action_type": "auto_redirect",
+          "expected_result": "Navigates to checkout_logged_in_page"
+        }
+      ]
+    },
+    {
+      "variant_id": "user_not_logged_in",
+      "user_state": "not_logged_in",
+      "description": "User is not logged in. Page displays login form and guest/register options.",
+      "elements": [
+        {
+          "element_id": "input_login_name",
+          "label": "Login Name",
+          "action_type": "input",
+          "locator": { "type": "name", "value": "email" }
+        },
+        {
+          "element_id": "input_login_password",
+          "label": "Password",
+          "action_type": "input",
+          "locator": { "type": "name", "value": "password" }
+        },
+        {
+          "element_id": "login_button",
+          "label": "Login Button",
+          "action_type": "click",
+          "locator": { "type": "id", "value": "button-login" },
+          "expected_result": "Logs user in and redirects to checkout_logged_in_page"
+        },
+        {
+          "element_id": "radio_guest_checkout",
+          "label": "Guest Checkout Option",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "account-guest" }
+        },
+        {
+          "element_id": "radio_register_account",
+          "label": "Register New Account Option",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "account-register" }
+        },
+        {
+          "element_id": "continue_button",
+          "label": "Continue as Guest/Register",
+          "action_type": "click",
+          "locator": { "type": "css", "value": "#button-account" },
+          "expected_result": "Navigates to guest billing or registration page"
+        }
+      ]
+    }
+  ]
+}

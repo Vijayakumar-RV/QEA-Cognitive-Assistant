@@ -1,0 +1,174 @@
+{
+  "page": "Checkout Page",
+  "schema_id": "UI-CO-FULL",
+  "title": "Refined Checkout Page UI Schema",
+  "description": "Detailed schema for checkout with guest, login, and registration paths.",
+  "states": [
+    {
+      "user_status": "Not Logged In",
+      "elements": [
+        {
+          "element_id": "checkout_type_selector",
+          "type": "radio_group",
+          "label": "Select Checkout Type",
+          "options": [
+            "Guest Checkout",
+            "Register Account"
+          ],
+          "action": "choose between guest and registration paths"
+        },
+        {
+          "element_id": "login_form",
+          "type": "form",
+          "fields": [
+            "Email",
+            "Password"
+          ],
+          "action": "login existing users"
+        },
+        {
+          "element_id": "register_form",
+          "type": "form",
+          "fields": [
+            "First Name",
+            "Last Name",
+            "Email",
+            "Telephone",
+            "Fax",
+            "Company",
+            "Address 1",
+            "Address 2",
+            "City",
+            "Postcode",
+            "Country",
+            "Region/State",
+            "Password",
+            "Password Confirm"
+          ],
+          "required_fields": [
+            "First Name",
+            "Last Name",
+            "Email",
+            "Telephone",
+            "Address 1",
+            "City",
+            "Postcode",
+            "Country",
+            "Region/State",
+            "Password",
+            "Password Confirm"
+          ],
+          "action": "register new user"
+        },
+        {
+          "element_id": "guest_form",
+          "type": "form",
+          "fields": [
+            "First Name",
+            "Last Name",
+            "Email",
+            "Telephone",
+            "Address 1",
+            "Address 2",
+            "City",
+            "Postcode",
+            "Country",
+            "Region/State"
+          ],
+          "required_fields": [
+            "First Name",
+            "Last Name",
+            "Email",
+            "Telephone",
+            "Address 1",
+            "City",
+            "Postcode",
+            "Country",
+            "Region/State"
+          ],
+          "action": "guest user details entry"
+        }
+      ]
+    },
+    {
+      "user_status": "Logged In or Guest Checkout Continued",
+      "elements": [
+        {
+          "element_id": "billing_address_form",
+          "type": "form",
+          "fields": [
+            "First Name",
+            "Last Name",
+            "Company",
+            "Address 1",
+            "Address 2",
+            "City",
+            "Postcode",
+            "Country",
+            "Region/State"
+          ],
+          "action": "collect or verify billing address"
+        },
+        {
+          "element_id": "shipping_same_as_billing_checkbox",
+          "type": "checkbox",
+          "label": "My delivery and billing addresses are the same",
+          "action": "toggle visibility of shipping address form"
+        },
+        {
+          "element_id": "shipping_address_form",
+          "type": "form",
+          "fields": [
+            "First Name",
+            "Last Name",
+            "Company",
+            "Address 1",
+            "Address 2",
+            "City",
+            "Postcode",
+            "Country",
+            "Region/State"
+          ],
+          "action": "enter different shipping address"
+        },
+        {
+          "element_id": "shipping_method_radio",
+          "type": "radio_group",
+          "label": "Shipping Method",
+          "options": [
+            "Flat Shipping Rate",
+            "Express"
+          ],
+          "action": "choose preferred delivery option"
+        },
+        {
+          "element_id": "payment_method_radio",
+          "type": "radio_group",
+          "label": "Payment Method",
+          "options": [
+            "Dummy Gateway"
+          ],
+          "action": "select payment mode"
+        },
+        {
+          "element_id": "order_comments_textarea",
+          "type": "textarea",
+          "label": "Add Comments About Your Order",
+          "action": "capture user remarks"
+        },
+        {
+          "element_id": "terms_agreement_checkbox",
+          "type": "checkbox",
+          "label": "I have read and agree to the Terms & Conditions",
+          "action": "must be checked to proceed"
+        },
+        {
+          "element_id": "confirm_order_button",
+          "type": "button",
+          "label": "Confirm Order",
+          "action": "submit full order"
+        }
+      ]
+    }
+  ]
+}

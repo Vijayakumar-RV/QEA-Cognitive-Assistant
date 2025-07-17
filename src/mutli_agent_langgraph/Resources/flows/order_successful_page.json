@@ -1,0 +1,58 @@
+{
+  "page_id": "order_success_page",
+  "page_name": "Order Success Page",
+  "description": "Confirmation page displayed after successful order placement. Contains order number, links to invoice and support, and a button to continue shopping.",
+  "before_page": ["checkout_confirmation_page"],
+  "after_page": ["home_page", "account_page"],
+  "tags": ["order_confirmation", "success", "final", "thank_you"],
+  "elements": [
+    {
+      "element_id": "order_success_message",
+      "label": "Order Processed Message",
+      "action_type": "view",
+      "locator": {
+        "type": "xpath",
+        "value": "//h1[contains(text(),'YOUR ORDER HAS BEEN PROCESSED')]"
+      }
+    },
+    {
+      "element_id": "order_number",
+      "label": "Order Number Display",
+      "action_type": "view",
+      "locator": {
+        "type": "xpath",
+        "value": "//p[contains(text(),'Your order #')]"
+      }
+    },
+    {
+      "element_id": "invoice_page_link",
+      "label": "Invoice Page Link",
+      "action_type": "click",
+      "locator": {
+        "type": "link_text",
+        "value": "invoice page"
+      },
+      "expected_result": "Navigates to order invoice view"
+    },
+    {
+      "element_id": "store_owner_link",
+      "label": "Store Owner Contact Link",
+      "action_type": "click",
+      "locator": {
+        "type": "link_text",
+        "value": "store owner"
+      },
+      "expected_result": "Opens store contact or help page"
+    },
+    {
+      "element_id": "continue_button",
+      "label": "Continue Button",
+      "action_type": "click",
+      "locator": {
+        "type": "xpath",
+        "value": "//a[contains(text(),'Continue')]"
+      },
+      "expected_result": "Navigates to home or user dashboard"
+    }
+  ]
+}

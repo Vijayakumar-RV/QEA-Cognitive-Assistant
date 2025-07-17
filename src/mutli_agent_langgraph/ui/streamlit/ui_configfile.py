@@ -23,7 +23,13 @@ class Config:
     def get_groq_model(self):
         return self.config["DEFAULT"].get("GROQ_Model").split(", ")
     
+    def get_google_model(self):
+        return self.config["DEFAULT"].get("GOOGLE_Model").split(", ")
+    
     def get_ollama_model(self):
         return self.config["DEFAULT"].get("OLLAMA_Model").split(", ")
+    
+    def get_api_key(self):
+        return self.config["DEFAULT"].get("API_KEY").split(", ")
     
     

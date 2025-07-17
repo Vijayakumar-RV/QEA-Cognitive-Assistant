@@ -1,0 +1,90 @@
+[
+  {
+    "id": "BR-01",
+    "rule": "All products must display a name, price, and image on listing and detail pages."
+  },
+  {
+    "id": "BR-02",
+    "rule": "If a product is on sale, both original and discounted prices must be shown."
+  },
+  {
+    "id": "BR-03",
+    "rule": "Product detail page must include available variants such as size, color, or scent if applicable."
+  },
+  {
+    "id": "BR-04",
+    "rule": "Users cannot add out-of-stock products to the cart."
+  },
+  {
+    "id": "BR-05",
+    "rule": "The cart must persist items until the user removes them or checks out."
+  },
+  {
+    "id": "BR-06",
+    "rule": "Users can sort products on category pages by date, price, or rating."
+  },
+  {
+    "id": "BR-07",
+    "rule": "Product rating and reviews should only appear on the product detail page."
+  },
+  {
+    "id": "BR-08",
+    "rule": "Clicking on any product card should navigate to the product detail page."
+  },
+  {
+    "id": "BR-09",
+    "rule": "Users can access the cart and account links at all times from the top navigation."
+  },
+  {
+    "id": "BR-10",
+    "rule": "Checkout must require mandatory billing and shipping information."
+  },
+  {
+    "id": "BR-11",
+    "rule": "Guest checkout is available only when there are items in the cart."
+  },
+  {
+    "id": "BR-12",
+    "rule": "Users must accept the terms and conditions before confirming their order."
+  },
+  {
+    "id": "BR-13",
+    "rule": "Product listings must support pagination when items exceed a single page."
+  },
+  {
+    "id": "BR-14",
+    "rule": "All required form fields must be validated on the client side before submission."
+  },
+  {
+    "id": "BR-15",
+    "rule": "After login, users are redirected to the My Account dashboard."
+  },
+  {
+    "id": "BR-16",
+    "rule": "All account features (e.g., Manage Address Book, Order history, Downloads,Transaction history, Change password, Edit account details) must be accessible from My Account dashboard."
+  },
+  {
+    "id": "BR-17",
+    "rule": "Search must return products that match the entered keyword in title or description."
+  },
+  {
+    "id": "BR-18",
+    "rule": "Only registered users may view order history or modify personal details."
+  },
+  {
+    "id": "BR-19",
+    "rule": "Items added to cart by guests are not persisted after logout or session timeout."
+  },
+  {
+    "id": "BR-20",
+    "rule": "Registered users should have the ability to update or add new addresses."
+  },
+  {
+    "id": "BR-21",
+    "rule": "Each product must have a unique identifier (product_id or SKU)."
+  },
+  {
+    "id": "BR-22",
+    "rule": "Clicking on brand logos should filter products by that brand."
+  }
+]

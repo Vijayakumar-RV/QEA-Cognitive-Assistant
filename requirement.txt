@@ -5,7 +5,17 @@ langchain_core
 langchain_groq
 langchain_openai
 langchain_ollama
+langchain-chroma
+langchain-google-genai
+langchain-huggingface
+google-generativeai
 faiss-cpu
 streamlit
 chromadb
 python-dotenv
+playwright
+sentence-transformers
+opentelemetry-proto
+opentelemetry-exporter-otlp-proto-grpc
+opentelemetry-sdk
+opentelemetry-api

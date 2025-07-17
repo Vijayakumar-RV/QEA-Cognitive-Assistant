@@ -1,0 +1,33 @@
+{
+  "page": "Specials Page",
+  "flow_id": "SP",
+  "title": "Specials Page Business Flow",
+  "description": "Describes the user interactions with the Specials page where discounted products are showcased.",
+  "steps": [
+    {
+      "step_id": "SP-001",
+      "user_action": "Click on 'Specials' link from the top navigation bar",
+      "expected_behavior": "Navigates to the Specials page displaying all discounted products"
+    },
+    {
+      "step_id": "SP-002",
+      "user_action": "Scroll through the list of special products",
+      "expected_behavior": "Discounted products are shown with original and sale prices"
+    },
+    {
+      "step_id": "SP-003",
+      "user_action": "Click on a discounted product",
+      "expected_behavior": "Navigates to the product detail page for the selected item"
+    },
+    {
+      "step_id": "SP-004",
+      "user_action": "Sort special products by price or name",
+      "expected_behavior": "Product list updates according to selected sort option"
+    },
+    {
+      "step_id": "SP-005",
+      "user_action": "Click 'Add to Cart' directly from the specials listing",
+      "expected_behavior": "Product is added to the cart and confirmation message is shown"
+    }
+  ]
+}

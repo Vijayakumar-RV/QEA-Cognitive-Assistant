@@ -3,6 +3,7 @@ from src.mutli_agent_langgraph.ui.streamlit.load_ui import LoadStreamlitUI
 from src.mutli_agent_langgraph.LLMS.groqllm import GroqLLM
 from src.mutli_agent_langgraph.LLMS.ollamallm import OllamaLLM
 from src.mutli_agent_langgraph.LLMS.openaillm import OpenAILLM
+from src.mutli_agent_langgraph.LLMS.googlellm import GoogleLLM
 from src.mutli_agent_langgraph.graph.graph_builder import GraphBuilder
 from src.mutli_agent_langgraph.ui.streamlit.display_results import DisplayResultStreamlit
 
@@ -22,10 +23,10 @@ def load_multi_agent_langgraph_ui():
     if not user_input:
         st.warning("⚠️ Please select a valid LLM and Usecase option.")
         return {}
-    
-    
-    user_message = st.text_input("Enter your message:", placeholder="Type your message here...")
 
+    
+    user_message = st.chat_input("Enter your message:")
+    
     if user_message:
         selected_model = user_input.get("select_llm")
         print(f"Selected Model: {selected_model}")
@@ -39,6 +40,9 @@ def load_multi_agent_langgraph_ui():
             if selected_model == "OLLAMA":
                 print("Ollama LLM selected")
                 object_llm_object = OllamaLLM(user_controls_input=user_input)
+            if selected_model == "GOOGLE_AI":
+                print("Google LLM selected")
+                object_llm_object = GoogleLLM(user_controls_input=user_input)
             model = object_llm_object.get_llm_model()
             print(f"Model: {model}")
 
@@ -60,6 +64,7 @@ def load_multi_agent_langgraph_ui():
                 graph = graph_builder_.setup_graph(usecase)
                 session_id = user_input.get("session_id")
                 DisplayResultStreamlit(usecase,graph,user_message,session_id).disply_result_on_ui()
+                
                 
             
             except Exception as e:

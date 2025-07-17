@@ -1,0 +1,48 @@
+{
+  "page": "Category Listing Page",
+  "flow_id": "CL",
+  "title": "Category Listing Business Flow",
+  "description": "Covers interactions on a category page like Makeup, Skincare etc., including sorting, filtering, and product selection.",
+  "steps": [
+    {
+      "step_id": "CL-001",
+      "user_action": "Open a category from the navigation bar (e.g., Makeup)",
+      "expected_behavior": "Displays a grid of products belonging to the selected category"
+    },
+    {
+      "step_id": "CL-002",
+      "user_action": "Scroll through the product grid",
+      "expected_behavior": "Loads all visible products with name, price, and image"
+    },
+    {
+      "step_id": "CL-003",
+      "user_action": "Click on a product tile",
+      "expected_behavior": "Navigates to the product detail page"
+    },
+    {
+      "step_id": "CL-004",
+      "user_action": "Sort products by 'Price: Low to High'",
+      "expected_behavior": "Product list is reordered with lowest price shown first"
+    },
+    {
+      "step_id": "CL-005",
+      "user_action": "Sort products by 'Name: A to Z'",
+      "expected_behavior": "Product list is alphabetically reordered"
+    },
+    {
+      "step_id": "CL-006",
+      "user_action": "Click on 'Add to Cart' for a product",
+      "expected_behavior": "Takes the user to the product detail page"
+    },
+    {
+      "step_id": "CL-007",
+      "user_action": "View price tags with 'Sale' (discount) if available",
+      "expected_behavior": "Discounted products show original and sale price"
+    },
+    {
+      "step_id": "CL-008",
+      "user_action": "Click on pagination or scroll to next page",
+      "expected_behavior": "Next set of products is loaded"
+    }
+  ]
+}

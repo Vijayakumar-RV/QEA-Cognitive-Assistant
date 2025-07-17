@@ -1,0 +1,156 @@
+{
+  "page_id": "cart_page",
+  "page_name": "Cart Page",
+  "description": "Displays user's shopping cart with product details, quantity controls, coupons, and shipping estimator. Behavior varies slightly based on login status.",
+  "before_page": ["product_detail_page", "home_page"],
+  "after_page": ["checkout_confirmation_page","checkout_login_page"],
+  "tags": ["cart", "shipping_estimation", "coupon", "quantity_control", "address_check"],
+  "cart_variants": [
+    {
+      "variant_id": "logged_in",
+      "user_state": "logged_in",
+      "description": "User is logged in. Shipping details are auto-filled based on account address.",
+      "elements": [
+        {
+          "element_id": "cart_table",
+          "label": "Product Table",
+          "action_type": "view",
+          "locator": { "type": "css", "value": ".table-responsive .table" }
+        },
+        {
+          "element_id": "quantity_input",
+          "label": "Quantity Field",
+          "action_type": "input",
+          "locator": { "type": "css", "value": "input[name*='quantity']" }
+        },
+        {
+          "element_id": "update_button",
+          "label": "Update Quantity",
+          "action_type": "click",
+          "locator": { "type": "css", "value": "button[data-original-title='Update']" }
+        },
+        {
+          "element_id": "remove_button",
+          "label": "Remove Product",
+          "action_type": "click",
+          "locator": { "type": "css", "value": "button[data-original-title='Remove']" }
+        },
+        {
+          "element_id": "input_coupon",
+          "label": "Coupon Code Input",
+          "action_type": "input",
+          "locator": { "type": "name", "value": "coupon" }
+        },
+        {
+          "element_id": "apply_coupon",
+          "label": "Apply Coupon Button",
+          "action_type": "click",
+          "locator": { "type": "id", "value": "button-coupon" }
+        },
+        {
+          "element_id": "shipping_country",
+          "label": "Country Dropdown (Pre-filled)",
+          "action_type": "view",
+          "locator": { "type": "name", "value": "country_id" }
+        },
+        {
+          "element_id": "shipping_state",
+          "label": "State Dropdown (Pre-filled)",
+          "action_type": "view",
+          "locator": { "type": "name", "value": "zone_id" }
+        },
+        {
+          "element_id": "shipping_postcode",
+          "label": "Postcode Field (Pre-filled)",
+          "action_type": "view",
+          "locator": { "type": "name", "value": "postcode" }
+        },
+        {
+          "element_id": "estimate_shipping_button",
+          "label": "Estimate Shipping",
+          "action_type": "click",
+          "locator": { "type": "id", "value": "button-quote" }
+        },
+        {
+          "element_id": "checkout_button",
+          "label": "Proceed to Checkout",
+          "action_type": "click",
+          "locator": { "type": "link_text", "value": "Checkout" }
+        }
+      ]
+    },
+    {
+      "variant_id": "not_logged_in",
+      "user_state": "guest_or_not_logged",
+      "description": "User is not logged in. Must provide shipping details manually to estimate shipping and checkout.",
+      "elements": [
+        {
+          "element_id": "cart_table",
+          "label": "Product Table",
+          "action_type": "view",
+          "locator": { "type": "css", "value": ".table-responsive .table" }
+        },
+        {
+          "element_id": "quantity_input",
+          "label": "Quantity Field",
+          "action_type": "input",
+          "locator": { "type": "css", "value": "input[name*='quantity']" }
+        },
+        {
+          "element_id": "update_button",
+          "label": "Update Quantity",
+          "action_type": "click",
+          "locator": { "type": "css", "value": "button[data-original-title='Update']" }
+        },
+        {
+          "element_id": "remove_button",
+          "label": "Remove Product",
+          "action_type": "click",
+          "locator": { "type": "css", "value": "button[data-original-title='Remove']" }
+        },
+        {
+          "element_id": "input_coupon",
+          "label": "Coupon Code Input",
+          "action_type": "input",
+          "locator": { "type": "name", "value": "coupon" }
+        },
+        {
+          "element_id": "apply_coupon",
+          "label": "Apply Coupon Button",
+          "action_type": "click",
+          "locator": { "type": "id", "value": "button-coupon" }
+        },
+        {
+          "element_id": "shipping_country",
+          "label": "Country Dropdown",
+          "action_type": "select",
+          "locator": { "type": "name", "value": "country_id" }
+        },
+        {
+          "element_id": "shipping_state",
+          "label": "State Dropdown",
+          "action_type": "select",
+          "locator": { "type": "name", "value": "zone_id" }
+        },
+        {
+          "element_id": "shipping_postcode",
+          "label": "Postcode Field",
+          "action_type": "input",
+          "locator": { "type": "name", "value": "postcode" }
+        },
+        {
+          "element_id": "estimate_shipping_button",
+          "label": "Estimate Shipping",
+          "action_type": "click",
+          "locator": { "type": "id", "value": "button-quote" }
+        },
+        {
+          "element_id": "checkout_button",
+          "label": "Proceed to Checkout",
+          "action_type": "click",
+          "locator": { "type": "link_text", "value": "Checkout" }
+        }
+      ]
+    }
+  ]
+}

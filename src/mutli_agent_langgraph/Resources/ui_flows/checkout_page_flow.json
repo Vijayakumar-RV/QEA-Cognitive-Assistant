@@ -1,0 +1,58 @@
+{
+  "page": "Checkout Page",
+  "flow_id": "CO",
+  "title": "Checkout Page Business Flow",
+  "description": "Covers steps involved in the checkout process including guest login, billing, shipping, payment, and order confirmation.",
+  "steps": [
+    {
+      "step_id": "CO-001",
+      "user_action": "Access the checkout page from the cart",
+      "expected_behavior": "Redirects to the first step of the checkout process"
+    },
+    {
+      "step_id": "CO-002",
+      "user_action": "Choose between Guest Checkout or Login",
+      "expected_behavior": "System presents login form or billing details form based on selection"
+    },
+    {
+      "step_id": "CO-003",
+      "user_action": "Fill in billing details (First Name, Last Name, E-mail, Address, City, State, Zip/Postal Code, Phone Number)",
+      "expected_behavior": "Form fields are validated and saved for order processing"
+    },
+    {
+      "step_id": "CO-004",
+      "user_action": "Enter shipping address (or reuse billing)",
+      "expected_behavior": "Shipping form is either auto-filled or separately validated"
+    },
+    {
+      "step_id": "CO-005",
+      "user_action": "Select a shipping method",
+      "expected_behavior": "Shipping method selected and price updates if applicable"
+    },
+    {
+      "step_id": "CO-006",
+      "user_action": "Choose payment method (dummy)",
+      "expected_behavior": "System displays dummy payment confirmation step"
+    },
+    {
+      "step_id": "CO-007",
+      "user_action": "Click on 'Confirm Order'",
+      "expected_behavior": "Order is placed and confirmation screen is shown"
+    },
+    {
+      "step_id": "CO-008",
+      "user_action": "Capture order reference or ID if available",
+      "expected_behavior": "User receives order number for tracking"
+    },
+    {
+      "step_id": "CO-009",
+      "user_action": "if already logged in, verify shipping address and payment method",
+      "expected_behavior": "System verifies saved addresses and payment methods for logged-in user"
+    },
+    {
+      "step_id": "CO-010",
+      "user_action": "if already logged in, edit shipping address and payment method",
+      "expected_behavior": "User can update shipping address and payment method before confirming order"
+    }
+  ]
+}

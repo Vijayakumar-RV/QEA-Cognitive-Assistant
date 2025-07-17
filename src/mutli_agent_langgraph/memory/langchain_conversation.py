@@ -3,7 +3,7 @@ from langchain_community.chat_message_histories import SQLChatMessageHistory
 from langchain.schema import message_to_dict, messages_from_dict
 
 class LangchainConversation:
-    def __init__(self, session_id : str, db_path = "C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\src\\mutli_agent_langgraph\\resources\\conversation_memory.db"):
+    def __init__(self, session_id : str, db_path = "C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\data_base\\conversation_memory\\conversation_history.db"):
 
         self.session_id = session_id
         self.db_path = db_path

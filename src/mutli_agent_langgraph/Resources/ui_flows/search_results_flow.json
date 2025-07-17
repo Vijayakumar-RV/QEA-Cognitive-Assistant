@@ -1,0 +1,33 @@
+{
+  "page": "Search Results Page",
+  "flow_id": "SR",
+  "title": "Search Results Page Business Flow",
+  "description": "Describes the flow and behavior when a user performs a search and views the results page.",
+  "steps": [
+    {
+      "step_id": "SR-001",
+      "user_action": "Enter a keyword in the search bar and press Enter",
+      "expected_behavior": "Search results page loads showing products matching the keyword"
+    },
+    {
+      "step_id": "SR-002",
+      "user_action": "View list of products matching the search",
+      "expected_behavior": "Each product shows name, image, price, and link to detail page"
+    },
+    {
+      "step_id": "SR-003",
+      "user_action": "Click on a product from the search results",
+      "expected_behavior": "Navigates to the corresponding product detail page"
+    },
+    {
+      "step_id": "SR-004",
+      "user_action": "Refine search by changing keyword and pressing Enter again",
+      "expected_behavior": "Search results update to reflect new keyword"
+    },
+    {
+      "step_id": "SR-005",
+      "user_action": "Perform a search with no matching results",
+      "expected_behavior": "System shows a message indicating no products were found"
+    }
+  ]
+}

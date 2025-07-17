@@ -1,0 +1,91 @@
+{
+  "page": "Category Listing Page",
+  "schema_id": "UI-CL",
+  "title": "Extended Category Listing Page UI Schema",
+  "description": "Comprehensive schema including category headings, grid, sort options, and filters for category/product listings.",
+  "elements": [
+    {
+      "element_id": "category_header",
+      "type": "heading",
+      "label": "Category Name",
+      "example_values": [
+        "Apparel & Accessories",
+        "Makeup",
+        "Skincare",
+        "Fragrance",
+        "Hair Care",
+        "Men",
+        "Books",
+        "Special Offers"
+      ],
+      "action": "Displays name of the active product category"
+    },
+    {
+      "element_id": "search_context_label",
+      "type": "label",
+      "label": "Search Result Context",
+      "example_values": [
+        "Keyword search - Shirts"
+      ],
+      "action": "Shows the search keyword or term used"
+    },
+    {
+      "element_id": "sort_by_dropdown",
+      "type": "dropdown",
+      "label": "Sort By",
+      "options": [
+        "Default",
+        "Price Low > High",
+        "Price High > Low",
+        "Name A - Z",
+        "Name Z - A",
+        "Rating Highest",
+        "Rating Lowest"
+      ],
+      "action": "Sorts the product grid based on selected option"
+    },
+    {
+      "element_id": "product_grid",
+      "type": "product_listing",
+      "items": "product_cards",
+      "interaction": "click product \u2192 open detail page"
+    },
+    {
+      "element_id": "product_card",
+      "type": "card",
+      "fields": [
+        "image",
+        "product_title with brand",
+        "brand",
+        "price",
+        "sale_price",
+        "add_to_cart_button",
+        "view_details_button"
+      ],
+      "action": "Displays brief details about each product in the listing"
+    },
+    {
+      "element_id": "add_to_cart_button",
+      "type": "button",
+      "label": "Add to Cart",
+      "action": "adds product to cart directly from listing"
+    },
+    {
+      "element_id": "view_details_button",
+      "type": "button",
+      "label": "View",
+      "action": "opens full product detail page"
+    },
+    {
+      "element_id": "out_of_stock_tag",
+      "type": "label",
+      "label": "Out of Stock",
+      "action": "Disables cart interaction and greys out the item"
+    },
+    {
+      "element_id": "pagination_controls",
+      "type": "pagination",
+      "action": "navigate to next/previous product pages"
+    }
+  ]
+}

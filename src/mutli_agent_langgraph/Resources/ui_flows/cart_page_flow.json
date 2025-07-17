@@ -1,0 +1,61 @@
+{
+  "page": "Cart Page",
+  "flow_id": "CP",
+  "title": "Cart Page Business Flow",
+  "description": "Covers user actions on the shopping cart page including quantity adjustments, item removal, and checkout initiation.",
+  "steps": [
+    {
+      "step_id": "CP-001",
+      "user_action": "Open the cart page from header icon or post-add-to-cart",
+      "expected_behavior": "Cart page loads with all added products listed"
+    },
+    {
+      "step_id": "CP-002",
+      "user_action": "View list of added products",
+      "expected_behavior": "Each product is shown with name, quantity, price, and total"
+    },
+    {
+      "step_id": "CP-003",
+      "user_action": "Increase/decrease product quantity and click on update button",
+      "expected_behavior": "Subtotal updates accordingly and total price recalculates"
+    },
+    {
+      "step_id": "CP-004",
+      "user_action": "Click remove/delete icon on a product row",
+      "expected_behavior": "Product is removed and cart total updates"
+    },
+    {
+      "step_id": "CP-005",
+      "user_action": "Click 'Continue Shopping'",
+      "expected_behavior": "Redirects back to the last visited category or home page"
+    },
+    {
+      "step_id": "CP-006",
+      "user_action": "Click 'Checkout' button",
+      "expected_behavior": "Redirects to the checkout process (guest/login path)"
+    },
+    {
+      "step_id": "CP-007",
+      "user_action": "View Sub-Total, taxes, and Flat Shipping Rate (if applicable)",
+      "expected_behavior": "Correctly calculated totals are shown before checkout"
+    },
+    {
+      "step_id": "CP-008",
+      "user_action": "Enter code for discount (if available)",
+      "expected_behavior": "Discount is applied and total updates accordingly"
+    },
+    {
+      "step_id": "CP-009",
+      "user_action": "Select Country and State and Zip/Post code for to estimate shipping rate if not logged in",
+      "expected_behavior": "Shipping rate is estimated based on selected country, state, and zip code"
+    },
+    {
+      "step_id": "CP-010",
+      "user_action": "Verify Country and State and Zip/Post code for to estimate shipping rate if already logged in",
+      "expected_behavior": "Shipping rate is estimated based on user profile address if available, or prompts for new address if not set"
+    }
+
+
+
+  ]
+}
