@@ -15,3 +15,6 @@ class State(TypedDict):
     testcase:Optional[str]
     testscript:Optional[str]
     userstory:Optional[str]
+    document_text: Optional[str]
+    embedding_enabled: Optional[bool]
+    user_query: Optional[str]

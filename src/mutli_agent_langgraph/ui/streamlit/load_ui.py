@@ -4,6 +4,10 @@ from src.mutli_agent_langgraph.ui.streamlit.ui_configfile import Config
 import uuid
 from src.mutli_agent_langgraph.memory.langchain_conversation import LangchainConversation
 from dotenv import load_dotenv
+from src.mutli_agent_langgraph.tools.document_analyzer_tools import parse_document
+import time
+import json
+import pandas as pd
 
 class LoadStreamlitUI:
 
@@ -83,8 +87,68 @@ class LoadStreamlitUI:
             else:
                 self.user_controls["select_temperature"] = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
 
+            if self.user_controls["select_usecase"] =="QEA Research Assistant":
+                self.user_controls["TAVILY_API_KEY"] = st.selectbox("TAVILY API KEY",api_key_option,index=0)
+                if self.user_controls["TAVILY_API_KEY"] != "Default":
+                    os.environ["TAVILY_API_KEY"] = self.user_controls["TAVILY_API_KEY"] = st.session_state["TAVILY_API_KEY"] = st.text_input("TAVILY API KEY",type="password")
+                else:
+                    os.environ["TAVILY_API_KEY"] = self.user_controls["TAVILY_API_KEY"]= st.session_state["TAVILY_API_KEY"]= os.getenv("TAVILY_API_KEY")
 
-        
+            if self.user_controls["select_usecase"] =="QEA Document Assistant":
+                
+                self.user_controls["upload_file"]=uploaded_file = st.file_uploader("Upload a document", type=["pdf", "docx", "pptx", "txt", "csv", "jpeg", "jpg", "png", "json"])
+                self.user_controls["enable_embedding"]=enable_embedding = st.toggle("Enable Smart Retrieval (Embedding)")
+
+                if "document_text" not in st.session_state:
+                    st.session_state["document_text"] = None
+                if "embedded_store" not in st.session_state:
+                    st.session_state["embedded_store"] = None
+                if "last_summary" not in st.session_state:
+                    st.session_state["last_summary"] = ""
+                if "last_qa" not in st.session_state:
+                    st.session_state["last_qa"] = ""
+
+                LOG_PATH = "upload_log.txt"
+
+                def log_upload(file_name, file_type, size):
+                    with open(LOG_PATH, "a") as f:
+                        f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Uploaded: {file_name}, Type: {file_type}, Size: {size} bytes\n")
+
+                def display_upload_history():
+                    if os.path.exists(LOG_PATH):
+                        with open(LOG_PATH, "r") as f:
+                            logs = f.readlines()
+                        st.expander("📜 Upload History").write("".join(logs))
+
+                if uploaded_file:
+                    content, file_type = parse_document(uploaded_file)
+                    st.session_state["document_text"] = content
+
+                    st.info(f"**File name:** {uploaded_file.name}\n\n**Type:** {uploaded_file.type}\n\n**Size:** {uploaded_file.size / 1024:.2f} KB")
+                    # log_upload(uploaded_file.name, uploaded_file.type, uploaded_file.size)
+                    # display_upload_history()
+
+                    st.subheader("📄 Document Preview")
+                    if uploaded_file.name.endswith(".csv"):
+                        try:
+                            df = pd.read_csv(uploaded_file)
+                            st.dataframe(df)
+                        except:
+                            st.text_area("Text Preview", content[:3000])
+                    elif uploaded_file.name.endswith(".json"):
+                        try:
+                            data = json.loads(content)
+                            st.json(data)
+                        except:
+                            st.text_area("Text Preview", content[:3000])
+                    else:
+                        st.text_area("Text Preview", content[:3000])
+
+                    if st.button("Analyze with AI"):
+                        with st.spinner("Processing..."):
+                            self.user_controls["document_text"] = content
+                            self.user_controls["embedding_enabled"] = enable_embedding
+                            self.user_controls["analyze_triggered"] = True
 
         self.user_controls["session_id"] = self.session_id
 

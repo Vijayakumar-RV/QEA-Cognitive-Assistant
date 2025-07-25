@@ -26,7 +26,7 @@ class GoogleLLM:
 
 
             llm = ChatGoogleGenerativeAI(model=selected_model,
-                                         temperature =selected_temperature)
+                                         temperature =selected_temperature,top_p=0.1)
             
 
         except Exception as e:

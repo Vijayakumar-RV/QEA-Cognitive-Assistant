@@ -32,4 +32,9 @@ class Config:
     def get_api_key(self):
         return self.config["DEFAULT"].get("API_KEY").split(", ")
     
+    def get_language(self):
+        return self.config["DEFAULT"].get("LANGUAGE").split(", ")
+    
+    def get_testing_framework(self):
+        return self.config["DEFAULT"].get("FRAMEWORKS").split(", ")
     

@@ -20,12 +20,21 @@ def load_multi_agent_langgraph_ui():
     
     user_input = load_ui.load_streamlit_ui()
 
+    
+
     if not user_input:
         st.warning("⚠️ Please select a valid LLM and Usecase option.")
         return {}
 
     
     user_message = st.chat_input("Enter your message:")
+
+    if user_input.get("select_usecase") == "QEA Document Assistant":
+        if not user_message and not st.session_state.get("analyze_clicked"):
+            return
+        if st.session_state.get("analyze_clicked"):
+            print(user_message)
+
     
     if user_message:
         selected_model = user_input.get("select_llm")

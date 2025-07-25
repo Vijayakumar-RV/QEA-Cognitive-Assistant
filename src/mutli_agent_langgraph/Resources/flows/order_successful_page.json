@@ -1,4 +1,5 @@
 {
+  "application_url":"https://www.automationteststore.com/",
   "page_id": "order_success_page",
   "page_name": "Order Success Page",
   "description": "Confirmation page displayed after successful order placement. Contains order number, links to invoice and support, and a button to continue shopping.",

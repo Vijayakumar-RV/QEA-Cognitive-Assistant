@@ -1,4 +1,5 @@
 {
+  "application_url":"https://www.automationteststore.com/",
   "page_id": "checkout_confirmation_page",
   "page_name": "Checkout Confirmation Page",
   "description": "Final step in the checkout flow. Displays shipping, payment, order summary, and total pricing. Allows users to review and confirm their order.",

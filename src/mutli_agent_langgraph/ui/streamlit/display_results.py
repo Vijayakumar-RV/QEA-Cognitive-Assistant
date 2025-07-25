@@ -3,6 +3,12 @@ from langchain_core.messages import HumanMessage,AIMessage,ToolMessage,BaseMessa
 import json
 from src.mutli_agent_langgraph.memory.langchain_conversation import LangchainConversation
 import time
+from src.mutli_agent_langgraph.tools.document_analyzer_tools import parse_document, build_qa_engine,summarize_text
+import time
+import json
+import pandas as pd
+import os
+
 class DisplayResultStreamlit:
     def __init__(self,usecase,graph,user_message,session_id):
         self.usecase = usecase
@@ -61,3 +67,52 @@ class DisplayResultStreamlit:
 
                         if isinstance(last_msg, AIMessage):
                             stream_area.markdown(last_msg.content)
+
+        elif usecase=="QEA Research Assistant":
+            initial_state = {"messages":[user_message]}
+            res = graph.invoke(initial_state)
+            for message in res["messages"]:
+                if type(message) == HumanMessage:
+                    with st.chat_message("user"):
+                        st.write(message.content)
+                elif type(message) == ToolMessage:
+                    with st.chat_message("ai"):
+                        st.write("Tool call Started")
+                        st.write(message.content)
+                        st.write("Tool call Ended")
+
+                elif type(message) == AIMessage and message.content:
+                    with st.chat_message("assistant"):
+                        st.write(message.content)
+
+        
+        elif usecase == "QEA Document Assistant":
+            
+            state_input = {
+            "session_id": session_id,
+            "document_text": st.session_state.get("document_text"),
+            "user_query": user_message,
+            "embedding_enabled": st.session_state.get("embedded_store") is not None
+        }
+
+            result = graph.invoke(state_input)
+
+            st.subheader("🔎 AI Response")
+            if "error" in result:
+                st.error(result["error"])
+            elif "document_summary" in result:
+                st.success("📄 Summary:")
+                st.write(result["document_summary"])
+            elif "document_response" in result:
+                st.success("💬 Answer:")
+                st.write(result["document_response"])
+
+                    # Show past conversation
+            if "messages" in result and len(result["messages"]) > 0:
+                for msg in result["messages"]:
+                    if isinstance(msg, HumanMessage):
+                        with st.chat_message("user"):
+                            st.markdown(f"🧑‍💻 **User:**\n{msg.content}")
+                    elif isinstance(msg, AIMessage):
+                        with st.chat_message("assistant"):
+                            st.markdown(f"🤖 **Assistant**\n{msg.content}")

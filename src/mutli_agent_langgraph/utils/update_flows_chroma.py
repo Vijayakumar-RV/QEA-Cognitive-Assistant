@@ -2,9 +2,9 @@ from langgraph.prebuilt import ToolNode
 from langchain.schema import Document
 import os
 import json
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.schema import Document
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 def flatten_elements(elements, parent_section=None):
     flat_elements = []
@@ -32,6 +32,7 @@ def flow_to_documents(flow_dir):
                 flow = json.load(f)
 
             # Common metadata
+            url = flow.get("application_url","")
             page_id = flow.get("page_id", "unknown")
             page_name = flow.get("page_name", "")
             description = flow.get("description", "")
@@ -39,7 +40,7 @@ def flow_to_documents(flow_dir):
             tag_string = ", ".join(tags) if isinstance(tags, list) else str(tags)
             before_page = flow.get("before_page", [])
             after_page = flow.get("after_page", [])
-
+            application_url = url if isinstance(url, str) else ""
             # Normalize to lists
             before_page = before_page if isinstance(before_page, list) else [before_page]
             after_page = after_page if isinstance(after_page, list) else [after_page]
@@ -69,6 +70,7 @@ def flow_to_documents(flow_dir):
                         steps += f"- {label} ({action}) | Locator: {loc_type} = {loc_val}\n"
 
                     content = (
+                        f"application_url : {application_url}\n"
                         f"Page ID: {page_id}\n"
                         f"Page Name: {page_name}\n"
                         f"Variant: {variant_id}\n"
@@ -82,6 +84,7 @@ def flow_to_documents(flow_dir):
                     documents.append(Document(
                         page_content=content,
                         metadata={
+                            "application_url":application_url,
                             "page_id": page_id,
                             "variant_id": variant_id,
                             "page_name": page_name,
@@ -100,6 +103,7 @@ def flow_to_documents(flow_dir):
                     steps += f"- {label} ({action}) | Locator: {loc_type} = {loc_val}\n"
 
                 content = (
+                    f"application_url : {application_url}\n"
                     f"Page ID: {page_id}\n"
                     f"Page Name: {page_name}\n"
                     f"Description: {description}\n"
@@ -112,6 +116,7 @@ def flow_to_documents(flow_dir):
                 documents.append(Document(
                     page_content=content,
                     metadata={
+                        "application_url":application_url,
                         "page_id": page_id,
                         "variant_id": None,
                         "page_name": page_name,
@@ -132,6 +137,6 @@ def update_save_flow_documents(DB_DIR):
     print(f"✅ Successfully embedded {len(docs)} flow chunks into ChromaDB.")
 
 if __name__ == "__main__":
-    update_save_flow_documents("C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\data_base\\chroma_memory\\ui_flow_memory\\ui_flow_v1")
+    update_save_flow_documents("C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\data_base\\chroma_memory\\ui_flow_memory\\ui_flow_v2")
 
     

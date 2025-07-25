@@ -14,8 +14,16 @@ streamlit
 chromadb
 python-dotenv
 playwright
-sentence-transformers
 opentelemetry-proto
 opentelemetry-exporter-otlp-proto-grpc
 opentelemetry-sdk
 opentelemetry-api
+sentence-transformers
+newspaper3k
+trafilatura
+requests
+langchain-tavily
+arxiv
+wikipedia
+selenium
+python-pptx

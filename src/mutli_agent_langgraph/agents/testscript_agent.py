@@ -47,8 +47,8 @@ def testscript(state:State,retriver,user_message,model)->State:
         - DO NOT invent new steps, element locators, actions, or assertions.
         - Use step order, field names, and locators exactly as provided.
         - If an element locator or step is missing, output: "# ERROR: Step or locator missing: [describe missing piece]" at the appropriate place in the code.
-        - Properly add waits, error handling, or logic that are industry standard.
-        - Do NOT make assumptions about the application flow.
+        - Properly add waits, error handling, or logic that are industry standard for each step.
+        - Do NOT make assumptions about the application flow unless the user specifies.
         - If insufficient information is provided to produce a script, output: "# ERROR: Insufficient context to generate test script."
         - Use the context provided for the UI flow and the locators
 

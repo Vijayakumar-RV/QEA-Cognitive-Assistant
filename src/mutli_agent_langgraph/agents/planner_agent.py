@@ -18,7 +18,7 @@ class Planner:
         system_prompt = f""" You are a planner agent of the Tester Copilot.
             Given the follwing User request, analyze the intent of the user and output a Json action plan describing exactly what information needs to be retrieved or which agent should be called next.
             - If the user wants to see, view, display, or summarize a user story, add "userstory" to "generation".
-            - Identify if you need to retrieve the UI Flow or the User Story or both.
+            - Identify if you need to retrieve the UI Flow or the User Story or both. Testcase and Testscript generation requires both User story and UI flow retrival.
             - The User story consists of User Story and acceptance criteria which helps in creating test cases, test scripts and the displaying the user stories.
             - The UI Flow consists of all the pages elements,attributes,before and after page details. This helps in creating test cases and test scripts.
             - "testcase" and "testscript" are independent: include each in "generation" ONLY if the user request explicitly mentions it.
@@ -48,7 +48,7 @@ class Planner:
             User: "Generate a detailed test case for the user story US-101"
             Output:
             {{
-                "reterivals": [{{"type": "User_Story"}}],
+                "reterivals": [{{"type": "both"}}],
                 "generation": ["testcase"],
                 "irrelevant": null,
                 "chitchat": null,
@@ -59,7 +59,7 @@ class Planner:
             User: "Retrieve user story US-102 and generate a test script for it"
             Output:
             {{
-                "reterivals": [{{"type": "User_Story"}}],
+                "reterivals": [{{"type": "both"}}],
                 "generation": ["testscript"],
                 "irrelevant": null,
                 "chitchat": null,
@@ -70,7 +70,7 @@ class Planner:
             User: "I want both a test case and a test script for the login functionality"
             Output:
             {{
-                "reterivals": [{{"type": "User_Story"}}],
+                "reterivals": [{{"type": "both"}}],
                 "generation": ["testcase", "testscript"],
                 "irrelevant": null,
                 "chitchat": null,

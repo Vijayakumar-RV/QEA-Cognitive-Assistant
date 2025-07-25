@@ -1,10 +1,11 @@
 {
+  "application_url":"https://www.automationteststore.com/",
   "page_id": "home_page",
   "page_name": "Home Page",
   "description": "This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.",
   "before_page": null,
   "after_page": [
-    "product_detail_page","search_results_page","login_page","account_dashboard","cart_page","checkout_page","product_listing_makeup",
+    "My Account Dashboard","checkout_login_page","product_detail_page","search_results_page","login_page","account_dashboard","cart_page","checkout_page","product_listing_makeup",
     "product_listing_skincare","product_listing_fragrance","product_listing_apparel_accessories","product_listing_haircare",
     "product_listing_books","product_listing_men"
   ],
@@ -38,8 +39,8 @@
           "label": "Login or Register",
           "action_type": "click",
           "locator": {
-            "type": "link_text",
-            "value": "Login or register"
+            "type": "xpath",
+            "value": "//*[text()='Login or register']"
           },
           "expected_result": "Navigates to Login Page"
         },

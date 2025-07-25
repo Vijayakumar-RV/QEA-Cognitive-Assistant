@@ -1,4 +1,5 @@
 {
+  "application_url":"https://www.automationteststore.com/",
   "page_id": "product_detail_page",
   "page_name": "Product Detail Page",
   "description": "Displays product-specific information, attributes, pricing, availability, and options to add to cart. Variations include size, color, shipping info, stock status, and gift wrapping.",

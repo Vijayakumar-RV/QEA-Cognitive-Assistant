@@ -51,12 +51,6 @@ class QEAAssistantChatbot:
             response_text = state["messages"][-1].content
             print(f"response text : {response_text}")
 
-            # response_text = ""
-            
-            # for chunks in self.llm.stream(prompt):
-            #     if chunks.content:
-            #         response_text  += chunks.content
-
             memory.save_context({"input": user_input}, {"output": response_text})
 
             return {
@@ -69,49 +63,3 @@ class QEAAssistantChatbot:
                 "messages": [{"type": "assistant", "content": f"Error processing request: {str(e)}"}],
                 "session_id": session_id
             }
-        
-    
-    def create_chatbot(self,tools):
-        """
-        Returns a chatbot node fucntion
-        """
-
-        llm_with_tools =self.llm.bind_tools(tools)
-
-        def chatbot_node(state: State)->dict:
-            session_id = state["session_id"]
-
-            # ---- 1. Load past memory ----
-            conv_mem  = LangchainConversation(session_id)
-            past      = conv_mem.get_conversation_memory().load_memory_variables({})["history"]
-
-            # ---- 2. Merge with incoming turn ----
-            # Keep everything we already have in this turn!
-            working_ctx: list[BaseMessage] = past + state["messages"]
-
-
-            # ---- 3. Let the LLM (with tools) respond ----
-            ai_msg: BaseMessage = llm_with_tools.invoke(working_ctx)
-            working_ctx.append(ai_msg)                # ⬅️ very important
-
-            # ---- 4. Persist ONLY if it’s the final answer ----
-            # If the assistant just asked for a tool call, ai_msg.content == ""
-
-           # 4. persist only final answer
-            if not getattr(ai_msg, "tool_calls", None):
-                # find the most recent HumanMessage
-                last_human = next(
-                    (m for m in reversed(working_ctx) if m.type == "human"), None
-                )
-                if last_human:                              # guard in case something weird
-                    conv_mem.get_conversation_memory().save_context(
-                        {"input": last_human.content},      # human question
-                        {"output": ai_msg.content}          # assistant answer
-                    )
-
-            # 5. return full context
-            return {
-                "messages": working_ctx,
-                "session_id": session_id
-            }
-        return chatbot_node

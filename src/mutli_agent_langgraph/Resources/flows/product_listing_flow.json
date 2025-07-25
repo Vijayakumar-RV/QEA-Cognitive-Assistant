@@ -1,4 +1,5 @@
 {
+  "application_url":"https://www.automationteststore.com/",
   "page_id": "product_listing_page",
   "page_name": "Product Listing Page",
   "description": "Displays a list of products under a selected category or search term. Includes subcategory navigation, sort options, and product tiles linking to product detail pages.",
