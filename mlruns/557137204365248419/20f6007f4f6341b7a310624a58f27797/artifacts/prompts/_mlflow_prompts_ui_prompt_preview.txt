@@ -1,0 +1,22 @@
+human: Generate test cases for user story 02
+ai: ### TC_US02_01 — Placeholder due to missing context for user story 02
+**Type:** Manual  |  **Priority:** High  
+**Tags:** MissingInformation, UserStory02
+
+**Description**  
+Cannot generate detailed test cases because the requirements and UI flow for user story 02 have not been provided.
+
+**Preconditions**
+- User story 02 details must be made available, including acceptance criteria, UI elements, and navigation flow.
+
+**Test Steps**
+1. Obtain the full specification and acceptance criteria for user story 02.
+2. Review the UI flow and identify all relevant screens and components.
+3. List all functional requirements and edge cases from the user story.
+4. Define test scenarios covering positive, negative, and boundary conditions.
+
+**Expected Result**
+> Clear and detailed manual test cases for user story 02 are drafted once the necessary information is provided.
+
+user: Generate test cases for user story 02
+assistant:

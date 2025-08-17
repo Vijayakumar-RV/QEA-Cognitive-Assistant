@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 1,
+    "id": 0,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n- Automation Test Store Logo (click) [Section: Header] | Locator: css = .logo\n- Currency Dropdown (select) [Section: Header] | Locator: id = currency\n- Login or Register (click) [Section: Header] | Locator: xpath = //*[text()='Login or register']\n- Specials (click) [Section: Header] | Locator: link_text = SPECIALS\n- Account (click) [Section: Header] | Locator: link_text = ACCOUNT\n- Cart (click) [Section: Header] | Locator: link_text = CART\n- Checkout (click) [Section: Header] | Locator: link_text = CHECKOUT\n- Search Bar (input) [Section: Header] | Locator: name = search\n- Home (click) [Section: Main Navigation Menu] | Locator: link_text = HOME\n- Apparel & Accessories (click) [Section: Main Navigation Menu] | Locator: link_text = APPAREL & ACCESSORIES\n- Makeup (click) [Section: Main Navigation Menu] | Locator: link_text = MAKEUP\n- "
+  },
+  {
+    "rank": 2,
+    "id": 1,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: home_page\nPage Name: Home Page\nDescription: This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.\nBefore Page(s): \nAfter Page(s): My Account Dashboard, product_detail_page, search_results_page, login_page, account_dashboard, cart_page, checkout_page, product_listing_makeup, product_listing_skincare, product_listing_fragrance, product_listing_apparel_accessories, product_listing_haircare, product_listing_books, product_listing_men\nTags: home, entry_point, guest_access, navigation_hub, category_navigation\n---\nElements:\n- Automation Test Store Logo (click) | Locator: css = .logo\n- Currency Dropdown (select) | Locator: id = currency\n- Login or Register (click) | Locator: xpath = //*[text()='Login or register']\n- Specials (click) | Locator: link_text = SPECIALS\n- Account (click) | Locator: link_text = ACCOUNT\n- Cart (click) | Locator: link_text = CART\n- Checkout (click) | Locator: link_text = CHECKOUT\n- Search "
+  },
+  {
+    "rank": 3,
+    "id": 2,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Provides access to various user account functionalities such as editing information, changing password, viewing order history, managing addresses, newsletter subscriptions, and logging out.\nVariant: user_logged_in_dashboard - User has logged in and is viewing their account dashboard with multiple options.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n- Edit your account information (click) | Locator: xpath = //a[contains(text(), 'Edit your account information')]\n- Change your password (click) | Locator: xpath = //a[contains(text(), 'Change your password')]\n- Modify your address book entries (click) | Locator: xpath = //a[contains(text(), 'Modify your address book entries')]\n- View your order history (click) | Locator: xpath = //a[contains(text(), 'View your order history')]\n- Downloads (click) | Locator: xpath = //a[contains(text(), 'Downloads')]\n- Subscribe / unsubscribe to newsletter (click) | Locator: xpath = //a[contains(text(), 'Subscribe / unsubscribe to newsletter')]\n- Logoff (click) | Locator: xpath = (//a[contains(@href,'logout')])[5]\n"
+  },
+  {
+    "rank": 4,
+    "id": 3,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://automationteststore.com/index.php?rt=account/account\nPage ID: my_account_page\nPage Name: My Account Dashboard\nVariant: user_logged_in_dashboard\nVariant Description: User has logged in and is viewing their account dashboard with multiple options.\nBefore Page(s): Home Page, login_page\nAfter Page(s): edit_account_page, order_history_page, address_book_page, newsletter_page, logout_page\nTags: login, logout, account, user_dashboard, authenticated, account_navigation\n---\nElements:\n- Edit your account information (click) | Locator: xpath = //a[contains(text(), 'Edit your account information')]\n- Change your password (click) | Locator: xpath = //a[contains(text(), 'Change your password')]\n- Modify your address book entries (click) | Locator: xpath = //a[contains(text(), 'Modify your address book entries')]\n- View your order history (click) | Locator: xpath = //a[contains(text(), 'View your order history')]\n- Downloads (click) | Locator: xpath = //a[contains(text(), 'Downloads')]\n- Subscribe / unsubscribe to newsletter (click) | Locator: xpath = //a[contains(text(), 'Subscribe / unsubscribe to newsletter')]\n- Logoff (click) | Locator: xpath = (//a[contains(@href,'l"
+  },
+  {
+    "rank": 5,
+    "id": 4,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://automationteststore.com/index.php?rt=account/account\nPage ID: my_account_page\nPage Name: My Account Dashboard\nVariant: user_logged_in_dashboard\nVariant Description: User has logged in and is viewing their account dashboard with multiple options.\nBefore Page(s): login_page\nAfter Page(s): edit_account_page, order_history_page, address_book_page, newsletter_page, logout_page\nTags: account, user_dashboard, authenticated, account_navigation\n---\nElements:\n- Edit your account information (click) | Locator: xpath = //a[contains(text(), 'Edit your account information')]\n- Change your password (click) | Locator: xpath = //a[contains(text(), 'Change your password')]\n- Modify your address book entries (click) | Locator: xpath = //a[contains(text(), 'Modify your address book entries')]\n- View your order history (click) | Locator: xpath = //a[contains(text(), 'View your order history')]\n- Downloads (click) | Locator: xpath = //a[contains(text(), 'Downloads')]\n- Subscribe / unsubscribe to newsletter (click) | Locator: xpath = //a[contains(text(), 'Subscribe / unsubscribe to newsletter')]\n- Logoff (click) | Locator: xpath = (//a[contains(@href,'logout')])[5]\n"
+  },
+  {
+    "rank": 6,
+    "id": 5,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://automationteststore.com/index.php?rt=account/account\nPage ID: my_account_page\nPage Name: My Account Dashboard\nVariant: user_logged_in_dashboard\nVariant Description: User has logged in and is viewing their account dashboard with multiple options.\nBefore Page(s): login_page\nAfter Page(s): edit_account_page, order_history_page, address_book_page, newsletter_page, logout_page\nTags: account, user_dashboard, authenticated, account_navigation\n---\nElements:\n- Edit your account information (click) | Locator: xpath = //a[contains(text(), 'Edit your account information')]\n- Change your password (click) | Locator: xpath = //a[contains(text(), 'Change your password')]\n- Modify your address book entries (click) | Locator: xpath = //a[contains(text(), 'Modify your address book entries')]\n- View your order history (click) | Locator: xpath = //a[contains(text(), 'View your order history')]\n- Downloads (click) | Locator: xpath = //a[contains(text(), 'Downloads')]\n- Subscribe / unsubscribe to newsletter (click) | Locator: xpath = //a[contains(text(), 'Subscribe / unsubscribe to newsletter')]\n- Logoff (click) | Locator: xpath = (//a[contains(@href,'logout')])[5]\n"
+  }
+]

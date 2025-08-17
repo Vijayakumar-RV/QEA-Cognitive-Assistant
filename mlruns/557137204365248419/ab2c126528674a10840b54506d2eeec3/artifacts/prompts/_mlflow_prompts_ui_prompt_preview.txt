@@ -1,0 +1,46 @@
+human: Generate me the use cases related to US-09
+ai: I don't have enough information on that. Please ask me something related to the application and its functionalities.
+human: Generate me the test cases related to US-09
+ai: ### TC-Login-001 — Successful login with valid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-09, Login, Positive
+
+**Description**  
+Verify that a returning user can log in with valid credentials and is redirected to the My Account dashboard.
+
+**Preconditions**
+- User has a valid account and is on the Home Page.
+
+**Test Steps**
+1. Navigate to https://www.automationteststore.com/
+2. Click on Login or register link
+3. Enter valid email in the Email field (locator not provided in provided context)
+4. Enter valid password in the Password field (locator not provided in provided context)
+5. Click on Login button (locator not provided in provided context)
+
+**Expected Result**
+> User is redirected to the My Account dashboard, and the account details and order history are displayed.
+
+---
+### TC-Login-002 — Unsuccessful login with invalid credentials
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** US-09, Login, Negative
+
+**Description**  
+Verify that entering invalid credentials displays an error message and prevents access to the My Account dashboard.
+
+**Preconditions**
+- User is on the Home Page.
+
+**Test Steps**
+1. Navigate to https://www.automationteststore.com/
+2. Click on Login or register link
+3. Enter invalid email in the Email field (locator not provided in provided context)
+4. Enter invalid password in the Password field (locator not provided in provided context)
+5. Click on Login button (locator not provided in provided context)
+
+**Expected Result**
+> An error message is displayed indicating invalid login credentials and the user remains on the login page.
+
+user: Generate test cases related to US-09
+assistant:

@@ -1,0 +1,95 @@
+### TC001 — End-to-End Checkout as Guest - Happy Path
+**Type:** Manual  |  **Priority:** High  
+**Tags:** Guest Checkout, End-to-End
+
+**Description**  
+Verify that a guest user can complete the checkout process successfully
+
+**Preconditions**
+- User is not logged in
+- Cart contains at least one item
+
+**Test Steps**
+1. Step 1: Click on the 'Checkout' button
+2. Step 2: Select 'Guest Checkout' option
+3. Step 3: Enter valid email address
+4. Step 4: Enter valid shipping address
+5. Step 5: Select shipping method
+6. Step 6: Enter valid payment information
+7. Step 7: Click on 'Place Order' button
+8. Step 8: Verify order summary is displayed
+
+**Expected Result**
+> Order is placed successfully and order summary is displayed
+
+---
+### TC002 — End-to-End Checkout as Guest - Invalid Email
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** Guest Checkout, Error Handling
+
+**Description**  
+Verify that the system does not allow checkout with an invalid email address
+
+**Preconditions**
+- User is not logged in
+- Cart contains at least one item
+
+**Test Steps**
+1. Step 1: Click on the 'Checkout' button
+2. Step 2: Select 'Guest Checkout' option
+3. Step 3: Enter invalid email address
+4. Step 4: Enter valid shipping address
+5. Step 5: Select shipping method
+6. Step 6: Enter valid payment information
+7. Step 7: Click on 'Place Order' button
+
+**Expected Result**
+> Error message is displayed indicating invalid email address
+
+---
+### TC003 — End-to-End Checkout as Guest - Invalid Shipping Address
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** Guest Checkout, Error Handling
+
+**Description**  
+Verify that the system does not allow checkout with an invalid shipping address
+
+**Preconditions**
+- User is not logged in
+- Cart contains at least one item
+
+**Test Steps**
+1. Step 1: Click on the 'Checkout' button
+2. Step 2: Select 'Guest Checkout' option
+3. Step 3: Enter valid email address
+4. Step 4: Enter invalid shipping address
+5. Step 5: Select shipping method
+6. Step 6: Enter valid payment information
+7. Step 7: Click on 'Place Order' button
+
+**Expected Result**
+> Error message is displayed indicating invalid shipping address
+
+---
+### TC004 — End-to-End Checkout as Guest - Invalid Payment Information
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** Guest Checkout, Error Handling
+
+**Description**  
+Verify that the system does not allow checkout with invalid payment information
+
+**Preconditions**
+- User is not logged in
+- Cart contains at least one item
+
+**Test Steps**
+1. Step 1: Click on the 'Checkout' button
+2. Step 2: Select 'Guest Checkout' option
+3. Step 3: Enter valid email address
+4. Step 4: Enter valid shipping address
+5. Step 5: Select shipping method
+6. Step 6: Enter invalid payment information
+7. Step 7: Click on 'Place Order' button
+
+**Expected Result**
+> Error message is displayed indicating invalid payment information

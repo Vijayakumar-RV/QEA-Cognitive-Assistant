@@ -1,0 +1,54 @@
+### US09_TC01 — Navigate to Login Page
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** US-09, login
+
+**Description**  
+Verify that the user can navigate to the login page from the landing page.
+
+**Preconditions**
+- User is on the Automation Test Store landing page.
+
+**Test Steps**
+1. Locate the 'Login or register' link in the header (Locator: xpath = //*[text()='Login or register']).
+2. Click on 'Login or register'.
+
+**Expected Result**
+> The login page is displayed.
+
+---
+### US09_TC02 — Valid Login with Registered Credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-09, login, positive
+
+**Description**  
+Verify that a returning user can log in with valid credentials and is redirected to the My Account dashboard.
+
+**Preconditions**
+- User is on the login page.
+
+**Test Steps**
+1. Enter a valid email address into the Email field. [MISSING LOCATOR: email input on login page]
+2. Enter the correct password into the Password field. [MISSING LOCATOR: password input on login page]
+3. Click on the Login button. [MISSING LOCATOR: login button on login page]
+
+**Expected Result**
+> User is successfully logged in and redirected to the My Account dashboard. [MISSING LOCATOR: element on My Account page]
+
+---
+### US09_TC03 — Invalid Login with Incorrect Credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-09, login, negative
+
+**Description**  
+Verify that the login form shows an error message when invalid credentials are submitted.
+
+**Preconditions**
+- User is on the login page.
+
+**Test Steps**
+1. Enter an invalid email address into the Email field. [MISSING LOCATOR: email input on login page]
+2. Enter an incorrect password into the Password field. [MISSING LOCATOR: password input on login page]
+3. Click on the Login button. [MISSING LOCATOR: login button on login page]
+
+**Expected Result**
+> An error message is displayed indicating invalid login credentials. [MISSING LOCATOR: error message element on login page]

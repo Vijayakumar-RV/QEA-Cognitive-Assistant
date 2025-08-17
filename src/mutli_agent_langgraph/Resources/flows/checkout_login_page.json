@@ -1,14 +1,15 @@
 {
   "application_url":"https://www.automationteststore.com/",
   "page_id": "checkout_login_page",
-  "page_name": "Checkout Entry Page",
-  "description": "Handles the transition from cart to checkout. If the user is logged in, they are directed to the full checkout form. If not, a login form is shown alongside options for Guest Checkout and Registration.",
-  "before_page": ["cart_page"],
+  "page_name": "Checkout Login Page",
+  "description": "Login page and also Handles the transition from cart to checkout. If the user is logged in, they are directed to the full checkout form. If not, a login form is shown alongside options for Guest Checkout and Registration.",
+  "before_page": ["cart_page","home_page"],
   "after_page": [
     "checkout_logged_in_page",
-    "checkout_guest_registration_page"
+    "checkout_guest_registration_page",
+    "user_dashboard"
   ],
-  "tags": ["checkout", "account_gate", "login_or_guest", "authentication_entry"],
+  "tags": ["login","checkout", "account_gate", "login_or_guest", "authentication_entry","account"],
   "variants": [
     {
       "variant_id": "user_logged_in",

@@ -1,0 +1,22 @@
+{
+  "evaluation": {
+    "rule_pass": true,
+    "rule_coverage_pct": 100.0,
+    "judge": {
+      "task_score": 3.0,
+      "completeness": 0.25,
+      "correctness": 0.6,
+      "step_coverage": 0.2,
+      "formatting": 0.8,
+      "reasoning": 0.2,
+      "harmful": false,
+      "comments": "The provided answer contains one valid test case (US-09-TC001) that verifies the presence and clickability of the 'Login or register' link \u2014 this is useful but insufficient. Critical acceptance criteria from US-09 (valid credential login, invalid login error message, successful redirect to My Account) are not covered. Missing items: explicit test cases for valid login, invalid login, and successful redirection; concrete test data (username/password); expected messages or assertions for failure/success; postconditions (e.g., user is logged in, account dashboard shown); negative and edge cases (locked account, empty fields); automation-friendly steps with clear locators and verification steps. Formatting is acceptable (readable Markdown-like), but steps are presented as dictionaries instead of a consistent step/action/expected result table. Suggested improvements: add at least three additional test cases: (1) Valid Login \u2014 supply valid credentials, verify redirect to My Account and presence of account elements; (2) Invalid Login \u2014 try incorrect password, verify error message text and no redirect; (3) Empty Fields \u2014 attempt submit with blank fields, verify validation messages. For each TC include preconditions, test data, exact locators, detailed step-by-step actions, expected results with assertions, priority, type (manual/automated), and postconditions. If automation is intended, include stable selectors and any setup/teardown steps."
+    }
+  },
+  "payload": {
+    "prompt": "Generate test cases related to us-09",
+    "model_answer": "### US-09-TC001 \u2014 Verify initiation of Login/Registration process\n**Type:** Manual  |  **Priority:** Medium  \n**Tags:** Login, Navigation, Missing Information\n\n**Description**  \nThis test case verifies that the 'Login or register' link is present and clickable on the landing page, allowing the user to proceed towards login or registration.\n\n**Preconditions**\n- User is on the Automation Test Store landing page (application_url: https://www.automationteststore.com/).\n\n**Test Steps**\n1. {'Step': 1, 'Action': 'Navigate to the Automation Test Store landing page.'}\n2. {'Step': 2, 'Action': \"Locate the 'Login or register' link in the Header section.\"}\n3. {'Step': 3, 'Action': \"Click on the 'Login or register' link.\"}\n\n**Expected Result**\n> The user is navigated to a page that presents options for either logging in or registering an account.\n",
+    "contexts": "Flow "
+  },
+  "system_prompt_head": "You are a strict evaluator for Quality Engineering & Assurance outputs.\nReturn JSON only:\n{\n  \"task_score\": float (0.0-10.0),\n  \"completeness\": float (0.0-1.0),\n  \"correctness\": float (0.0-1.0),\n  \"step_coverage\": float (0.0-1.0),\n  \"formatting\": float (0.0-1.0),\n  \"reasoning\": float (0.0-1.0),\n  \"harmful\": boolean,\n  \"comments\": string\n}\nScoring must follow the project profile and the (optional) per-usecase rubric exactly.\nIf any critical requirement is missing or contradicted by contexts, reduce scores sharply.\n\n--- PROJECT PROFILE ---\n# (missing) judge_profile.md"
+}

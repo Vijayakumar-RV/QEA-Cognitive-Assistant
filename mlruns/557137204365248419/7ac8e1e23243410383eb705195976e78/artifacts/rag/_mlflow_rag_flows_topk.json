@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 1,
+    "id": 0,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Billing details form for users choosing to checkout as Guest or Register. Based on selection, additional registration fields appear. All required fields are marked as mandatory.\nVariant: guest_checkout - User selects Guest Checkout. Displays mandatory fields for billing and shipping address.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n- Guest Checkout Option (select) | Locator: id = account-guest\n- First Name (input) | Locator: name = firstname\n- Last Name (input) | Locator: name = lastname\n- Email (input) | Locator: name = email\n- Telephone (input) | Locator: name = telephone\n- Address (input) | Locator: name = address_1\n- City (input) | Locator: name = city\n- Postcode (input) | Locator: name = postcode\n- Country (select) | Locator: name = country_id\n- Region/State (select) | Locator: name = zone_id\n- Shipping Address same as Billing (check) | Locator: name = shipping_address\n- Continue Button (click) | Locator: id = button-guest\n"
+  },
+  {
+    "rank": 2,
+    "id": 1,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Login page and also Handles the transition from cart to checkout. If the user is logged in, they are directed to the full checkout form. If not, a login form is shown alongside options for Guest Checkout and Registration.\nVariant: user_not_logged_in - User is not logged in. Page displays login form and guest/register options.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n- Login Name (input) | Locator: name = loginname\n- Password (input) | Locator: name = password\n- Login Button (click) | Locator: xpath = //*[@id='loginFrm']/fieldset/button\n- Guest Checkout Option (select) | Locator: id = account-guest\n- Register New Account Option (select) | Locator: id = account-register\n- Continue as Guest/Register (click) | Locator: css = #button-account\n"
+  },
+  {
+    "rank": 3,
+    "id": 2,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: checkout_guest_registration_page\nPage Name: Guest Checkout or Registration\nVariant: guest_checkout\nVariant Description: User selects Guest Checkout. Displays mandatory fields for billing and shipping address.\nBefore Page(s): checkout_login_page\nAfter Page(s): shipping_method_page\nTags: guest_checkout, registration, billing_details, user_info_form\n---\nElements:\n- Guest Checkout Option (select) | Locator: id = account-guest\n- First Name (input) | Locator: name = firstname\n- Last Name (input) | Locator: name = lastname\n- Email (input) | Locator: name = email\n- Telephone (input) | Locator: name = telephone\n- Address (input) | Locator: name = address_1\n- City (input) | Locator: name = city\n- Postcode (input) | Locator: name = postcode\n- Country (select) | Locator: name = country_id\n- Region/State (select) | Locator: name = zone_id\n- Shipping Address same as Billing (check) | Locator: name = shipping_address\n- Continue Button (click) | Locator: id = button-guest\n"
+  },
+  {
+    "rank": 4,
+    "id": 3,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: checkout_guest_registration_page\nPage Name: Guest Checkout or Registration\nVariant: register_account\nVariant Description: User selects Register Account. Displays billing fields and extra fields for password and agreement.\nBefore Page(s): checkout_login_page\nAfter Page(s): shipping_method_page\nTags: guest_checkout, registration, billing_details, user_info_form\n---\nElements:\n- Register Account Option (select) | Locator: id = account-register\n- First Name (input) | Locator: name = firstname\n- Last Name (input) | Locator: name = lastname\n- Email (input) | Locator: name = email\n- Telephone (input) | Locator: name = telephone\n- Address (input) | Locator: name = address_1\n- City (input) | Locator: name = city\n- Postcode (input) | Locator: name = postcode\n- Country (select) | Locator: name = country_id\n- Region/State (select) | Locator: name = zone_id\n- Password (input) | Locator: name = password\n- Confirm Password (input) | Locator: name = confirm\n- Agree to Terms Checkbox (check) | Locator: name = agree\n- Continue Button (click) | Locator: id = button-register\n"
+  },
+  {
+    "rank": 5,
+    "id": 4,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: checkout_login_page\nPage Name: Checkout Entry Page\nVariant: user_not_logged_in\nVariant Description: User is not logged in. Page displays login form and guest/register options.\nBefore Page(s): cart_page\nAfter Page(s): checkout_logged_in_page, checkout_guest_registration_page\nTags: checkout, account_gate, login_or_guest, authentication_entry\n---\nElements:\n- Login Name (input) | Locator: name = email\n- Password (input) | Locator: name = password\n- Login Button (click) | Locator: id = button-login\n- Guest Checkout Option (select) | Locator: id = account-guest\n- Register New Account Option (select) | Locator: id = account-register\n- Continue as Guest/Register (click) | Locator: css = #button-account\n"
+  },
+  {
+    "rank": 6,
+    "id": 5,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: checkout_login_page\nPage Name: Checkout Entry Page\nVariant: user_not_logged_in\nVariant Description: User is not logged in. Page displays login form and guest/register options.\nBefore Page(s): cart_page\nAfter Page(s): checkout_logged_in_page, checkout_guest_registration_page\nTags: checkout, account_gate, login_or_guest, authentication_entry\n---\nElements:\n- Login Name (input) | Locator: name = loginname\n- Password (input) | Locator: name = password\n- Login Button (click) | Locator: xpath = //*[@id='loginFrm']/fieldset/button\n- Guest Checkout Option (select) | Locator: id = account-guest\n- Register New Account Option (select) | Locator: id = account-register\n- Continue as Guest/Register (click) | Locator: css = #button-account\n"
+  }
+]

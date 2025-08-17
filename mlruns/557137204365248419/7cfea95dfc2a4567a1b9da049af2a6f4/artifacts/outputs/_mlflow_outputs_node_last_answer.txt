@@ -1,0 +1,59 @@
+### US-09-TC001 — Verify navigation to Login/Registration page
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** Login, Navigation
+
+**Description**  
+This test case verifies that the user can navigate to the Login/Registration page by clicking the 'Login or register' link on the landing page.
+
+**Preconditions**
+- User is on the Automation Test Store landing page (application_url: https://www.automationteststore.com/).
+
+**Test Steps**
+1. 1. Navigate to the Automation Test Store landing page.
+2. 2. Locate the 'Login or register' link in the Header section.
+3. 3. Click on the 'Login or register' link.
+
+**Expected Result**
+> The user is navigated to the Login/Registration page.
+
+---
+### US-09-TC002 — Verify successful login with valid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** Login, Positive
+
+**Description**  
+This test case verifies that a user can successfully log in with valid credentials and is redirected to the My Account dashboard.
+
+**Preconditions**
+- User is on the Login/Registration page.
+
+**Test Steps**
+1. 1. Navigate to the Automation Test Store landing page.
+2. 2. Click on the 'Login or register' link in the Header section.
+3. 3. Enter valid username in the 'Username' field. (Missing locator for Username field)
+4. 4. Enter valid password in the 'Password' field. (Missing locator for Password field)
+5. 5. Click the 'Login' button. (Missing locator for Login button)
+
+**Expected Result**
+> The user is redirected to the 'My Account' dashboard.
+
+---
+### US-09-TC003 — Verify unsuccessful login with invalid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** Login, Negative
+
+**Description**  
+This test case verifies that an error message is displayed when a user attempts to log in with invalid credentials.
+
+**Preconditions**
+- User is on the Login/Registration page.
+
+**Test Steps**
+1. 1. Navigate to the Automation Test Store landing page.
+2. 2. Click on the 'Login or register' link in the Header section.
+3. 3. Enter invalid username in the 'Username' field. (Missing locator for Username field)
+4. 4. Enter invalid password in the 'Password' field. (Missing locator for Password field)
+5. 5. Click the 'Login' button. (Missing locator for Login button)
+
+**Expected Result**
+> An error message is displayed indicating invalid login credentials.

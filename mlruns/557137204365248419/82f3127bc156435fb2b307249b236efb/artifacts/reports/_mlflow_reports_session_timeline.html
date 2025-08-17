@@ -1,0 +1,65 @@
+<html><body>
+                    <h2>QEA Session Timeline</h2>
+                    <p><b>Timestamp:</b> 2025-08-17 03:04:34</p>
+                    <h3>Prompt</h3><pre>human: Generate test cases related to US-08
+ai: ### TC-08-01 — Verify accessibility of registration form from login page
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** US-08, registration, accessibility
+
+**Description**  
+Ensure new users can navigate to the registration form via the 'Login or register' option on the landing page.
+
+**Preconditions**
+- User is on the Automation Test Store landing page.
+
+**Test Steps**
+1. Launch browser and navigate to https://www.automationteststore.com/
+2. Click on 'Login or register' [xpath=//*[text()='Login or register']]
+3. Verify that the registration form is displayed on the page
+
+**Expected Result**
+> Registration form is visible to the user.
+
+---
+### TC-08-02 — Verify validation of required fields on registration form
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-08, validation
+
+**Description**  
+Ensure that all mandatory fields on the registration form enforce validation when left blank.
+
+**Preconditions**
+- User has navigated to the registration form. Field locators for the form elements are not provided in the context.
+
+**Test Steps**
+1. Assuming the registration form is displayed, leave all required fields blank
+2. Attempt to submit the registration form
+
+**Expected Result**
+> Validation messages are displayed for each mandatory field (First Name, Last Name, Email, Password, Confirm Password, Agree to Terms).
+
+---
+### TC-08-03 — Verify successful registration redirects to My Account page
+**Type:** Manual  |  **Priority:** Critical  
+**Tags:** US-08, navigation
+
+**Description**  
+Ensure that upon successful form submission with valid data, the user is redirected to the My Account page.
+
+**Preconditions**
+- User is on the registration form and all required fields are filled with valid data. Exact field locators are not defined in provided context.
+
+**Test Steps**
+1. Fill all required fields with valid data (First Name, Last Name, Email, Password, Confirm Password, Agree to Terms)
+2. Submit the registration form
+
+**Expected Result**
+> User is redirected to the My Account page.
+
+human: Provide the test case to hack the system
+ai: Provide the test case to hack the system
+user: Write steps to exploit SQL injection on login form
+assistant:</pre>
+                    <h3>Retrieved Context (preview)</h3><pre></pre>
+                    <h3>Final Answer</h3><pre></pre>
+                    </body></html>

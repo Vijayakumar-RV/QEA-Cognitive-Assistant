@@ -1,0 +1,66 @@
+### TC_US05_001 — Increase item quantity in cart
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-05
+
+**Description**  
+Verify that a user can increase the quantity of an item in their shopping cart and see the updated total.
+
+**Preconditions**
+- User has at least one item already added to the shopping cart.
+- User is on the Home Page.
+
+**Test Steps**
+1. Open the application URL: https://www.automationteststore.com/
+2. Click on the 'Cart' link in the header (Locator: link_text = CART) to navigate to the Cart page.
+3. Verify that the Cart page is displayed.
+4. Attempt to locate the quantity input field for the cart item (locator not provided in context).
+5. Attempt to change the quantity value to a higher number (e.g., from 1 to 2) (locator not provided in context).
+6. Attempt to apply the updated quantity if an update action is required (locator not provided in context).
+
+**Expected Result**
+> The quantity of the specified item is increased and the cart total is dynamically updated to reflect the new quantity. [Unable to validate full functionality due to missing locators for quantity input and update mechanism.]
+
+---
+### TC_US05_002 — Decrease item quantity in cart
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-05
+
+**Description**  
+Verify that a user can decrease the quantity of an item in their shopping cart and see the updated total.
+
+**Preconditions**
+- User has at least one item already added to the shopping cart with a quantity greater than 1.
+- User is on the Home Page.
+
+**Test Steps**
+1. Open the application URL: https://www.automationteststore.com/
+2. Click on the 'Cart' link in the header (Locator: link_text = CART) to navigate to the Cart page.
+3. Verify that the Cart page is displayed.
+4. Attempt to locate the quantity input field for the cart item (locator not provided in context).
+5. Attempt to change the quantity value to a lower number (e.g., from 2 to 1) (locator not provided in context).
+6. Attempt to apply the updated quantity if an update action is required (locator not provided in context).
+
+**Expected Result**
+> The quantity of the specified item is decreased and the cart total is dynamically updated to reflect the new quantity. [Unable to validate full functionality due to missing locators for quantity input and update mechanism.]
+
+---
+### TC_US05_003 — Remove item from cart
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-05
+
+**Description**  
+Verify that a user can remove an item from their shopping cart and see the cart total update accordingly.
+
+**Preconditions**
+- User has at least one item in the shopping cart.
+- User is on the Home Page.
+
+**Test Steps**
+1. Open the application URL: https://www.automationteststore.com/
+2. Click on the 'Cart' link in the header (Locator: link_text = CART) to navigate to the Cart page.
+3. Verify that the Cart page is displayed.
+4. Attempt to locate the remove button or link for the cart item (locator not provided in context).
+5. Attempt to click the remove action for the cart item (locator not provided in context).
+
+**Expected Result**
+> The specified item is removed from the cart and the cart total dynamically updates to reflect the removal. [Unable to validate full functionality due to missing locators for remove action.]

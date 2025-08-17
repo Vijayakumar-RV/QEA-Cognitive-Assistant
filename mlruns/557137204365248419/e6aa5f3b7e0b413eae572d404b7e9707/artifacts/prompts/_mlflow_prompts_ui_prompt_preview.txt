@@ -1,0 +1,40 @@
+human: Generate test case related to US-09
+ai: ### US-09-01 — Login to account with valid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** login, account, dashboard
+
+**Description**  
+Verify that the login form accepts valid credentials and redirects to My Account dashboard
+
+**Preconditions**
+- User has a valid account and is on the login page
+
+**Test Steps**
+1. Enter valid username and password in the login form
+2. Click the Login button
+3. Verify that the user is redirected to the My Account dashboard
+
+**Expected Result**
+> User is successfully logged in and redirected to the My Account dashboard
+
+---
+### US-09-02 — Login to account with invalid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** login, error, invalid
+
+**Description**  
+Verify that the login form shows an error message for invalid credentials
+
+**Preconditions**
+- User is on the login page
+
+**Test Steps**
+1. Enter invalid username and password in the login form
+2. Click the Login button
+3. Verify that an error message is displayed
+
+**Expected Result**
+> Error message is displayed for invalid credentials
+
+user: Generate test case related to US-09
+assistant:

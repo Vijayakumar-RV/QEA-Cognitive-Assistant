@@ -2,8 +2,9 @@ from src.mutli_agent_langgraph.state.state import State
 
 class QEARESEARCHNODE:
 
-    def __init__(self,model):
+    def __init__(self,model,temperature):
         self.llm=model
+        self.temperature=temperature
 
     def process(self,tools):
         """

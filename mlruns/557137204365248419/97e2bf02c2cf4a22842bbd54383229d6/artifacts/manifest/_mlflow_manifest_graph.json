@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    "planner",
+    "retriver",
+    "qeacognitive"
+  ],
+  "edges": [
+    [
+      "START",
+      "planner"
+    ],
+    [
+      "planner",
+      "retriver"
+    ],
+    [
+      "retriver",
+      "qeacognitive"
+    ],
+    [
+      "qeacognitive",
+      "END"
+    ]
+  ]
+}

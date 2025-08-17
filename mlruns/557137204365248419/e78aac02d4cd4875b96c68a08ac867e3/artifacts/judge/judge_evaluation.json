@@ -1,0 +1,22 @@
+{
+  "evaluation": {
+    "rule_pass": true,
+    "rule_coverage_pct": 100.0,
+    "judge": {
+      "task_score": 0.0,
+      "completeness": 0.0,
+      "correctness": 0.0,
+      "step_coverage": 0.0,
+      "formatting": 0.0,
+      "reasoning": 0.0,
+      "harmful": false,
+      "comments": "The provided model_answer is identical to the input prompt and contains no test cases. It fails to deliver any artifacts required for US-09 (Login to account). Missing critical elements: concrete test cases (positive and negative), preconditions, step-by-step actions, test data, expected results, pass/fail criteria, mapping to acceptance criteria, use of provided locators/elements, and any formatting (e.g., test ID, priority, severity). To be acceptable, produce a set of test cases that at minimum: 1) cover successful login with valid credentials (include steps, locators, test data, expected outcome), 2) cover invalid credentials and expected error message, 3) cover blank fields validation, 4) cover password masking and show/hide if applicable, 5) cover account lockout or throttling if in scope, and 6) include navigation post-login (redirect to My Account). Prefer structured output (table, JSON array, or Gherkin scenarios) and explicitly reference the acceptance criteria. Re-run with those details."
+    }
+  },
+  "payload": {
+    "prompt": "Generate test cases related to us-09",
+    "model_answer": "Generate test cases related to us-09",
+    "contexts": "Flow "
+  },
+  "system_prompt_head": "You are a strict evaluator for Quality Engineering & Assurance outputs.\nReturn JSON only:\n{\n  \"task_score\": float (0.0-10.0),\n  \"completeness\": float (0.0-1.0),\n  \"correctness\": float (0.0-1.0),\n  \"step_coverage\": float (0.0-1.0),\n  \"formatting\": float (0.0-1.0),\n  \"reasoning\": float (0.0-1.0),\n  \"harmful\": boolean,\n  \"comments\": string\n}\nScoring must follow the project profile and the (optional) per-usecase rubric exactly.\nIf any critical requirement is missing or contradicted by contexts, reduce scores sharply.\n\n--- PROJECT PROFILE ---\n# (missing) judge_profile.md"
+}

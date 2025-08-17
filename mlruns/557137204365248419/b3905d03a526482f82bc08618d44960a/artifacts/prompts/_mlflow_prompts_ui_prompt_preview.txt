@@ -1,0 +1,58 @@
+human: Generate test cases related user story 02
+ai: ### TC_US_02_01 — Verify presence of Search Bar on Home Page
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** search, UI, us-02
+
+**Description**  
+Ensure that the search bar is present on the Home Page header as per acceptance criteria.
+
+**Preconditions**
+- User is on the Home Page (https://www.automationteststore.com/).
+
+**Test Steps**
+1. Navigate to the Home Page using the application URL.
+2. Observe the Header section for the Search Bar (Locator: name='search').
+
+**Expected Result**
+> The Search Bar input field is displayed in the Header section of the Home Page.
+
+---
+### TC_US_02_02 — Search for existing products using valid keyword
+**Type:** Manual  |  **Priority:** High  
+**Tags:** search, functional, us-02
+
+**Description**  
+Verify that searching with a valid keyword displays matching products in the search results.
+
+**Preconditions**
+- User is on the Home Page with the Search Bar visible.
+
+**Test Steps**
+1. In the Header, locate the Search Bar (Locator: name='search').
+2. Input a known product keyword, e.g., 'lipstick', into the Search Bar.
+3. Press the Enter key to submit the search.
+
+**Expected Result**
+> The application navigates to the search_results_page and displays a list of products whose title or description contains the keyword 'lipstick'.
+
+---
+### TC_US_02_03 — Search for non-existing products using invalid keyword
+**Type:** Manual  |  **Priority:** High  
+**Tags:** search, functional, us-02
+
+**Description**  
+Verify that searching with a keyword that matches no products displays a 'no results' message.
+
+**Preconditions**
+- User is on the Home Page with the Search Bar visible.
+
+**Test Steps**
+1. In the Header, locate the Search Bar (Locator: name='search').
+2. Input a non-existing keyword, e.g., 'xyz123', into the Search Bar.
+3. Press the Enter key to submit the search.
+
+**Expected Result**
+> The application navigates to the search_results_page and displays a 'no results' message indicating that no products were found matching the search criteria.
+
+user: Generate test cases related user story 02
+assistant:

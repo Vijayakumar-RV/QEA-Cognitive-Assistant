@@ -1,0 +1,1 @@
+Error code: 400 - {'error': {'message': "Unsupported parameter: 'response_format'. In the Responses API, this parameter has moved to 'text.format'. Try again with the new parameter. See the API documentation for more information: https://platform.openai.com/docs/api-reference/responses/create.", 'type': 'invalid_request_error', 'param': None, 'code': 'unsupported_parameter'}}

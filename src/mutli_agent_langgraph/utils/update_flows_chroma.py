@@ -5,7 +5,6 @@ import json
 from langchain_community.vectorstores import Chroma
 from langchain.schema import Document
 from langchain_community.embeddings import HuggingFaceEmbeddings
-
 def flatten_elements(elements, parent_section=None):
     flat_elements = []
     for item in elements:
@@ -22,121 +21,128 @@ def flatten_elements(elements, parent_section=None):
     return flat_elements
 
 
-
 def flow_to_documents(flow_dir):
     documents = []
 
     for filename in os.listdir(flow_dir):
         if filename.endswith(".json"):
-            with open(os.path.join(flow_dir, filename), 'r') as f:
+            with open(os.path.join(flow_dir, filename), 'r', encoding='utf-8') as f:
                 flow = json.load(f)
 
-            # Common metadata
-            url = flow.get("application_url","")
-            page_id = flow.get("page_id", "unknown")
-            page_name = flow.get("page_name", "")
+            flow_id = flow.get("flow_id", "")
+            page_name = flow.get("page", "")
+            title = flow.get("title", "")
             description = flow.get("description", "")
-            tags = flow.get("tags", [])
-            tag_string = ", ".join(tags) if isinstance(tags, list) else str(tags)
-            before_page = flow.get("before_page", [])
-            after_page = flow.get("after_page", [])
-            application_url = url if isinstance(url, str) else ""
-            # Normalize to lists
-            before_page = before_page if isinstance(before_page, list) else [before_page]
-            after_page = after_page if isinstance(after_page, list) else [after_page]
-           
-           
-            before_str = ", ".join(str(x) for x in before_page if x)
-            after_str = ", ".join(str(x) for x in after_page if x)
 
-            variants = flow.get("variants", [])
+            # Steps (narrative)
+            steps_data = flow.get("steps", [])
+            steps_str = "\n".join(
+                f"{i+1}. {s.get('user_action','')} → {s.get('expected_behavior','')}"
+                for i, s in enumerate(steps_data)
+            )
+
+            # Elements (locator info)
             raw_elements = flow.get("elements", [])
             elements = flatten_elements(raw_elements)
+            elements_str = ""
+            for el in elements:
+                label = el.get("label", "")
+                action = el.get("action_type", "")
+                locator = el.get("locator", {})
+                loc_type = locator.get("type", "unknown")
+                loc_val = locator.get("value", "")
+                section = el.get("section", "")
+                elements_str += f"- {label} ({action}) [Section: {section}] | Locator: {loc_type} = {loc_val}\n"
 
-
+            # Variants (if any)
+            variants = flow.get("variants", [])
             if variants:
                 for variant in variants:
                     variant_id = variant.get("variant_id", "default")
                     variant_desc = variant.get("description", "")
-                    variant_elements = variant.get("elements", [])
 
-                    steps = ""
+                    variant_elements = variant.get("elements", [])
+                    variant_elements_str = ""
                     for el in variant_elements:
                         label = el.get("label", "")
                         action = el.get("action_type", "")
                         locator = el.get("locator", {})
                         loc_type = locator.get("type", "unknown")
                         loc_val = locator.get("value", "")
-                        steps += f"- {label} ({action}) | Locator: {loc_type} = {loc_val}\n"
+                        variant_elements_str += f"- {label} ({action}) | Locator: {loc_type} = {loc_val}\n"
 
                     content = (
-                        f"application_url : {application_url}\n"
-                        f"Page ID: {page_id}\n"
-                        f"Page Name: {page_name}\n"
-                        f"Variant: {variant_id}\n"
-                        f"Variant Description: {variant_desc}\n"
-                        f"Before Page(s): {before_str}\n"
-                        f"After Page(s): {after_str}\n"
-                        f"Tags: {tag_string}\n"
-                        f"---\nElements:\n{steps}"
+                        f"Flow ID: {flow_id}\n"
+                        f"Page: {page_name}\n"
+                        f"Title: {title}\n"
+                        f"Description: {description}\n"
+                        f"Variant: {variant_id} - {variant_desc}\n"
+                        f"---\nSteps (Narrative):\n{steps_str}\n"
+                        f"---\nElements (Locators):\n{variant_elements_str or elements_str}"
                     )
 
                     documents.append(Document(
                         page_content=content,
                         metadata={
-                            "application_url":application_url,
-                            "page_id": page_id,
-                            "variant_id": variant_id,
+                            "flow_id": flow_id,
                             "page_name": page_name,
-                            "tags": tag_string,
+                            "variant_id": variant_id,
                             "source_file": filename
                         }
                     ))
             else:
-                steps = ""
-                for el in elements:
-                    label = el.get("label", "")
-                    action = el.get("action_type", "")
-                    locator = el.get("locator", {})
-                    loc_type = locator.get("type", "unknown")
-                    loc_val = locator.get("value", "")
-                    steps += f"- {label} ({action}) | Locator: {loc_type} = {loc_val}\n"
-
                 content = (
-                    f"application_url : {application_url}\n"
-                    f"Page ID: {page_id}\n"
-                    f"Page Name: {page_name}\n"
+                    f"Flow ID: {flow_id}\n"
+                    f"Page: {page_name}\n"
+                    f"Title: {title}\n"
                     f"Description: {description}\n"
-                    f"Before Page(s): {before_str}\n"
-                    f"After Page(s): {after_str}\n"
-                    f"Tags: {tag_string}\n"
-                    f"---\nElements:\n{steps}"
+                    f"---\nSteps (Narrative):\n{steps_str}\n"
+                    f"---\nElements (Locators):\n{elements_str}"
                 )
 
                 documents.append(Document(
                     page_content=content,
                     metadata={
-                        "application_url":application_url,
-                        "page_id": page_id,
-                        "variant_id": None,
+                        "flow_id": flow_id,
                         "page_name": page_name,
-                        "tags": tag_string,
+                        "variant_id": None,
                         "source_file": filename
                     }
                 ))
 
     return documents
 
+def update_save_flow_documents(DB_DIR: str, FLOW_DIR: str):
+    """
+    Reads all flow JSON files from FLOW_DIR, converts them to Document objects
+    with both narrative steps & locator info, and saves them into ChromaDB at DB_DIR.
+    """
+    # Generate documents from the flows
+    docs = flow_to_documents(FLOW_DIR)
+    if not docs:
+        print("⚠️ No UI flow documents found. Nothing to embed.")
+        return
 
-def update_save_flow_documents(DB_DIR):
-    docs = flow_to_documents("C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\src\\mutli_agent_langgraph\\resources\\flows")
-    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    vectorstore = Chroma.from_documents(documents=docs,embedding=embedding_model,persist_directory=DB_DIR)
+    # Embedding model — must match the one you use at retrieval time
+    embedding_model = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+
+    # Create a new Chroma collection or overwrite existing
+    vectorstore = Chroma.from_documents(
+        documents=docs,
+        embedding=embedding_model,
+        persist_directory=DB_DIR
+    )
+
+    # Save to disk
     vectorstore.persist()
+    print(f"✅ Successfully embedded {len(docs)} UI flow chunks into ChromaDB.")
 
-    print(f"✅ Successfully embedded {len(docs)} flow chunks into ChromaDB.")
-
+# Example usage:
 if __name__ == "__main__":
-    update_save_flow_documents("C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\data_base\\chroma_memory\\ui_flow_memory\\ui_flow_v2")
-
+    update_save_flow_documents(
+        DB_DIR=r"C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\data_base\\chroma_memory\\ui_flow_memory\\ui_flow_v2",
+        FLOW_DIR=r"C:\\Users\\Vijay's_Study_Nest\\MTech_Project\\QEA_Cognitive\\src\\mutli_agent_langgraph\\resources\\flows"
+    )
     

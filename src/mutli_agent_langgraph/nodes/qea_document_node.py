@@ -5,8 +5,9 @@ from src.mutli_agent_langgraph.tools.document_analyzer_tools import build_qa_eng
 from src.mutli_agent_langgraph.state.state import State
 
 class DocumentAnalyzerNode:
-    def __init__(self, llm):
+    def __init__(self, llm, temperature):
         self.llm = llm
+        self.temperature = temperature
 
     def process(self, state: State) -> dict:
         session_id = state.get("session_id")

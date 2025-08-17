@@ -6,7 +6,11 @@ from src.mutli_agent_langgraph.LLMS.openaillm import OpenAILLM
 from src.mutli_agent_langgraph.LLMS.googlellm import GoogleLLM
 from src.mutli_agent_langgraph.graph.graph_builder import GraphBuilder
 from src.mutli_agent_langgraph.ui.streamlit.display_results import DisplayResultStreamlit
-
+from src.mutli_agent_langgraph.ui.streamlit.ui_configfile import Config
+from src.mutli_agent_langgraph.utils.tracking.mlflow_utils import init_mlflow, run_mlflow_run
+from huggingface_hub import login
+from src.mutli_agent_langgraph.ui.observability_tab import render_observe_tab
+import os
 def load_multi_agent_langgraph_ui():
     """
     Load the Streamlit UI for the Multi-Agent LangGraph application.
@@ -15,8 +19,30 @@ def load_multi_agent_langgraph_ui():
     Returns:
         dict: A dictionary containing user controls for the Streamlit UI.
     """
+    hf_token = os.getenv("HUGGING_FACE_TOKEN")
+    login(token=hf_token)
+    if hf_token:
+        try:    
+            print("[HF login] successful")
+        except Exception as e:
+            print(f"[HF login] skipped: {e}")
+
+        # --- MLflow boot (safe if called once) ---
+    cfg = Config()
+    try:
+        if cfg.getboolean("tracking", "enable_mlflow", fallback=True):
+            init_mlflow(
+                tracking_uri=cfg.get("tracking", "mlflow_tracking_uri", fallback="./mlruns"),
+                experiment_name=cfg.get("tracking", "experiment_name", fallback="QEA_Copilot"),
+            )
+    except Exception as e:
+        # Non-fatal: continue without tracking if misconfigured
+        print(f"[MLflow] init skipped: {e}")
+    
     # Initialize the LoadStreamlitUI class
     load_ui = LoadStreamlitUI()
+    
+
     
     user_input = load_ui.load_streamlit_ui()
 
@@ -38,6 +64,7 @@ def load_multi_agent_langgraph_ui():
     
     if user_message:
         selected_model = user_input.get("select_llm")
+        selected_temperature = user_input.get("select_temperature")
         print(f"Selected Model: {selected_model}")
         try:
             if selected_model == "OpenAI":
@@ -61,18 +88,25 @@ def load_multi_agent_langgraph_ui():
             
             usecase= user_input.get("select_usecase")
             print(usecase)
+            enable_judge = user_input.get("enable_judge")
 
             if not usecase:
                 st.error("Error : No usecase selcted")
             
             #Graph Builder
 
-            graph_builder_ = GraphBuilder(model)
+            graph_builder_ = GraphBuilder(model,selected_temperature,enable_judge)
 
             try:
                 graph = graph_builder_.setup_graph(usecase)
                 session_id = user_input.get("session_id")
-                DisplayResultStreamlit(usecase,graph,user_message,session_id).disply_result_on_ui()
+                # ---------------- TABS ----------------
+                tab_chat, tab_observe = st.tabs(["💬 Chat", "📈 Observability"])
+
+                with tab_chat:
+                    # your existing chat flow
+                    DisplayResultStreamlit(usecase, graph, user_message, session_id,enable_judge).disply_result_on_ui()
+
                 
                 
             

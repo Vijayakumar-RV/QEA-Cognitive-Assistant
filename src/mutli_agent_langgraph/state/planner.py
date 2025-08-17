@@ -10,3 +10,5 @@ class PlannerOutput(BaseModel):
     generation: Optional[List[Literal["userstory","testcase","testscript"]]]=None
     irrelevant: Optional[str]=None
     chitchat : Optional[str]=None
+    save_testcases: Optional[List[Literal["csv","xlsx"]]]=None
+    save_execute_testscripts: Optional[List[Literal["save","execute","both"]]]=None

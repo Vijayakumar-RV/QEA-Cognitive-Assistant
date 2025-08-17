@@ -3,7 +3,7 @@ from src.mutli_agent_langgraph.state.state import State
 
 def testscript(state:State,retriver,user_message,model)->State:
     test_case = state.get("testcase")
-
+    print(f"Test Case inside test script: {test_case}")
     if  test_case:
 
         test_script_prompt = f"""
@@ -49,7 +49,7 @@ def testscript(state:State,retriver,user_message,model)->State:
         - If an element locator or step is missing, output: "# ERROR: Step or locator missing: [describe missing piece]" at the appropriate place in the code.
         - Properly add waits, error handling, or logic that are industry standard for each step.
         - Do NOT make assumptions about the application flow unless the user specifies.
-        - If insufficient information is provided to produce a script, output: "# ERROR: Insufficient context to generate test script."
+        - If insufficient information is provided to produce a script, provide a partial generation.
         - Use the context provided for the UI flow and the locators
 
         Output Format:

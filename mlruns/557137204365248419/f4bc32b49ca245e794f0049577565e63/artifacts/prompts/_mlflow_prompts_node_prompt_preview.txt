@@ -1,0 +1,65 @@
+human : Generate test cases for user story 05
+ai : ### US05-TC01 — Verify increasing item quantity in the cart
+**Type:** Manual  |  **Priority:** High  
+**Tags:** cart, quantity, update
+
+**Description**  
+This test case verifies that a user can increase the quantity of an item in the shopping cart and that the cart total updates accordingly.
+
+**Preconditions**
+- User is on the Home Page (https://www.automationteststore.com/).
+- At least one item is present in the cart.
+
+**Test Steps**
+1. 1. Navigate to the Home Page.
+2. 2. Click on the 'Cart' link in the header.
+3. 3. **MISSING INFORMATION:** The context does not provide any UI elements or steps for interacting with item quantities (e.g., input fields, increase buttons) within the cart page.
+4. 4. **MISSING INFORMATION:** The context does not provide any UI elements or steps to verify the updated quantity or the dynamic update of the cart total.
+
+**Expected Result**
+> The quantity of the selected item should increase, and the cart total should update dynamically to reflect the new quantity.
+
+---
+### US05-TC02 — Verify decreasing item quantity in the cart
+**Type:** Manual  |  **Priority:** High  
+**Tags:** cart, quantity, update
+
+**Description**  
+This test case verifies that a user can decrease the quantity of an item in the shopping cart and that the cart total updates accordingly.
+
+**Preconditions**
+- User is on the Home Page (https://www.automationteststore.com/).
+- At least one item with a quantity greater than 1 is present in the cart.
+
+**Test Steps**
+1. 1. Navigate to the Home Page.
+2. 2. Click on the 'Cart' link in the header.
+3. 3. **MISSING INFORMATION:** The context does not provide any UI elements or steps for interacting with item quantities (e.g., input fields, decrease buttons) within the cart page.
+4. 4. **MISSING INFORMATION:** The context does not provide any UI elements or steps to verify the updated quantity or the dynamic update of the cart total.
+
+**Expected Result**
+> The quantity of the selected item should decrease, and the cart total should update dynamically to reflect the new quantity.
+
+---
+### US05-TC03 — Verify removing an item from the cart
+**Type:** Manual  |  **Priority:** High  
+**Tags:** cart, remove, update
+
+**Description**  
+This test case verifies that a user can remove an item from the shopping cart and that the cart total updates accordingly.
+
+**Preconditions**
+- User is on the Home Page (https://www.automationteststore.com/).
+- At least one item is present in the cart.
+
+**Test Steps**
+1. 1. Navigate to the Home Page.
+2. 2. Click on the 'Cart' link in the header.
+3. 3. **MISSING INFORMATION:** The context does not provide any UI elements or steps for removing an item (e.g., remove button, trash icon) within the cart page.
+4. 4. **MISSING INFORMATION:** The context does not provide any UI elements or steps to verify the item's removal or the dynamic update of the cart total.
+
+**Expected Result**
+> The selected item should be removed from the cart, and the cart total should update dynamically to reflect the removal.
+
+user: Generate test cases for user story 05
+assistant:

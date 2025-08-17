@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 1,
+    "id": 0,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: home_page\nPage Name: Home Page\nDescription: This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.\nBefore Page(s): \nAfter Page(s): product_detail_page, search_results_page, login_page, account_dashboard, cart_page, checkout_page, product_listing_makeup, product_listing_skincare, product_listing_fragrance, product_listing_apparel_accessories, product_listing_haircare, product_listing_books, product_listing_men\nTags: home, entry_point, guest_access, navigation_hub, category_navigation\n---\nElements:\n- Automation Test Store Logo (click) | Locator: css = .logo\n- Currency Dropdown (select) | Locator: id = currency\n- Login or Register (click) | Locator: link_text = Login or register\n- Specials (click) | Locator: link_text = SPECIALS\n- Account (click) | Locator: link_text = ACCOUNT\n- Cart (click) | Locator: link_text = CART\n- Checkout (click) | Locator: link_text = CHECKOUT\n- Search Bar (input) | Locator: name = se"
+  },
+  {
+    "rank": 2,
+    "id": 1,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: home_page\nPage Name: Home Page\nDescription: This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.\nBefore Page(s): \nAfter Page(s): My Account Dashboard, checkout_login_page, product_detail_page, search_results_page, login_page, account_dashboard, cart_page, checkout_page, product_listing_makeup, product_listing_skincare, product_listing_fragrance, product_listing_apparel_accessories, product_listing_haircare, product_listing_books, product_listing_men\nTags: home, entry_point, guest_access, navigation_hub, category_navigation\n---\nElements:\n- Automation Test Store Logo (click) | Locator: css = .logo\n- Currency Dropdown (select) | Locator: id = currency\n- Login or Register (click) | Locator: xpath = //*[text()='Login or register']\n- Specials (click) | Locator: link_text = SPECIALS\n- Account (click) | Locator: link_text = ACCOUNT\n- Cart (click) | Locator: link_text = CART\n- Checkout (click) | Locator: link_text"
+  },
+  {
+    "rank": 3,
+    "id": 2,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Displays product-specific information, attributes, pricing, availability, and options to add to cart. Variations include size, color, shipping info, stock status, and gift wrapping.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n"
+  },
+  {
+    "rank": 4,
+    "id": 3,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Displays product-specific information, attributes, pricing, availability, and options to add to cart. Variations include size, color, shipping info, stock status, and gift wrapping.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n"
+  },
+  {
+    "rank": 5,
+    "id": 4,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Displays product-specific information, attributes, pricing, availability, and options to add to cart. Variations include size, color, shipping info, stock status, and gift wrapping.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n"
+  },
+  {
+    "rank": 6,
+    "id": 5,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Displays product-specific information, attributes, pricing, availability, and options to add to cart. Variations include size, color, shipping info, stock status, and gift wrapping.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n"
+  }
+]

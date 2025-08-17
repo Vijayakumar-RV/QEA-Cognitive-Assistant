@@ -1,0 +1,23 @@
+{
+  "evaluation": {
+    "rule_pass": true,
+    "rule_coverage_pct": 100.0,
+    "judge": {
+      "task_score": 7.0,
+      "completeness": 0.6,
+      "correctness": 0.8,
+      "step_coverage": 0.6,
+      "formatting": 0.9,
+      "reasoning": 0.5,
+      "harmful": false,
+      "comments": "The submission provides three clear, well-structured test cases (valid login, invalid email, invalid password) with preconditions, steps, and expected results, and uses IDs that reference US-09. Strengths: concise steps, realistic scope for basic login behavior. Weaknesses / missing items: no explicit mapping to US-09 acceptance criteria or traceability; no concrete test data (specific email/password values), no exact expected error messages or status codes, no postconditions or cleanup, no environment/version/browser details, no negative edge cases (empty fields, malformed input, SQL injection, rate limiting/lockout, case-sensitivity), no data-driven/automation hints, and no pass/fail criteria or logs/screenshots instructions. To improve: add explicit expected message texts, test data, postconditions, edge cases, and traceability to the user story's acceptance criteria."
+    }
+  },
+  "payload": {
+    "prompt": "Generate test cases related to US-09",
+    "model_answer": "### TC-US09-01 \u2014 Valid Login\n**Type:** Manual  |  **Priority:** Medium  \n**Tags:** login, valid_credentials\n\n**Description**  \nVerify that a user with valid credentials can successfully login.\n\n**Preconditions**\n- A user account with valid email and password exists.\n\n**Test Steps**\n1. Navigate to the Automation Test Store homepage.\n2. Click on the 'Login or register' link.\n3. Enter a valid email address in the 'Email' field.\n4. Enter a valid password in the 'Password' field.\n5. Click the 'Login' button.\n\n**Expected Result**\n> The user is successfully logged in and redirected to the My Account dashboard.\n\n---\n### TC-US09-02 \u2014 Invalid Email Login\n**Type:** Manual  |  **Priority:** Medium  \n**Tags:** login, invalid_email\n\n**Description**  \nVerify that an invalid email address results in an error message.\n\n**Preconditions**\n- A user account with valid credentials exists.\n\n**Test Steps**\n1. Navigate to the Automation Test Store homepage.\n2. Click on the 'Login or register' link.\n3. Enter an invalid email address in the 'Email' field.\n4. Enter a valid password in the 'Password' field.\n5. Click the 'Login' button.\n\n**Expected Result**\n> An error message is displayed indicating the email address is invalid.\n\n---\n### TC-US09-03 \u2014 Invalid Password Login\n**Type:** Manual  |  **Priority:** Medium  \n**Tags:** login, invalid_password\n\n**Description**  \nVerify that an invalid password results in an error message.\n\n**Preconditions**\n- A user account with valid credentials exists.\n\n**Test Steps**\n1. Navigate to the Automation Test Store homepage.\n2. Click on the 'Login or register' link.\n3. Enter a valid email address in the 'Email' field.\n4. Enter an invalid password in the 'Password' field.\n5. Click the 'Login' button.\n\n**Expected Result**\n> An error message is displayed indicating the password is incorrect.\n",
+    "contexts": [],
+    "must_include": []
+  },
+  "system_prompt_head": "You are a strict evaluator for Quality Engineering & Assurance outputs.\nReturn JSON only:\n{\n  \"task_score\": float (0.0-10.0),\n  \"completeness\": float (0.0-1.0),\n  \"correctness\": float (0.0-1.0),\n  \"step_coverage\": float (0.0-1.0),\n  \"formatting\": float (0.0-1.0),\n  \"reasoning\": float (0.0-1.0),\n  \"harmful\": boolean,\n  \"comments\": string\n}\nScoring must follow the project profile and the (optional) per-usecase rubric exactly.\nIf any critical requirement is missing or contradicted by contexts, reduce scores sharply.\n\n--- PROJECT PROFILE ---\n# (missing) judge_profile.md"
+}

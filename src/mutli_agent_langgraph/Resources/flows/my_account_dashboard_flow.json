@@ -3,7 +3,7 @@
   "page_id": "my_account_page",
   "page_name": "My Account Dashboard",
   "description": "Provides access to various user account functionalities such as editing information, changing password, viewing order history, managing addresses, newsletter subscriptions, and logging out.",
-  "before_page": ["Home Page","login_page"],
+  "before_page": ["home_page", "login_page"],
   "after_page": [
     "edit_account_page",
     "order_history_page",
@@ -11,8 +11,44 @@
     "newsletter_page",
     "logout_page"
   ],
-  "tags": ["login","logout","account", "user_dashboard", "authenticated", "account_navigation"],
+  "tags": ["login", "logout", "account", "user_dashboard", "authenticated", "account_navigation"],
   "variants": [
+    
+    {
+      "variant_id": "user_not_logged_in",
+      "user_state": "not_logged_in",
+      "description": "User is not logged in. Page displays login form and guest/register options.",
+      "elements": [
+        {
+          "element_id": "input_login_name",
+          "label": "Login Name",
+          "action_type": "input",
+          "locator": {
+            "type": "name",
+            "value": "loginname"
+          }
+        },
+        {
+          "element_id": "input_login_password",
+          "label": "Password",
+          "action_type": "input",
+          "locator": {
+            "type": "name",
+            "value": "password"
+          }
+        },
+        {
+          "element_id": "login_button",
+          "label": "Login Button",
+          "action_type": "click",
+          "locator": {
+            "type": "xpath",
+            "value": "//*[@id='loginFrm']/fieldset/button"
+          },
+          "expected_result": "Logs user in and redirects to my_account_page"
+        }
+      ]
+    },
     {
       "variant_id": "user_logged_in_dashboard",
       "user_state": "logged_in",

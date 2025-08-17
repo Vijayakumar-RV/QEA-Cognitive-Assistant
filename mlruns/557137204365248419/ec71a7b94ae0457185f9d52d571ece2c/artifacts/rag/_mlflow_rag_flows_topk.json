@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 1,
+    "id": 0,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n- Automation Test Store Logo (click) [Section: Header] | Locator: css = .logo\n- Currency Dropdown (select) [Section: Header] | Locator: id = currency\n- Login or Register (click) [Section: Header] | Locator: xpath = //*[text()='Login or register']\n- Specials (click) [Section: Header] | Locator: link_text = SPECIALS\n- Account (click) [Section: Header] | Locator: link_text = ACCOUNT\n- Cart (click) [Section: Header] | Locator: link_text = CART\n- Checkout (click) [Section: Header] | Locator: link_text = CHECKOUT\n- Search Bar (input) [Section: Header] | Locator: name = search\n- Home (click) [Section: Main Navigation Menu] | Locator: link_text = HOME\n- Apparel & Accessories (click) [Section: Main Navigation Menu] | Locator: link_text = APPAREL & ACCESSORIES\n- Makeup (click) [Section: Main Navigation Menu] | Locator: link_text = MAKEUP\n- "
+  },
+  {
+    "rank": 2,
+    "id": 1,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: order_success_page\nPage Name: Order Success Page\nDescription: Confirmation page displayed after successful order placement. Contains order number, links to invoice and support, and a button to continue shopping.\nBefore Page(s): checkout_confirmation_page\nAfter Page(s): home_page, account_page\nTags: order_confirmation, success, final, thank_you\n---\nElements:\n- Order Processed Message (view) | Locator: xpath = //h1[contains(text(),'YOUR ORDER HAS BEEN PROCESSED')]\n- Order Number Display (view) | Locator: xpath = //p[contains(text(),'Your order #')]\n- Invoice Page Link (click) | Locator: link_text = invoice page\n- Store Owner Contact Link (click) | Locator: link_text = store owner\n- Continue Button (click) | Locator: xpath = //a[contains(text(),'Continue')]\n"
+  },
+  {
+    "rank": 3,
+    "id": 2,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: checkout_guest_registration_page\nPage Name: Guest Checkout or Registration\nVariant: guest_checkout\nVariant Description: User selects Guest Checkout. Displays mandatory fields for billing and shipping address.\nBefore Page(s): checkout_login_page\nAfter Page(s): shipping_method_page\nTags: guest_checkout, registration, billing_details, user_info_form\n---\nElements:\n- Guest Checkout Option (select) | Locator: id = account-guest\n- First Name (input) | Locator: name = firstname\n- Last Name (input) | Locator: name = lastname\n- Email (input) | Locator: name = email\n- Telephone (input) | Locator: name = telephone\n- Address (input) | Locator: name = address_1\n- City (input) | Locator: name = city\n- Postcode (input) | Locator: name = postcode\n- Country (select) | Locator: name = country_id\n- Region/State (select) | Locator: name = zone_id\n- Shipping Address same as Billing (check) | Locator: name = shipping_address\n- Continue Button (click) | Locator: id = button-guest\n"
+  },
+  {
+    "rank": 4,
+    "id": 3,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: checkout_guest_registration_page\nPage Name: Guest Checkout or Registration\nVariant: guest_checkout\nVariant Description: User selects Guest Checkout. Displays mandatory fields for billing and shipping address.\nBefore Page(s): checkout_login_page\nAfter Page(s): shipping_method_page\nTags: guest_checkout, registration, billing_details, user_info_form\n---\nElements:\n- Guest Checkout Option (select) | Locator: id = account-guest\n- First Name (input) | Locator: name = firstname\n- Last Name (input) | Locator: name = lastname\n- Email (input) | Locator: name = email\n- Telephone (input) | Locator: name = telephone\n- Address (input) | Locator: name = address_1\n- City (input) | Locator: name = city\n- Postcode (input) | Locator: name = postcode\n- Country (select) | Locator: name = country_id\n- Region/State (select) | Locator: name = zone_id\n- Shipping Address same as Billing (check) | Locator: name = shipping_address\n- Continue Button (click) | Locator: id = button-guest\n"
+  },
+  {
+    "rank": 5,
+    "id": 4,
+    "score": null,
+    "source": null,
+    "snippet": "Flow ID: \nPage: \nTitle: \nDescription: Billing details form for users choosing to checkout as Guest or Register. Based on selection, additional registration fields appear. All required fields are marked as mandatory.\nVariant: guest_checkout - User selects Guest Checkout. Displays mandatory fields for billing and shipping address.\n---\nSteps (Narrative):\n\n---\nElements (Locators):\n- Guest Checkout Option (select) | Locator: id = account-guest\n- First Name (input) | Locator: name = firstname\n- Last Name (input) | Locator: name = lastname\n- Email (input) | Locator: name = email\n- Telephone (input) | Locator: name = telephone\n- Address (input) | Locator: name = address_1\n- City (input) | Locator: name = city\n- Postcode (input) | Locator: name = postcode\n- Country (select) | Locator: name = country_id\n- Region/State (select) | Locator: name = zone_id\n- Shipping Address same as Billing (check) | Locator: name = shipping_address\n- Continue Button (click) | Locator: id = button-guest\n"
+  },
+  {
+    "rank": 6,
+    "id": 5,
+    "score": null,
+    "source": null,
+    "snippet": "application_url : https://www.automationteststore.com/\nPage ID: checkout_guest_registration_page\nPage Name: Guest Checkout or Registration\nVariant: register_account\nVariant Description: User selects Register Account. Displays billing fields and extra fields for password and agreement.\nBefore Page(s): checkout_login_page\nAfter Page(s): shipping_method_page\nTags: guest_checkout, registration, billing_details, user_info_form\n---\nElements:\n- Register Account Option (select) | Locator: id = account-register\n- First Name (input) | Locator: name = firstname\n- Last Name (input) | Locator: name = lastname\n- Email (input) | Locator: name = email\n- Telephone (input) | Locator: name = telephone\n- Address (input) | Locator: name = address_1\n- City (input) | Locator: name = city\n- Postcode (input) | Locator: name = postcode\n- Country (select) | Locator: name = country_id\n- Region/State (select) | Locator: name = zone_id\n- Password (input) | Locator: name = password\n- Confirm Password (input) | Locator: name = confirm\n- Agree to Terms Checkbox (check) | Locator: name = agree\n- Continue Button (click) | Locator: id = button-register\n"
+  }
+]

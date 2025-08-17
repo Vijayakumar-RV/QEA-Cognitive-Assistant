@@ -1,0 +1,76 @@
+### US02_001 — Verify Search Bar Presence on Home Page
+**Type:** Manual  |  **Priority:** High  
+**Tags:** Search, UI, Home Page
+
+**Description**  
+Ensure that the Search Bar is present and visible on the Home Page
+
+**Preconditions**
+- User is on the Home Page (https://www.automationteststore.com/)
+
+**Test Steps**
+1. Open the Home Page in a browser
+2. Locate the Search Bar (input) [Locator: name = search] in the Header section
+
+**Expected Result**
+> The Search Bar is displayed and enabled on the Home Page
+
+---
+### US02_002 — Verify Search Bar Presence on My Account Dashboard
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** Search, UI, Account Dashboard
+
+**Description**  
+Ensure that the Search Bar is present and visible on the My Account Dashboard page
+
+**Preconditions**
+- User is logged in and on the My Account Dashboard (my_account_page)
+
+**Test Steps**
+1. Navigate to the My Account Dashboard page
+2. Locate the Search Bar (input) [Locator: name = search] in the Header section
+
+**Expected Result**
+> The Search Bar is displayed and enabled on the My Account Dashboard page
+
+---
+### US02_003 — Search with Valid Keyword Displays Matching Products
+**Type:** Manual  |  **Priority:** Critical  
+**Tags:** Search, Positive
+
+**Description**  
+Verify that searching with a keyword returns products whose title or description contains the keyword
+
+**Preconditions**
+- User is on the Home Page (https://www.automationteststore.com/)
+
+**Test Steps**
+1. Locate the Search Bar (input) [Locator: name = search] in the Header section
+2. Click into the Search Bar
+3. Enter the keyword "lipstick"
+4. Press Enter to perform the search
+5. Wait for the search_results_page to load
+
+**Expected Result**
+> The search_results_page is displayed and the list of products includes at least one item whose title or description contains the keyword "lipstick"
+
+---
+### US02_004 — Search with Invalid Keyword Displays No Results Message
+**Type:** Manual  |  **Priority:** High  
+**Tags:** Search, Negative
+
+**Description**  
+Verify that searching with a keyword that matches no products shows the 'no results' message
+
+**Preconditions**
+- User is on the Home Page (https://www.automationteststore.com/)
+
+**Test Steps**
+1. Locate the Search Bar (input) [Locator: name = search] in the Header section
+2. Click into the Search Bar
+3. Enter the keyword "xyznotfound123"
+4. Press Enter to perform the search
+5. Wait for the search_results_page to load
+
+**Expected Result**
+> The search_results_page is displayed and shows a message indicating that no results were found for the keyword "xyznotfound123"

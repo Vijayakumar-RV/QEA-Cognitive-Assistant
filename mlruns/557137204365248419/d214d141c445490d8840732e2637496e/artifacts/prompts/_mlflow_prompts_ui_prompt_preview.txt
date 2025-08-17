@@ -1,0 +1,4 @@
+human: Hello how are you ?
+ai: Hello! How can I help you with application functionalities or test generation today?
+user: Can you get me some the latest AI Trends
+assistant:

@@ -1,0 +1,54 @@
+### US-02-01 — Search bar is present on every page
+**Type:** Manual  |  **Priority:** High  
+**Tags:** search, navigation
+
+**Description**  
+Verify that the search bar is present on every page of the Automation Test Store
+
+**Preconditions**
+- User is on any page of the Automation Test Store
+
+**Test Steps**
+1. Navigate to any page of the Automation Test Store
+2. Verify that the search bar is present on the page
+
+**Expected Result**
+> The search bar is present on the page
+
+---
+### US-02-02 — Search results display products matching the keyword in title or description
+**Type:** Manual  |  **Priority:** High  
+**Tags:** search, product_listing
+
+**Description**  
+Verify that search results display products matching the keyword in title or description
+
+**Preconditions**
+- User is on any page of the Automation Test Store
+
+**Test Steps**
+1. Enter a keyword in the search bar
+2. Click the search button
+3. Verify that the search results display products matching the keyword in title or description
+
+**Expected Result**
+> Search results display products matching the keyword in title or description
+
+---
+### US-02-03 — No results message is shown when no products are found
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** search, no_results
+
+**Description**  
+Verify that a 'no results' message is shown when no products are found
+
+**Preconditions**
+- User is on any page of the Automation Test Store
+
+**Test Steps**
+1. Enter a keyword in the search bar that does not match any product
+2. Click the search button
+3. Verify that a 'no results' message is shown
+
+**Expected Result**
+> A 'no results' message is shown

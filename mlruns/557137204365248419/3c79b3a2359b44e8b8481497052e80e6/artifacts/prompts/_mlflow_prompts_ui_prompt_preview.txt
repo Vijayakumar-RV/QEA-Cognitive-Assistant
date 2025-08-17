@@ -1,0 +1,42 @@
+human: Generate a test case for user story 09
+ai: ### US-09-01 — Login to account with valid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** login, account, authenticated
+
+**Description**  
+Verify that the login form accepts valid credentials and redirects to My Account dashboard
+
+**Preconditions**
+- User has a valid account and is on the login page
+
+**Test Steps**
+1. Enter valid login name in the 'Login Name' input field
+2. Enter valid password in the 'Password' input field
+3. Click the 'Login Button'
+4. Verify that the user is redirected to the My Account dashboard
+
+**Expected Result**
+> User is successfully logged in and redirected to the My Account dashboard
+
+---
+### US-09-02 — Login to account with invalid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** login, error, invalid_credentials
+
+**Description**  
+Verify that the login form shows an error message for invalid credentials
+
+**Preconditions**
+- User is on the login page
+
+**Test Steps**
+1. Enter invalid login name in the 'Login Name' input field
+2. Enter invalid password in the 'Password' input field
+3. Click the 'Login Button'
+4. Verify that an error message is displayed
+
+**Expected Result**
+> Error message is displayed for invalid login credentials
+
+user: Generate a test case for user story US-09
+assistant:

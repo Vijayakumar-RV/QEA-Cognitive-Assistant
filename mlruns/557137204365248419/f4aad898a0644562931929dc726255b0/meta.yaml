@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/Vijay's_Study_Nest/MTech_Project/QEA_Cognitive/mlruns/557137204365248419/f4aad898a0644562931929dc726255b0/artifacts
+deleted_time: 1755358429132
+end_time: 1755336982387
+entry_point_name: ''
+experiment_id: '557137204365248419'
+lifecycle_stage: deleted
+run_id: f4aad898a0644562931929dc726255b0
+run_name: QEA_Assistant_5c2a24de-5b48-4e6f-93d6-83f1e1caec4d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755336926595
+status: 3
+tags: []
+user_id: Vijays_Study_Nest

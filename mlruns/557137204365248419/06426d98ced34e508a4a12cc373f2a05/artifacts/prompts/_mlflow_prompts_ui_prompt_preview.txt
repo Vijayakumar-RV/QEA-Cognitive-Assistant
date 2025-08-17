@@ -1,0 +1,3 @@
+
+user: Give a test case for the user story us-09
+assistant:

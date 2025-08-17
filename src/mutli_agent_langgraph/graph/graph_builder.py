@@ -6,122 +6,96 @@ from src.mutli_agent_langgraph.agents.planner_agent import Planner
 from src.mutli_agent_langgraph.agents import retriever_agent
 from src.mutli_agent_langgraph.tools.research_tools import get_tools,create_tool_node
 from src.mutli_agent_langgraph.nodes.qea_document_node import DocumentAnalyzerNode
-
-from langgraph.prebuilt import ToolNode,tools_condition
+from src.mutli_agent_langgraph.utils.tracking.mlflow_utils import run_mlflow_run
+from langgraph.prebuilt import ToolNode, tools_condition
 import traceback
+
+from src.mutli_agent_langgraph.guardrails.node import create_guardrails_node, route_after_guardrails
+from src.mutli_agent_langgraph.routers.planner_router import route_after_planner
+
 class GraphBuilder:
 
-    def __init__(self,model):
+    def __init__(self, model, temperature,enable_judge:bool= False):
         self.llm = model
+        self.temperature = temperature
+        self.enable_judge = enable_judge
         self.graph_builder = StateGraph(State)
 
+    def run_once(self, usecase: str, session_id: str, model_name: str, temperature: float, run_fn, *args, **kwargs):
+        tags = {"usecase": usecase, "session_id": session_id}
+        params = {"llm_model": model_name, "temperature": temperature}
+        with run_mlflow_run(run_name=f"{usecase}_{session_id}", tags=tags, params=params):
+            result = run_fn(*args, **kwargs)
+            return result
 
     def assistant_chatbot(self):
-
         """
-        QEA Assistant
-
-        This intelligent assistant is designed to support Quality Engineering and Assurance (QEA) workflows by automating the creation of both manual test cases and automated test scripts.
-        It constructs a chatbot graph consisting of the chatbot node and a tool node. The tool node is responsible for retrieving contextual or domain-specific knowledge from a vector or document database, enhancing the assistant’s response accuracy.
-
-        This method creates a chatbot graph that includes both the chatbot node and a tool node. It defines tools, initializes the chatbot with tool capabilities, and sets up conditional and direct
-        edges between nodes. The chatbot node is set as the entry point.
-
-        Capabilities:
-        -------------
-        1. Manual Test Case Generation:
-        - Generates well-structured manual test cases for a wide range of scenarios across domains.
-        - Supports both standard format and Gherkin syntax (Given-When-Then).
-        - Understands functional, UI, and end-to-end scenarios based on user-provided requirements or user stories.
-
-        2. Automated Test Script Generation:
-        - Generates executable test scripts tailored to various automation tools and languages, including:
-            - Selenium (Java, Python, .NET)
-            - Cypress (JavaScript, TypeScript)
-        - Handles multi-step flows, locator integration, and domain-specific business rules.
-
-        3. Domain-Agnostic and Extensible:
-        - Designed to adapt across industries (e-commerce, banking, healthcare, etc.).
-        - Supports cross-platform test generation (web, desktop, mobile with future scalability).
-
-        Use Cases:
-        ----------
-        - Create test cases from requirement descriptions or acceptance criteria.
-        - Convert manual test cases to automation scripts.
-        - Retrieve knowledge from previous documentation or historical test data.
-        - Execute test scripts (in future integrations with automation frameworks).
-
-        Note:
-        -----
-        This assistant leverages LLMs, embedded domain knowledge, and retrieval-augmented generation (RAG) through the tool node to generate test artifacts contextually. It can be integrated into CI/CD pipelines, QA platforms, or used interactively through a conversational interface.
+        START → guardrails ─┬→ (to_end) END
+                            └→ (to_planner) planner ─┬→ (to_retriver) retriver → qeacognitive → END
+                                                      └→ (to_qeacognitive) qeacognitive → END
         """
-
-        
         planner = Planner(self.llm)
-        qea_chatbot = QEAAssistantChatbot(self.llm)
-        
+        qea_chatbot = QEAAssistantChatbot(self.llm, self.temperature)
 
-        self.graph_builder.add_node("planner",planner.planner_agent)
+        self.graph_builder.add_node("guardrails", create_guardrails_node())
+        self.graph_builder.add_node("planner", planner.planner_agent)
+        self.graph_builder.add_node("retriver", retriever_agent.retriever_agent)
+        self.graph_builder.add_node("qeacognitive", qea_chatbot.process)
 
-        self.graph_builder.add_node("retriver",retriever_agent.retriever_agent)
-        
-        self.graph_builder.add_node("qeacognitive",qea_chatbot.process)
-        
-        self.graph_builder.add_edge(START,"planner")
+        # 1) Guardrails first
+        self.graph_builder.add_edge(START, "guardrails")
+        self.graph_builder.add_conditional_edges(
+            "guardrails",
+            route_after_guardrails,
+            {
+                "to_planner": "planner",
+                "to_end": END,
+            }
+        )
 
-        self.graph_builder.add_edge("planner","retriver")
+        # 2) After planner, decide if we need retrieval or can go straight to QEA
+        self.graph_builder.add_conditional_edges(
+            "planner",
+            route_after_planner,
+            {
+                "to_retriver": "retriver",
+                "to_qeacognitive": "qeacognitive",
+            }
+        )
 
-        self.graph_builder.add_edge("retriver","qeacognitive")
+        # 3) Continue
+        self.graph_builder.add_edge("retriver", "qeacognitive")
 
-        self.graph_builder.add_edge("qeacognitive",END)
+        #Judge eval
+        if self.enable_judge:
+            from src.mutli_agent_langgraph.nodes.judge_node import create_judge_node
+            self.graph_builder.add_node("judge", create_judge_node())
+            self.graph_builder.add_edge("qeacognitive", "judge")
+            self.graph_builder.add_edge("judge", END)
+        else:
+            self.graph_builder.add_edge("qeacognitive", END)
 
     def research_assistant(self):
-        """
-        Builds an advanced agentic graph with tool integration.
-        This method creates a graph that includes both a chatbot node and a tool node.
-        It defines the tools, initialize the chatbot with tool capabilities, and sets up
-        conditional and direct edges between nodes. The chatbot is set as an entry point.
-        """
-
         tools = get_tools()
         tool_node = create_tool_node(tools)
-
         llm = self.llm
-
         chatbot_oject = QEARESEARCHNODE(llm)
         qea_research_chatbot = chatbot_oject.process(tools=tools)
 
-        self.graph_builder.add_node("chatbot",qea_research_chatbot)
-        self.graph_builder.add_node("tools",tool_node)
-        
-        self.graph_builder.add_edge(START,"chatbot")
-        self.graph_builder.add_conditional_edges("chatbot",tools_condition)
-        self.graph_builder.add_edge("tools","chatbot")
-        
+        self.graph_builder.add_node("chatbot", qea_research_chatbot)
+        self.graph_builder.add_node("tools", tool_node)
+
+        self.graph_builder.add_edge(START, "chatbot")
+        self.graph_builder.add_conditional_edges("chatbot", tools_condition)
+        self.graph_builder.add_edge("tools", "chatbot")
+
     def document_analyzer(self):
-
-        """
-        Sets up the QEA Document Analyzer Node.
-
-        This node handles document summarization and question answering.
-        It supports multiple file formats like PDF, DOCX, TXT, CSV, PPTX, and images (OCR).
-        
-        Based on user input:
-        - If a question is asked, it answers using the document (with or without embedding).
-        - If no question is asked, it returns a summary of the document.
-        """
-
         analyzer = DocumentAnalyzerNode(self.llm)
         self.graph_builder.add_node("analyzer", analyzer.process)
         self.graph_builder.add_edge(START, "analyzer")
         self.graph_builder.add_edge("analyzer", END)
 
-    
-    def setup_graph(self,usecase:str):
-
-        """
-        Sets up the graph for the selected usecase
-        """
+    def setup_graph(self, usecase: str):
         print(usecase)
         try:
             if usecase == "QEA_Assistant":
@@ -130,11 +104,7 @@ class GraphBuilder:
                 self.research_assistant()
             if usecase == "QEA Document Assistant":
                 self.document_analyzer()
-
             return self.graph_builder.compile()
-        except Exception as e:
+        except Exception:
             traceback.print_exc()
             raise
-        
-
-

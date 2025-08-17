@@ -1,0 +1,157 @@
+Flow ID: 
+Page: 
+Title: 
+Description: This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.
+---
+Steps (Narrative):
+
+---
+Elements (Locators):
+- Automation Test Store Logo (click) [Section: Header] | Locator: css = .logo
+- Currency Dropdown (select) [Section: Header] | Locator: id = currency
+- Login or Register (click) [Section: Header] | Locator: xpath = //*[text()='Login or register']
+- Specials (click) [Section: Header] | Locator: link_text = SPECIALS
+- Account (click) [Section: Header] | Locator: link_text = ACCOUNT
+- Cart (click) [Section: Header] | Locator: link_text = CART
+- Checkout (click) [Section: Header] | Locator: link_text = CHECKOUT
+- Search Bar (input) [Section: Header] | Locator: name = search
+- Home (click) [Section: Main Navigation Menu] | Locator: link_text = HOME
+- Apparel & Accessories (click) [Section: Main Navigation Menu] | Locator: link_text = APPAREL & ACCESSORIES
+- Makeup (click) [Section: Main Navigation Menu] | Locator: link_text = MAKEUP
+- Skincare (click) [Section: Main Navigation Menu] | Locator: link_text = SKINCARE
+- Fragrance (click) [Section: Main Navigation Menu] | Locator: link_text = FRAGRANCE
+- Men (click) [Section: Main Navigation Menu] | Locator: link_text = MEN
+- Hair Care (click) [Section: Main Navigation Menu] | Locator: link_text = HAIR CARE
+- Books (click) [Section: Main Navigation Menu] | Locator: link_text = BOOKS
+- Automation Testing Banner (view) [Section: Hero Banner] | Locator: css = .slider-wrapper
+-  () [Section: Product Sections] | Locator: unknown = 
+- About Us Link (click) [Section: Footer] | Locator: link_text = About Us
+- Contact Us (click) [Section: Footer] | Locator: link_text = Contact Us
+- Testimonials Section (view) [Section: Footer] | Locator: text = Testimonials
+- Newsletter Signup (input) [Section: Footer] | Locator: name = newsletter
+- Subscribe (click) [Section: Footer] | Locator: css = #newsletter_form button
+
+
+application_url : https://www.automationteststore.com/
+Page ID: order_success_page
+Page Name: Order Success Page
+Description: Confirmation page displayed after successful order placement. Contains order number, links to invoice and support, and a button to continue shopping.
+Before Page(s): checkout_confirmation_page
+After Page(s): home_page, account_page
+Tags: order_confirmation, success, final, thank_you
+---
+Elements:
+- Order Processed Message (view) | Locator: xpath = //h1[contains(text(),'YOUR ORDER HAS BEEN PROCESSED')]
+- Order Number Display (view) | Locator: xpath = //p[contains(text(),'Your order #')]
+- Invoice Page Link (click) | Locator: link_text = invoice page
+- Store Owner Contact Link (click) | Locator: link_text = store owner
+- Continue Button (click) | Locator: xpath = //a[contains(text(),'Continue')]
+
+
+Flow ID: 
+Page: 
+Title: 
+Description: Billing details form for users choosing to checkout as Guest or Register. Based on selection, additional registration fields appear. All required fields are marked as mandatory.
+Variant: guest_checkout - User selects Guest Checkout. Displays mandatory fields for billing and shipping address.
+---
+Steps (Narrative):
+
+---
+Elements (Locators):
+- Guest Checkout Option (select) | Locator: id = account-guest
+- First Name (input) | Locator: name = firstname
+- Last Name (input) | Locator: name = lastname
+- Email (input) | Locator: name = email
+- Telephone (input) | Locator: name = telephone
+- Address (input) | Locator: name = address_1
+- City (input) | Locator: name = city
+- Postcode (input) | Locator: name = postcode
+- Country (select) | Locator: name = country_id
+- Region/State (select) | Locator: name = zone_id
+- Shipping Address same as Billing (check) | Locator: name = shipping_address
+- Continue Button (click) | Locator: id = button-guest
+
+
+Flow ID: 
+Page: 
+Title: 
+Description: Billing details form for users choosing to checkout as Guest or Register. Based on selection, additional registration fields appear. All required fields are marked as mandatory.
+Variant: register_account - User selects Register Account. Displays billing fields and extra fields for password and agreement.
+---
+Steps (Narrative):
+
+---
+Elements (Locators):
+- Register Account Option (select) | Locator: id = account-register
+- First Name (input) | Locator: name = firstname
+- Last Name (input) | Locator: name = lastname
+- Email (input) | Locator: name = email
+- Telephone (input) | Locator: name = telephone
+- Address (input) | Locator: name = address_1
+- City (input) | Locator: name = city
+- Postcode (input) | Locator: name = postcode
+- Country (select) | Locator: name = country_id
+- Region/State (select) | Locator: name = zone_id
+- Password (input) | Locator: name = password
+- Confirm Password (input) | Locator: name = confirm
+- Agree to Terms Checkbox (check) | Locator: name = agree
+- Continue Button (click) | Locator: id = button-register
+
+
+application_url : https://www.automationteststore.com/
+Page ID: checkout_guest_registration_page
+Page Name: Guest Checkout or Registration
+Variant: guest_checkout
+Variant Description: User selects Guest Checkout. Displays mandatory fields for billing and shipping address.
+Before Page(s): checkout_login_page
+After Page(s): shipping_method_page
+Tags: guest_checkout, registration, billing_details, user_info_form
+---
+Elements:
+- Guest Checkout Option (select) | Locator: id = account-guest
+- First Name (input) | Locator: name = firstname
+- Last Name (input) | Locator: name = lastname
+- Email (input) | Locator: name = email
+- Telephone (input) | Locator: name = telephone
+- Address (input) | Locator: name = address_1
+- City (input) | Locator: name = city
+- Postcode (input) | Locator: name = postcode
+- Country (select) | Locator: name = country_id
+- Region/State (select) | Locator: name = zone_id
+- Shipping Address same as Billing (check) | Locator: name = shipping_address
+- Continue Button (click) | Locator: id = button-guest
+
+
+application_url : https://www.automationteststore.com/
+Page ID: checkout_guest_registration_page
+Page Name: Guest Checkout or Registration
+Variant: register_account
+Variant Description: User selects Register Account. Displays billing fields and extra fields for password and agreement.
+Before Page(s): checkout_login_page
+After Page(s): shipping_method_page
+Tags: guest_checkout, registration, billing_details, user_info_form
+---
+Elements:
+- Register Account Option (select) | Locator: id = account-register
+- First Name (input) | Locator: name = firstname
+- Last Name (input) | Locator: name = lastname
+- Email (input) | Locator: name = email
+- Telephone (input) | Locator: name = telephone
+- Address (input) | Locator: name = address_1
+- City (input) | Locator: name = city
+- Postcode (input) | Locator: name = postcode
+- Country (select) | Locator: name = country_id
+- Region/State (select) | Locator: name = zone_id
+- Password (input) | Locator: name = password
+- Confirm Password (input) | Locator: name = confirm
+- Agree to Terms Checkbox (check) | Locator: name = agree
+- Continue Button (click) | Locator: id = button-register
+
+
+ID: US-08
+Title: Register a new account
+User Story: As a new user, I want to register an account so I can track my orders.
+Acceptance Criteria:
+- Register form is accessible from login page.
+- All required fields must be filled and validated.
+- User is redirected to My Account page after successful registration.

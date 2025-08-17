@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 1,
+    "id": 0,
+    "score": null,
+    "source": null,
+    "snippet": "User Story ID: US-09\nTitle: Login to account\nStory: As a returning user, I want to login so I can view my account and order history.\nAcceptance Criteria:\n- Login form accepts valid credentials.\n- Invalid login shows error message.\n- Successful login redirects to My Account dashboard."
+  },
+  {
+    "rank": 2,
+    "id": "US-20",
+    "score": null,
+    "source": null,
+    "snippet": "ID: US-20\nTitle: Log out from account\nUser Story: As a user, I want to log out securely when done with my session.\nAcceptance Criteria:\n- Logout link is available in header or account menu.\n- Clicking it ends the session.\n- User is redirected to the home page."
+  },
+  {
+    "rank": 3,
+    "id": 2,
+    "score": null,
+    "source": null,
+    "snippet": "User Story ID: US-18\nTitle: Update account details\nStory: As a logged-in user, I want to update my account information when needed.\nAcceptance Criteria:\n- My Account includes an edit option.\n- User can modify name, email, phone.\n- Changes are saved after validation."
+  },
+  {
+    "rank": 4,
+    "id": 3,
+    "score": null,
+    "source": null,
+    "snippet": "User Story ID: US-11\nTitle: Sort products on category page\nStory: As a user, I want to sort products by price or name so that I can easily compare options.\nAcceptance Criteria:\n- Sort dropdown is available on category pages.\n- User can sort by 'Price: Low to High', 'Name A-Z', etc.\n- Product list updates accordingly after sorting."
+  },
+  {
+    "rank": 5,
+    "id": "US-01",
+    "score": null,
+    "source": null,
+    "snippet": "ID: US-01\nTitle: Browse product categories\nUser Story: As a user, I want to browse categories so that I can find products of interest.\nAcceptance Criteria:\n- Category menu is visible in the top navigation.\n- Clicking a category navigates to a filtered product listing.\n- Product listings match the selected category."
+  },
+  {
+    "rank": 6,
+    "id": "US-07",
+    "score": null,
+    "source": null,
+    "snippet": "ID: US-07\nTitle: Guest checkout\nUser Story: As a guest, I want to checkout without creating an account.\nAcceptance Criteria:\n- Guest checkout form collects full billing/shipping info.\n- All required fields are validated.\n- User is able to place an order without logging in."
+  }
+]

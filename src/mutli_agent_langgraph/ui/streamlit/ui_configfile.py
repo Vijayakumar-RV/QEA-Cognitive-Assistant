@@ -38,3 +38,26 @@ class Config:
     def get_testing_framework(self):
         return self.config["DEFAULT"].get("FRAMEWORKS").split(", ")
     
+    def get(self, section: str, option: str, fallback=None):
+        return self.config.get(section, option, fallback=fallback)
+
+    def getboolean(self, section: str, option: str, fallback=None):
+        return self.config.getboolean(section, option, fallback=fallback)
+
+    def getint(self, section: str, option: str, fallback=None):
+        return self.config.getint(section, option, fallback=fallback)
+
+    def tracking(self, key: str, fallback=None, as_bool=False, as_int=False):
+        """
+        Shortcut to access [tracking] section values.
+
+        Example:
+            cfg.tracking("enable_mlflow", as_bool=True)
+            cfg.tracking("mlflow_tracking_uri")
+        """
+        if as_bool:
+            return self.getboolean("tracking", key, fallback=fallback)
+        elif as_int:
+            return self.getint("tracking", key, fallback=fallback)
+        else:
+            return self.get("tracking", key, fallback=fallback)

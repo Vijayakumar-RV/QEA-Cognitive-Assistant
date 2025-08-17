@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/Vijay's_Study_Nest/MTech_Project/QEA_Cognitive/mlruns/557137204365248419/6dea6c86870847d5b03f45f1b3ba1910/artifacts
+deleted_time: 1755330217209
+end_time: null
+entry_point_name: ''
+experiment_id: '557137204365248419'
+lifecycle_stage: deleted
+run_id: 6dea6c86870847d5b03f45f1b3ba1910
+run_name: casual-stag-625
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755289983816
+status: 1
+tags: []
+user_id: Vijays_Study_Nest

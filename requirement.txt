@@ -25,5 +25,7 @@ requests
 langchain-tavily
 arxiv
 wikipedia
-selenium
 python-pptx
+selenium
+mlflow
+nemoguardrails

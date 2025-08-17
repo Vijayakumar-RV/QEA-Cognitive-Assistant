@@ -1,0 +1,39 @@
+### TC-US-09-01 — Login with valid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** login, account, dashboard
+
+**Description**  
+Verify that the login form accepts valid credentials and redirects the user to the My Account dashboard.
+
+**Preconditions**
+- User has a valid account.
+- User is on the landing page.
+
+**Test Steps**
+1. Click 'Login or register' in the header (Locator: xpath = //*[text()='Login or register']).
+2. On the login page, enter a valid username. (Locator not provided in context).
+3. On the login page, enter a valid password. (Locator not provided in context).
+4. Click the Login button. (Locator not provided in context).
+
+**Expected Result**
+> User is successfully logged in and redirected to the My Account dashboard.
+
+---
+### TC-US-09-02 — Login with invalid credentials
+**Type:** Manual  |  **Priority:** High  
+**Tags:** login, error, invalid
+
+**Description**  
+Verify that the login form shows an error message when invalid credentials are submitted.
+
+**Preconditions**
+- User is on the landing page.
+
+**Test Steps**
+1. Click 'Login or register' in the header (Locator: xpath = //*[text()='Login or register']).
+2. On the login page, enter an invalid username. (Locator not provided in context).
+3. On the login page, enter an invalid password. (Locator not provided in context).
+4. Click the Login button. (Locator not provided in context).
+
+**Expected Result**
+> An error message is displayed indicating invalid credentials.

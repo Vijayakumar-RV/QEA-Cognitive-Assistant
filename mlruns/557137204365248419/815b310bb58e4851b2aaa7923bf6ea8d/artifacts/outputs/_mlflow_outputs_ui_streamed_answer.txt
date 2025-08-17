@@ -1,0 +1,36 @@
+### TC_US09_001 — Valid Login with Existing User
+**Type:** Manual  |  **Priority:** High  
+**Tags:** US-09, login, positive
+
+**Description**  
+Verify that entering valid credentials on the login form allows a returning user to log in and redirects to the My Account dashboard.
+
+**Preconditions**
+- User is on the Automation Test Store landing page.
+
+**Test Steps**
+1. Click Login or register in the header.
+2. Enter valid credentials in the Username and Password fields (LOCATORS NOT PROVIDED in context).
+3. Click the Login button (LOCATOR NOT PROVIDED).
+
+**Expected Result**
+> User is successfully logged in and is redirected to the My Account dashboard.
+
+---
+### TC_US09_002 — Invalid Login with Incorrect Credentials
+**Type:** Manual  |  **Priority:** Medium  
+**Tags:** US-09, login, negative
+
+**Description**  
+Verify that entering invalid credentials on the login form displays an appropriate error message.
+
+**Preconditions**
+- User is on the Automation Test Store landing page.
+
+**Test Steps**
+1. Click Login or register in the header.
+2. Enter invalid credentials in the Username and Password fields (LOCATORS NOT PROVIDED in context).
+3. Click the Login button (LOCATOR NOT PROVIDED).
+
+**Expected Result**
+> An error message is displayed indicating invalid login credentials.

@@ -9,7 +9,11 @@ class Planner:
         
         self.llm = model
 
-    def planner_agent(self,state:State)->State:
+    def planner_agent(self,state:State)->dict:
+        try:
+            print(f"state['test_rows']: {state['test_rows']}")
+        except KeyError:
+            print("Key 'test_rows' not found in state.")
         user_message = str(state["messages"][-1].content)
         print(f"Last user message : {user_message}")
         parser = PydanticOutputParser(pydantic_object=PlannerOutput)
@@ -27,6 +31,7 @@ class Planner:
             - Be specific. Do not hallucinate or invent new steps or elements or locators.
             - If the message is unrelated to the application (such as general knowledge, capitals, weather, etc.), populate the ouput in irrelevant, mentioin that you are QEA bot.
             - For chit-chat or unrelated questions, reply with just the appropriate friendly or fallback message, poulate the ouput in chitchat.
+            - If the user wants to save test cases or test scripts, populate the output in save_testcases or save_execute_testscripts.
             **IMPORTANT:**  
             
             - Output ONLY in the following format.
@@ -98,7 +103,33 @@ class Planner:
                 "chitchat": null,
                 "user_request": "What is the capital of France?"
             }}
-            
+
+            Example 7:
+            User: "Please save the test cases in CSV format."
+            Output:
+            {{
+                "reterivals": [],
+                "generation": [],
+                "irrelevant": null,
+                "chitchat": null,
+                "save_testcases": ["csv"],
+                "save_execute_testscripts": null,
+                "user_request": "Save the test cases in CSV format."
+            }}
+
+            Example 8:
+            User: "I want to execute the test scripts."
+            Output:
+            {{
+                "reterivals": [],
+                "generation": [],
+                "irrelevant": null,
+                "chitchat": null,
+                "save_testcases": null,
+                "save_execute_testscripts": ["execute"],
+                "user_request": "I want to execute the test scripts."
+            }}
+
         """
         
         context = [

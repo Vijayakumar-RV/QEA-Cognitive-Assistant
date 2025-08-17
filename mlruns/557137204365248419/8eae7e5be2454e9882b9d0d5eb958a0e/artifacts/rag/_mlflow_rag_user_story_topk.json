@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 1,
+    "id": "US-05",
+    "score": null,
+    "source": null,
+    "snippet": "ID: US-05\nTitle: Update cart items\nUser Story: As a user, I want to modify the quantity or remove items in my cart before checking out.\nAcceptance Criteria:\n- Quantity can be increased or decreased in cart.\n- Item can be removed from cart.\n- Cart total updates dynamically."
+  },
+  {
+    "rank": 2,
+    "id": "US-04",
+    "score": null,
+    "source": null,
+    "snippet": "ID: US-04\nTitle: Add product to cart\nUser Story: As a user, I want to add products to my cart so that I can purchase them later.\nAcceptance Criteria:\n- Product detail page has an 'Add to Cart' button.\n- After adding, the cart is updated and shows confirmation.\n- Out-of-stock products cannot be added."
+  },
+  {
+    "rank": 3,
+    "id": "US-01",
+    "score": null,
+    "source": null,
+    "snippet": "ID: US-01\nTitle: Browse product categories\nUser Story: As a user, I want to browse categories so that I can find products of interest.\nAcceptance Criteria:\n- Category menu is visible in the top navigation.\n- Clicking a category navigates to a filtered product listing.\n- Product listings match the selected category."
+  },
+  {
+    "rank": 4,
+    "id": 3,
+    "score": null,
+    "source": null,
+    "snippet": "User Story ID: US-03\nTitle: View product details\nStory: As a user, I want to see detailed information about a product before making a purchase decision.\nAcceptance Criteria:\n- Clicking on a product opens the product detail page.\n- Product detail includes name, price, image, description, and variants.\n- Rating and review sections are visible."
+  },
+  {
+    "rank": 5,
+    "id": 4,
+    "score": null,
+    "source": null,
+    "snippet": "User Story ID: US-19\nTitle: Manage address book\nStory: As a user, I want to manage my addresses for easier checkout in future.\nAcceptance Criteria:\n- User can add, edit, or delete addresses.\n- Address form includes all necessary fields.\n- Changes are reflected in future checkouts."
+  },
+  {
+    "rank": 6,
+    "id": "US-02",
+    "score": null,
+    "source": null,
+    "snippet": "ID: US-02\nTitle: Search for products\nUser Story: As a user, I want to search for products using keywords so I can find relevant items quickly.\nAcceptance Criteria:\n- Search bar is present on every page.\n- Search results display products matching the keyword in title or description.\n- If no products are found, a 'no results' message is shown."
+  }
+]
