@@ -1,0 +1,144 @@
+{
+  "application_url":"https://www.automationteststore.com/",
+  "page_id": "product_detail_page",
+  "page_name": "Product Detail Page",
+  "description": "Displays product-specific information, attributes, pricing, availability, and options to add to cart. Variations include size, color, shipping info, stock status, and gift wrapping.",
+  "before_page": [
+    "product_listing_page",
+    "search_results_page",
+    "home_page"
+  ],
+  "after_page": [
+    "cart_page"
+  ],
+  "tags": ["product_detail", "variant_options", "add_to_cart", "availability_check"],
+  "product_variants": [
+    {
+      "variant_id": "shoes_size_color",
+      "product_type": "Shoes",
+      "attributes": ["size", "color"],
+      "elements": [
+        {
+          "element_id": "product_title",
+          "label": "Product Name",
+          "action_type": "view",
+          "locator": { "type": "css", "value": "h1.productname" }
+        },
+        {
+          "element_id": "select_size",
+          "label": "Size Dropdown",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "option-size" }
+        },
+        {
+          "element_id": "select_color",
+          "label": "Color Dropdown",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "option-color" }
+        },
+        {
+          "element_id": "add_to_cart_button",
+          "label": "Add to Cart",
+          "action_type": "click",
+          "locator": { "type": "id", "value": "cart_add" }
+        }
+      ]
+    },
+    {
+      "variant_id": "shirts_size_color",
+      "product_type": "Shirts",
+      "attributes": ["size", "color"],
+      "elements": [
+        {
+          "element_id": "select_size",
+          "label": "Shirt Size Dropdown",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "option-size" }
+        },
+        {
+          "element_id": "select_color",
+          "label": "Shirt Color Dropdown",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "option-color" }
+        }
+      ]
+    },
+    {
+      "variant_id": "toes_size_only",
+      "product_type": "Toes",
+      "attributes": ["size"],
+      "elements": [
+        {
+          "element_id": "select_size",
+          "label": "Toe Size Dropdown",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "option-size" }
+        }
+      ]
+    },
+    {
+      "variant_id": "perfume_scent_wrapping",
+      "product_type": "Perfume",
+      "attributes": ["scent_type", "gift_wrapping"],
+      "elements": [
+        {
+          "element_id": "select_scent_type",
+          "label": "Scent Type Dropdown",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "option-scent" }
+        },
+        {
+          "element_id": "select_wrapping",
+          "label": "Gift Wrapping Option",
+          "action_type": "select",
+          "locator": { "type": "id", "value": "option-giftwrap" }
+        }
+      ]
+    },
+    {
+      "variant_id": "free_shipping_tag",
+      "product_type": "Any",
+      "attributes": ["free_shipping"],
+      "elements": [
+        {
+          "element_id": "free_shipping_banner",
+          "label": "Free Shipping Label",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//span[contains(text(),'Free shipping')]" }
+        }
+      ]
+    },
+    {
+      "variant_id": "reviews_ratings",
+      "product_type": "Any",
+      "attributes": ["review", "rating"],
+      "elements": [
+        {
+          "element_id": "review_section",
+          "label": "User Reviews",
+          "action_type": "view",
+          "locator": { "type": "css", "value": "#reviews" }
+        },
+        {
+          "element_id": "star_rating",
+          "label": "Star Rating",
+          "action_type": "view",
+          "locator": { "type": "css", "value": ".rating-stars" }
+        }
+      ]
+    },
+    {
+      "variant_id": "out_of_stock",
+      "product_type": "Any",
+      "attributes": ["stock_status"],
+      "elements": [
+        {
+          "element_id": "stock_status",
+          "label": "Out of Stock Indicator",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//div[contains(text(),'Out Of Stock')]" }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "page": "Cart Page",
+  "schema_id": "UI-CP-AUTH",
+  "title": "Cart Page UI Schema (Authenticated vs Unauthenticated)",
+  "description": "Captures UI differences for the cart page when user is logged in vs not logged in.",
+  "states": [
+    {
+      "user_status": "Not Logged In",
+      "elements": [
+        {
+          "element_id": "cart_heading",
+          "type": "heading",
+          "label": "Shopping Cart",
+          "action": "displays page title"
+        },
+        {
+          "element_id": "cart_items_list",
+          "type": "table",
+          "columns": [
+            "Product Image",
+            "Product Name",
+            "Model",
+            "Quantity",
+            "Unit Price",
+            "Total",
+            "Remove"
+          ],
+          "action": "shows all items currently in the cart"
+        },
+        {
+          "element_id": "checkout_button",
+          "type": "button",
+          "label": "Checkout",
+          "action": "redirects to login or guest checkout page"
+        },
+        {
+          "element_id": "continue_shopping_button",
+          "type": "button",
+          "label": "Continue Shopping",
+          "action": "navigate back to previous category or homepage"
+        },
+        {
+          "element_id": "apply_coupon_code",
+          "type": "input",
+          "input_type":"alphanumeric",
+          "action": "enter coupon code for discounts"
+        },
+        {
+          "element_id": "apply_coupon_button",
+          "type": "button",
+          "label": "Apply Coupon",
+          "action": "applies the entered coupon code"
+        },
+        {
+          "element_id": "update_quantity_button",
+          "type": "button",
+          "label": "Update Quantity",
+          "action": "updates the quantity and price of the selected cart item"
+        }
+      ]
+    },
+    {
+      "user_status": "Logged In",
+      "elements": [
+        {
+          "element_id": "cart_heading",
+          "type": "heading",
+          "label": "Shopping Cart",
+          "action": "displays page title"
+        },
+        {
+          "element_id": "cart_items_list",
+          "type": "table",
+          "columns": [
+            "Product Image",
+            "Product Name",
+            "Model",
+            "Quantity",
+            "Unit Price",
+            "Total",
+            "Remove"
+          ],
+          "action": "shows all items currently in the cart"
+        },
+        {
+          "element_id": "saved_addresses_dropdown",
+          "type": "dropdown",
+          "label": "Select Shipping Address",
+          "action": "auto-fill billing and shipping info"
+        },
+        {
+          "element_id": "apply_coupon_code",
+          "type": "input",
+          "input_type":"alphanumeric",
+          "action": "enter coupon code for discounts"
+        },
+        {
+          "element_id": "apply_coupon_button",
+          "type": "button",
+          "label": "Apply Coupon",
+          "action": "applies the entered coupon code"
+        },
+        {
+          "element_id": "checkout_button",
+          "type": "button",
+          "label": "Checkout",
+          "action": "directly proceeds to checkout without login prompt"
+        },
+        {
+          "element_id": "continue_shopping_button",
+          "type": "button",
+          "label": "Continue Shopping",
+          "action": "navigate back to previous category or homepage"
+        },
+        {
+          "element_id": "update_quantity_button",
+          "type": "button",
+          "label": "Update Quantity",
+          "action": "updates the quantity and price of the selected cart item"
+        }
+      ]
+    }
+  ]
+}

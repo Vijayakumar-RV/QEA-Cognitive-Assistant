@@ -1,0 +1,145 @@
+{
+  "page": "Home Page",
+  "schema_id": "UI-HP",
+  "title": "Comprehensive Home Page UI Schema",
+  "description": "Covers all major UI elements and interactions visible on the full Home Page of Automation Test Store.",
+  "elements": [
+    {
+      "element_id": "currency_selector",
+      "type": "dropdown",
+      "label": "Currency",
+      "options": [
+        "US Dollar",
+        "Euro",
+        "Pound Sterling"
+      ],
+      "action": "switch display currency"
+    },
+    {
+      "element_id": "top_navigation_links",
+      "type": "nav_links",
+      "items": [
+        "Login or Register",
+        "Specials",
+        "Account",
+        "Cart",
+        "Checkout"
+      ],
+      "action": "navigate to respective pages"
+    },
+    {
+      "element_id": "search_bar",
+      "type": "input",
+      "input_type": "text",
+      "placeholder": "Search Keywords",
+      "action": "enter keywords and search"
+    },
+    {
+      "element_id": "main_nav_categories",
+      "type": "nav_menu",
+      "items": [
+        "Apparel & Accessories",
+        "Makeup",
+        "Skincare",
+        "Fragrance",
+        "Men",
+        "Hair Care",
+        "Books"
+      ],
+      "action": "click to navigate to category page"
+    },
+    {
+      "element_id": "promo_banner",
+      "type": "banner",
+      "content": "Become familiar with Automation Testing",
+      "action": "display only"
+    },
+    {
+      "element_id": "info_highlights",
+      "type": "info_cards",
+      "items": [
+        "Fast Shipping",
+        "Easy Payments",
+        "Shipping Options",
+        "Large Variety"
+      ],
+      "action": "informational display"
+    },
+    {
+      "element_id": "featured_products_section",
+      "type": "product_grid",
+      "label": "Featured",
+      "items": "product_cards",
+      "interaction": "click to view product detail"
+    },
+    {
+      "element_id": "latest_products_section",
+      "type": "product_grid",
+      "label": "Latest Products",
+      "items": "product_cards",
+      "interaction": "click to view product detail"
+    },
+    {
+      "element_id": "bestsellers_section",
+      "type": "product_grid",
+      "label": "Bestsellers",
+      "items": "product_cards",
+      "interaction": "click to view product detail"
+    },
+    {
+      "element_id": "specials_section",
+      "type": "product_grid",
+      "label": "Specials",
+      "items": "product_cards",
+      "interaction": "click to view product detail"
+    },
+    {
+      "element_id": "brand_scroller",
+      "type": "brand_carousel",
+      "items": [
+        "Benefit",
+        "Pantene",
+        "Lancome",
+        "Gucci",
+        "Dove",
+        "Calvin Klein",
+        "Kerastase"
+      ],
+      "action": "click brand to filter products"
+    },
+    {
+      "element_id": "footer_links",
+      "type": "footer_menu",
+      "items": [
+        "About Us",
+        "Privacy Policy",
+        "Return Policy",
+        "Shipping",
+        "Contact Us",
+        "Site Map",
+        "Login"
+      ],
+      "action": "navigate"
+    },
+    {
+      "element_id": "newsletter_signup",
+      "type": "form",
+      "fields": [
+        "email_input"
+      ],
+      "submit_button": "Subscribe",
+      "action": "submit email for newsletter"
+    },
+    {
+      "element_id": "social_media_links",
+      "type": "icon_links",
+      "items": [
+        "Facebook",
+        "Twitter",
+        "LinkedIn",
+        "Tumblr"
+      ],
+      "action": "navigate to respective social pages"
+    }
+  ]
+}

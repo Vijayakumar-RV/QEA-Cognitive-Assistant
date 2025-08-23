@@ -1,0 +1,78 @@
+{
+  "application_url":"https://www.automationteststore.com/",
+  "page_id": "checkout_confirmation_page",
+  "page_name": "Checkout Confirmation Page",
+  "description": "Final step in the checkout flow. Displays shipping, payment, order summary, and total pricing. Allows users to review and confirm their order.",
+  "before_page": ["checkout_logged_in_page", "checkout_guest_registration_page","cart_page"],
+  "after_page": ["order_success_page"],
+  "tags": ["checkout", "confirmation", "review", "final_step"],
+  "elements": [
+    {
+      "element_id": "shipping_info_block",
+      "label": "Shipping Info Display",
+      "action_type": "view",
+      "locator": { "type": "css", "value": "#collapse-shipping-address" }
+    },
+    {
+      "element_id": "payment_info_block",
+      "label": "Payment Info Display",
+      "action_type": "view",
+      "locator": { "type": "css", "value": "#collapse-payment-address" }
+    },
+    {
+      "element_id": "edit_shipping",
+      "label": "Edit Shipping Button",
+      "action_type": "click",
+      "locator": { "type": "css", "value": "a[href*='shipping']" }
+    },
+    {
+      "element_id": "edit_payment",
+      "label": "Edit Payment Button",
+      "action_type": "click",
+      "locator": { "type": "css", "value": "a[href*='payment']" }
+    },
+    {
+      "element_id": "edit_coupon",
+      "label": "Edit Coupon Link",
+      "action_type": "click",
+      "locator": { "type": "link_text", "value": "Edit Coupon" }
+    },
+    {
+      "element_id": "edit_cart",
+      "label": "Edit Cart Button",
+      "action_type": "click",
+      "locator": { "type": "link_text", "value": "Edit Cart" }
+    },
+    {
+      "element_id": "item_summary",
+      "label": "Cart Item Summary",
+      "action_type": "view",
+      "locator": { "type": "css", "value": ".checkout-product-list" }
+    },
+    {
+      "element_id": "sub_total",
+      "label": "Sub-Total Amount",
+      "action_type": "view",
+      "locator": { "type": "xpath", "value": "//td[contains(text(),'Sub-Total')]/following-sibling::td" }
+    },
+    {
+      "element_id": "shipping_rate",
+      "label": "Shipping Rate Display",
+      "action_type": "view",
+      "locator": { "type": "xpath", "value": "//td[contains(text(),'Flat Shipping Rate')]/following-sibling::td" }
+    },
+    {
+      "element_id": "total_amount",
+      "label": "Total Amount",
+      "action_type": "view",
+      "locator": { "type": "xpath", "value": "//strong[contains(text(),'Total')]/ancestor::td/following-sibling::td" }
+    },
+    {
+      "element_id": "confirm_order_button",
+      "label": "Confirm Order",
+      "action_type": "click",
+      "locator": { "type": "css", "value": "input[type='button'][value='Confirm Order']" },
+      "expected_result": "Navigates to Order Success Page"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "US-01",
+    "title": "Browse product categories",
+    "user_story": "As a user, I want to browse categories so that I can find products of interest.",
+    "acceptance_criteria": [
+      "Category menu is visible in the top navigation.",
+      "Clicking a category navigates to a filtered product listing.",
+      "Product listings match the selected category."
+    ]
+  },
+  {
+    "id": "US-02",
+    "title": "Search for products",
+    "user_story": "As a user, I want to search for products using keywords so I can find relevant items quickly.",
+    "acceptance_criteria": [
+      "Search bar is present on every page.",
+      "Search results display products matching the keyword in title or description.",
+      "If no products are found, a 'no results' message is shown."
+    ]
+  },
+  {
+    "id": "US-03",
+    "title": "View product details",
+    "user_story": "As a user, I want to see detailed information about a product before making a purchase decision.",
+    "acceptance_criteria": [
+      "Clicking on a product opens the product detail page.",
+      "Product detail includes name, price, image, description, and variants.",
+      "Rating and review sections are visible."
+    ]
+  },
+  {
+    "id": "US-04",
+    "title": "Add product to cart",
+    "user_story": "As a user, I want to add products to my cart so that I can purchase them later.",
+    "acceptance_criteria": [
+      "Product detail page has an 'Add to Cart' button.",
+      "After adding, the cart is updated and shows confirmation.",
+      "Out-of-stock products cannot be added."
+    ]
+  },
+  {
+    "id": "US-05",
+    "title": "Update cart items",
+    "user_story": "As a user, I want to modify the quantity or remove items in my cart before checking out.",
+    "acceptance_criteria": [
+      "Quantity can be increased or decreased in cart.",
+      "Item can be removed from cart.",
+      "Cart total updates dynamically."
+    ]
+  },
+  {
+    "id": "US-06",
+    "title": "Proceed to checkout",
+    "user_story": "As a user, I want to proceed from cart to checkout to complete my purchase.",
+    "acceptance_criteria": [
+      "Cart has a clearly visible checkout button.",
+      "Clicking checkout navigates to the checkout page.",
+      "Guest checkout option is shown only when cart is not empty."
+    ]
+  },
+  {
+    "id": "US-07",
+    "title": "Guest checkout",
+    "user_story": "As a guest, I want to checkout without creating an account.",
+    "acceptance_criteria": [
+      "Guest checkout form collects full billing/shipping info.",
+      "All required fields are validated.",
+      "User is able to place an order without logging in."
+    ]
+  },
+  {
+    "id": "US-08",
+    "title": "Register a new account",
+    "user_story": "As a new user, I want to register an account so I can track my orders.",
+    "acceptance_criteria": [
+      "Register form is accessible from login page.",
+      "All required fields must be filled and validated.",
+      "User is redirected to My Account page after successful registration."
+    ]
+  },
+  {
+    "id": "US-09",
+    "title": "Login to account",
+    "user_story": "As a returning user, I want to login so I can view my account and order history.",
+    "acceptance_criteria": [
+      "Login form accepts valid credentials.",
+      "Invalid login shows error message.",
+      "Successful login redirects to My Account dashboard."
+    ]
+  },
+  {
+    "id": "US-10",
+    "title": "View My Account dashboard",
+    "user_story": "As a logged-in user, I want to access my account dashboard to manage orders and settings.",
+    "acceptance_criteria": [
+      "Dashboard displays links to all account sections.",
+      "User greeting is shown with their name.",
+      "User can navigate to features like order history, address book, etc."
+    ]
+  },
+  {
+    "id": "US-11",
+    "title": "Sort products on category page",
+    "user_story": "As a user, I want to sort products by price or name so that I can easily compare options.",
+    "acceptance_criteria": [
+      "Sort dropdown is available on category pages.",
+      "User can sort by 'Price: Low to High', 'Name A-Z', etc.",
+      "Product list updates accordingly after sorting."
+    ]
+  },
+  {
+    "id": "US-12",
+    "title": "View product reviews",
+    "user_story": "As a user, I want to read reviews from other customers so I can make informed decisions.",
+    "acceptance_criteria": [
+      "Reviews tab is available on the product detail page.",
+      "Reviews include star rating and user comments.",
+      "Average product rating is displayed."
+    ]
+  },
+  {
+    "id": "US-13",
+    "title": "Apply shipping method",
+    "user_story": "As a user, I want to choose a shipping method at checkout so I can decide delivery speed.",
+    "acceptance_criteria": [
+      "Available shipping options are displayed during checkout.",
+      "User can choose between standard and express methods.",
+      "Selected option affects the order total."
+    ]
+  },
+  {
+    "id": "US-14",
+    "title": "Apply payment method",
+    "user_story": "As a user, I want to select a payment method to complete the order.",
+    "acceptance_criteria": [
+      "Checkout page shows available payment methods.",
+      "User can select the desired payment option.",
+      "Order proceeds only after payment method selection."
+    ]
+  },
+  {
+    "id": "US-15",
+    "title": "Add separate shipping address",
+    "user_story": "As a user, I want to add a separate shipping address if different from billing.",
+    "acceptance_criteria": [
+      "Checkbox toggles visibility of shipping form.",
+      "Shipping address can be filled independently.",
+      "Order reflects selected shipping destination."
+    ]
+  },
+  {
+    "id": "US-16",
+    "title": "Confirm order",
+    "user_story": "As a user, I want to review and confirm my order before placing it.",
+    "acceptance_criteria": [
+      "Final summary is displayed before confirmation.",
+      "User must agree to terms and conditions.",
+      "Clicking confirm submits the order."
+    ]
+  },
+  {
+    "id": "US-17",
+    "title": "Track order history",
+    "user_story": "As a logged-in user, I want to see my past orders for reference.",
+    "acceptance_criteria": [
+      "My Account page has 'Order History' link.",
+      "Clicking it displays previous order records.",
+      "Order ID, date, and status are visible."
+    ]
+  },
+  {
+    "id": "US-18",
+    "title": "Update account details",
+    "user_story": "As a logged-in user, I want to update my account information when needed.",
+    "acceptance_criteria": [
+      "My Account includes an edit option.",
+      "User can modify name, email, phone.",
+      "Changes are saved after validation."
+    ]
+  },
+  {
+    "id": "US-19",
+    "title": "Manage address book",
+    "user_story": "As a user, I want to manage my addresses for easier checkout in future.",
+    "acceptance_criteria": [
+      "User can add, edit, or delete addresses.",
+      "Address form includes all necessary fields.",
+      "Changes are reflected in future checkouts."
+    ]
+  },
+  {
+    "id": "US-20",
+    "title": "Log out from account",
+    "user_story": "As a user, I want to log out securely when done with my session.",
+    "acceptance_criteria": [
+      "Logout link is available in header or account menu.",
+      "Clicking it ends the session.",
+      "User is redirected to the home page."
+    ]
+  }
+]

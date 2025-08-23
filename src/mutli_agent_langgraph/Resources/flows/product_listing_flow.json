@@ -1,0 +1,237 @@
+{
+  "application_url":"https://www.automationteststore.com/",
+  "page_id": "product_listing_page",
+  "page_name": "Product Listing Page",
+  "description": "Displays a list of products under a selected category or search term. Includes subcategory navigation, sort options, and product tiles linking to product detail pages.",
+  "before_page": [
+    "home_page",
+    "search_results_page",
+    "category_navigation",
+    "special_offers_page"
+  ],
+  "after_page": [
+    "product_detail_page"
+  ],
+  "tags": ["listing", "category", "search", "subcategory_navigation", "product_discovery"],
+  "category_variants": [
+    {
+      "category_id": "special_offers",
+      "category_name": "Special Offers",
+      "subcategories": [],
+      "elements": [
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "search_shirts",
+      "category_name": "Search - Shirts",
+      "subcategories": [],
+      "elements": [
+        {
+          "element_id": "search_result_label",
+          "label": "Search Keyword Result Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Search')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "apparel_accessories",
+      "category_name": "Apparel & Accessories",
+      "subcategories": ["Shoes", "Shirts"],
+      "elements": [
+        {
+          "element_id": "category_label",
+          "label": "Apparel Category Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Apparel')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "makeup",
+      "category_name": "Makeup",
+      "subcategories": ["Cheeks","Eyes","Lips", "Nails", "Face","Value Sets"],
+      "elements": [
+        {
+          "element_id": "category_label",
+          "label": "Makeup Category Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Makeup')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "skincare",
+      "category_name": "Skin Care",
+      "subcategories": ["Eyes", "Face", "Gift Ideas & Sets","Hands & Nails","Sun"],
+      "elements": [
+        {
+          "element_id": "category_label",
+          "label": "Skin Care Category Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Skin care')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "fragrance",
+      "category_name": "Fragrance",
+      "subcategories": ["Men", "Women"],
+      "elements": [
+        {
+          "element_id": "category_label",
+          "label": "Fragrance Category Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Fragrance')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "hair_care",
+      "category_name": "Hair Care",
+      "subcategories": ["Shampoo", "Conditioner"],
+      "elements": [
+        {
+          "element_id": "category_label",
+          "label": "Hair Care Category Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Hair care')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "men",
+      "category_name": "Men",
+      "subcategories": ["Body & Shower", "Fragrance Sets", "Pre-Shave & Shaving", "Skincare"],
+      "elements": [
+        {
+          "element_id": "category_label",
+          "label": "Men Category Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Men')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    },
+    {
+      "category_id": "books",
+      "category_name": "Books",
+      "subcategories": ["Audio CD", "Paperback"],
+      "elements": [
+        {
+          "element_id": "category_label",
+          "label": "Books Category Title",
+          "action_type": "view",
+          "locator": { "type": "xpath", "value": "//h1[contains(text(),'Books')]" }
+        },
+        {
+          "element_id": "sort_dropdown",
+          "label": "Sort By Dropdown",
+          "action_type": "select",
+          "locator": { "type": "css", "value": "#sort" }
+        },
+        {
+          "element_id": "product_tile",
+          "label": "Product Tile",
+          "action_type": "click",
+          "locator": { "type": "css", "value": ".fixed .prdocutname" }
+        }
+      ]
+    }
+  ]
+}

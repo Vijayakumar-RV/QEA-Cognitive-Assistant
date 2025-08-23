@@ -1,0 +1,107 @@
+{
+  "page": "Home Page",
+  "flow_id": "HP",
+  "title": "Home Page Business Flow",
+  "description": "Covers user interactions and system expectations on the home page of Automation Test Store.",
+  "steps": [
+    {
+      "step_id": "HP-001",
+      "user_action": "Load the home page",
+      "expected_behavior": "Displays promotional banner, featured/latest/bestseller product sections"
+    },
+    {
+      "step_id": "HP-002",
+      "user_action": "Click on a category in nav (Apparel & Accessories', 'Makeup', 'Skincare', 'Fragrance', 'Men', 'Haircare', 'Books)",
+      "expected_behavior": "Navigates to respective category listing page"
+    },
+    {
+      "step_id": "HP-003",
+      "user_action": "Click on a product tile",
+      "expected_behavior": "Opens the product detail page"
+    },
+    {
+      "step_id": "HP-004",
+      "user_action": "Click 'Specials' in top navigation bar",
+      "expected_behavior": "Navigates to page listing discounted items and Special Offers"
+    },
+    {
+      "step_id": "HP-005",
+      "user_action": "Click on a brand logo ",
+      "expected_behavior": "Filters product list to show only items from that brand"
+    },
+    {
+      "step_id": "HP-006",
+      "user_action": "Use the search bar and press Enter",
+      "expected_behavior": "Navigates to search results page with matching products"
+    },
+    {
+      "step_id": "HP-007",
+      "user_action": "Click 'Account' in the top navigation",
+      "expected_behavior": "Opens login/register page "
+    },
+    {
+      "step_id": "HP-008",
+      "user_action": "Click on the 'Cart' in the top navigation",
+      "expected_behavior": "Opens cart summary page"
+    },
+    {
+      "step_id": "HP-009",
+      "user_action": "Click 'Contact Us' in the footer",
+      "expected_behavior": "Navigates to contact form page"
+    },
+    {
+      "step_id": "HP-010",
+      "user_action": "Click a featured product",
+      "expected_behavior": "Navigates to that product's detail page"
+    },
+    {
+      "step_id": "HP-011",
+      "user_action": "Click a latest product",
+      "expected_behavior": "Navigates to that product's detail page"
+    },
+    {
+      "step_id": "HP-012",
+      "user_action": "Click a Bestseller product",
+      "expected_behavior": "Navigates to that product's detail page"
+    },
+    {
+      "step_id": "HP-013",
+      "user_action": "Click a Specials product",
+      "expected_behavior": "Navigates to that product's detail page"
+    },
+    {
+      "step_id": "HP-014",
+      "user_action": "Enter email in newsletter subscription field and click 'Subscribe'",
+      "expected_behavior": "Displays Personal Details form for newsletter subscription with Captcha verification and continue button"
+    },
+    {
+      "step_id": "HP-015",
+      "user_action": "Click on the 'Checkout' in the top navigation",
+      "expected_behavior": "Opens Checkout page"
+    },
+    {
+      "step_id": "HP-016",
+      "user_action": "Click on the 'Login or Register' in the top navigation",
+      "expected_behavior": "Opens login/register page"
+    },
+    {
+      "step_id": "HP-017",
+      "user_action": "Click on the left navigation 'Home' button",
+      "expected_behavior": "Opens home page"
+    },
+    {
+      "step_id": "HP-018",
+      "user_action": "Click on the left navigation 'US Dollar' drop down for currency change",
+      "expected_behavior": "Changes the currency to US Dollar or Euro or Pound Sterling and updates product prices accordingly"
+    },
+     {
+      "step_id": "HP-019",
+      "user_action": "Hover on a category in nav (Apparel & Accessories', 'Makeup', 'Skincare', 'Fragrance', 'Men', 'Haircare', 'Books)",
+      "expected_behavior": "Displays subcategories for the hovered category"
+    }
+
+
+
+
+  ]
+}

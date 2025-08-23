@@ -1,0 +1,53 @@
+{
+  "page": "Login/Register Page",
+  "flow_id": "AU",
+  "title": "Login and Registration Page Business Flow",
+  "description": "Captures the flows related to user authentication including login, registration, and error handling.",
+  "steps": [
+    {
+      "step_id": "AU-001",
+      "user_action": "Click on 'My Account' or attempt checkout while not logged in",
+      "expected_behavior": "User is redirected to login/register page"
+    },
+    {
+      "step_id": "AU-002",
+      "user_action": "Enter valid credentials and click 'Login'",
+      "expected_behavior": "User is logged in and redirected to My Account or last visited page"
+    },
+    {
+      "step_id": "AU-003",
+      "user_action": "Enter incorrect credentials and click 'Login'",
+      "expected_behavior": "Error message is displayed and user remains on login page"
+    },
+    {
+      "step_id": "AU-004",
+      "user_action": "Click on 'Register Account' tab",
+      "expected_behavior": "Registration form is displayed with input fields"
+    },
+    {
+      "step_id": "AU-005",
+      "user_action": "Fill in registration details and submit",
+      "expected_behavior": "User is registered and automatically logged in if data is valid"
+    },
+    {
+      "step_id": "AU-006",
+      "user_action": "Register with an already used email",
+      "expected_behavior": "System prevents registration and displays appropriate error"
+    },
+    {
+      "step_id": "AU-007",
+      "user_action": "Leave mandatory fields empty and try to register",
+      "expected_behavior": "Client-side or server-side validation prevents submission"
+    },
+    {
+      "step_id": "AU-008",
+      "user_action": "Click on 'Forgot Password?' link",
+      "expected_behavior": "User is redirected to password recovery page"
+    },
+    {
+      "step_id": "AU-009",
+      "user_action": "Enter Login Name and Email for password recovery and submit",
+      "expected_behavior": "System sends password reset instructions to the provided email"
+    }
+  ]
+}

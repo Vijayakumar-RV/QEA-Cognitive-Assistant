@@ -2,7 +2,13 @@ cogvenv/
 api_keys.txt
 .env
 test.ipynb
-/src/multi_agent_langgraph/resources/**/*.db
+/src/multi_agent_langgraph/resources/
 # Ignore Python cache files
 *.pyc
 __pycache__/
+/test
+/data_base
+/mlruns/
+/generated_testcases/
+/generated_testscripts/
+/artifacts/

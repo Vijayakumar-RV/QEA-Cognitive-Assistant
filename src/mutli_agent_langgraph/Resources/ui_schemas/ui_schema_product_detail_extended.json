@@ -1,0 +1,107 @@
+{
+  "page": "Product Detail Page",
+  "schema_id": "UI-PD-EXT",
+  "title": "Extended Product Detail Page UI Schema",
+  "description": "Covers variations in product details such as size, color, scent, availability, shipping tags, and user interactions.",
+  "elements": [
+    {
+      "element_id": "product_title",
+      "type": "heading",
+      "label": "Product Name",
+      "action": "displays the title of the selected product"
+    },
+    {
+      "element_id": "product_images",
+      "type": "carousel",
+      "label": "Product Images",
+      "action": "displays a carousel or gallery of images"
+    },
+    {
+      "element_id": "product_price",
+      "type": "text",
+      "label": "Price",
+      "action": "displays base price and sale price if available"
+    },
+    {
+      "element_id": "free_shipping_tag",
+      "type": "label",
+      "label": "Free Shipping",
+      "action": "shown if product qualifies for free delivery"
+    },
+    {
+      "element_id": "out_of_stock_status",
+      "type": "status_tag",
+      "label": "Out of Stock",
+      "action": "hides 'Add to Cart' and disables quantity selectors"
+    },
+    {
+      "element_id": "rating_and_reviews",
+      "type": "rating_section",
+      "label": "Reviews and Rating",
+      "action": "displays average rating and list of reviews"
+    },
+    {
+      "element_id": "size_selector",
+      "type": "dropdown",
+      "label": "Select Size",
+      "example_context": [
+        "Shoes",
+        "Shirts",
+        "Toes"
+      ],
+      "action": "required for products with size variations"
+    },
+    {
+      "element_id": "color_selector",
+      "type": "dropdown",
+      "label": "Select Color/Shades",
+      "example_context": [
+        "Shoes",
+        "Shirts",
+        "Makeup",
+        "Cosmetics"
+      ],
+      "action": "required if product has color variants"
+    },
+    {
+      "element_id": "scent_selector",
+      "type": "dropdown",
+      "label": "Select Scent",
+      "example_context": [
+        "Fragrances"
+      ],
+      "action": "choose type of scent"
+    },
+    {
+      "element_id": "gift_wrapping_option",
+      "type": "checkbox",
+      "label": "Gift Wrapping Available",
+      "action": "allow gift wrap option selection"
+    },
+    {
+      "element_id": "quantity_selector",
+      "type": "input",
+      "input_type": "number",
+      "label": "Quantity",
+      "action": "set desired quantity before adding to cart"
+    },
+    {
+      "element_id": "add_to_cart_button",
+      "type": "button",
+      "label": "Add to Cart",
+      "action": "adds product with selected options to cart"
+    },
+    {
+      "element_id": "product_tabs",
+      "type": "tabs",
+      "items": [
+        "Description",
+        "Reviews",
+        "Tags",
+        "Related Products",
+        "Downloads"
+      ],
+      "action": "navigate between product detail sections"
+    }
+  ]
+}

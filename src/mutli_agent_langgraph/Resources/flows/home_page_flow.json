@@ -1,0 +1,187 @@
+{
+  "application_url":"https://www.automationteststore.com/",
+  "page_id": "home_page",
+  "page_name": "Home Page",
+  "description": "This is the landing page of the Automation Test Store. It provides access to featured products, navigation menu, promotional banners, user actions like login/register, cart, checkout, and account management. It also includes multiple product sections and footer details.",
+  "before_page": null,
+  "after_page": [
+    "My Account Dashboard","checkout_login_page","product_detail_page","search_results_page","login_page","account_dashboard","cart_page","checkout_page","product_listing_makeup",
+    "product_listing_skincare","product_listing_fragrance","product_listing_apparel_accessories","product_listing_haircare",
+    "product_listing_books","product_listing_men"
+  ],
+  "tags": ["home", "entry_point", "guest_access", "navigation_hub","category_navigation"],
+  "elements": [
+    {
+      "section": "Header",
+      "elements": [
+        {
+          "element_id": "logo",
+          "label": "Automation Test Store Logo",
+          "action_type": "click",
+          "locator": {
+            "type": "css",
+            "value": ".logo"
+          },
+          "expected_result": "Navigates back to Home Page"
+        },
+        {
+          "element_id": "currency_selector",
+          "label": "Currency Dropdown",
+          "action_type": "select",
+          "locator": {
+            "type": "id",
+            "value": "currency"
+          },
+          "expected_result": "Changes site currency"
+        },
+        {
+          "element_id": "login_register",
+          "label": "Login or Register",
+          "action_type": "click",
+          "locator": {
+            "type": "xpath",
+            "value": "//*[text()='Login or register']"
+          },
+          "expected_result": "Navigates to Login Page"
+        },
+        {
+          "element_id": "specials_link",
+          "label": "Specials",
+          "action_type": "click",
+          "locator": {
+            "type": "link_text",
+            "value": "SPECIALS"
+          },
+          "expected_result": "Navigates to Special Offers"
+        },
+        {
+          "element_id": "account_link",
+          "label": "Account",
+          "action_type": "click",
+          "locator": {
+            "type": "link_text",
+            "value": "ACCOUNT"
+          },
+          "expected_result": "Navigates to Account Dashboard"
+        },
+        {
+          "element_id": "cart_link",
+          "label": "Cart",
+          "action_type": "click",
+          "locator": {
+            "type": "link_text",
+            "value": "CART"
+          },
+          "expected_result": "Navigates to Cart Page"
+        },
+        {
+          "element_id": "checkout_link",
+          "label": "Checkout",
+          "action_type": "click",
+          "locator": {
+            "type": "link_text",
+            "value": "CHECKOUT"
+          },
+          "expected_result": "Navigates to Checkout Page"
+        },
+        {
+          "element_id": "search_input",
+          "label": "Search Bar",
+          "action_type": "input",
+          "locator": {
+            "type": "name",
+            "value": "search"
+          },
+          "expected_result": "Displays search results page"
+        }
+      ]
+    },
+    {
+      "section": "Main Navigation Menu",
+      "elements": [
+        { "element_id": "nav_home", "label": "Home", "action_type": "click", "locator": { "type": "link_text", "value": "HOME" } },
+        { "element_id": "nav_apparel", "label": "Apparel & Accessories", "action_type": "click", "locator": { "type": "link_text", "value": "APPAREL & ACCESSORIES" } },
+        { "element_id": "nav_makeup", "label": "Makeup", "action_type": "click", "locator": { "type": "link_text", "value": "MAKEUP" } },
+        { "element_id": "nav_skincare", "label": "Skincare", "action_type": "click", "locator": { "type": "link_text", "value": "SKINCARE" } },
+        { "element_id": "nav_fragrance", "label": "Fragrance", "action_type": "click", "locator": { "type": "link_text", "value": "FRAGRANCE" } },
+        { "element_id": "nav_men", "label": "Men", "action_type": "click", "locator": { "type": "link_text", "value": "MEN" } },
+        { "element_id": "nav_haircare", "label": "Hair Care", "action_type": "click", "locator": { "type": "link_text", "value": "HAIR CARE" } },
+        { "element_id": "nav_books", "label": "Books", "action_type": "click", "locator": { "type": "link_text", "value": "BOOKS" } }
+      ]
+    },
+    {
+      "section": "Hero Banner",
+      "elements": [
+        {
+          "element_id": "hero_banner",
+          "label": "Automation Testing Banner",
+          "action_type": "view",
+          "locator": {
+            "type": "css",
+            "value": ".slider-wrapper"
+          },
+          "expected_result": "Static banner displayed"
+        }
+      ]
+    },
+    {
+      "section": "Product Sections",
+      "subsections": [
+        {
+          "title": "Featured",
+          "element_prefix": "featured_",
+          "elements": [
+            { "element_id": "featured_1", "label": "SkinSheen Bronzer Stick", "action_type": "click", "locator": { "type": "partial_link_text", "value": "SkinSHEEN" } },
+            { "element_id": "featured_2", "label": "Benefit Girl Meets Pearl", "action_type": "click", "locator": { "type": "partial_link_text", "value": "Meets Pearl" } },
+            { "element_id": "featured_3", "label": "Benefit Bella Bamba", "action_type": "click", "locator": { "type": "partial_link_text", "value": "Bella Bamba" } }
+          ]
+        },
+        {
+          "title": "Latest Products",
+          "element_prefix": "latest_",
+          "elements": [
+            { "element_id": "latest_1", "label": "Absolute Anti-Age Treatment", "action_type": "click", "locator": { "type": "partial_link_text", "value": "ANTI-AGE" } }
+          ]
+        },
+        {
+          "title": "Bestsellers",
+          "element_prefix": "bestseller_",
+          "elements": [
+            { "element_id": "bestseller_1", "label": "High Heel Diamante Sandals", "action_type": "click", "locator": { "type": "partial_link_text", "value": "SANDALS" } }
+          ]
+        },
+        {
+          "title": "Specials",
+          "element_prefix": "specials_",
+          "elements": [
+            { "element_id": "specials_1", "label": "Absolute Eye Precious Cells", "action_type": "click", "locator": { "type": "partial_link_text", "value": "Precious Cells" } }
+          ]
+        },
+        {
+          "title":"Brand Scrolling List",
+          "element_prefix": "brands_",
+          "elements": [
+            { "element_id": "brand_benefit", "label": "benefit", "action_type": "click", "locator": { "type": "partial_link_text", "value": "benefit" } },
+            { "element_id": "brand_pantene", "label": "pantene", "action_type": "click", "locator": { "type": "partial_link_text", "value": "pantene" } },
+            { "element_id": "brands_mac", "label": "mac", "action_type": "click", "locator": { "type": "partial_link_text", "value": "mac" }},
+            { "element_id": "brands_lancome", "label": "lancome", "action_type": "click", "locator": { "type": "partial_link_text", "value": "lancome" } },
+            { "element_id": "brands_gucci", "label": "gucci", "action_type": "click", "locator": { "type": "partial_link_text", "value": "gucci" } },
+            { "element_id": "brands_dove", "label": "dove", "action_type": "click", "locator": { "type": "partial_link_text", "value": "dove" } },
+            { "element_id": "brands_calvinkelvin", "label": "calvinkelvin", "action_type": "click", "locator": { "type": "partial_link_text", "value": "calvinkelvin" } }
+          ]
+        }
+
+      ]
+    },
+    {
+      "section": "Footer",
+      "elements": [
+        { "element_id": "about_us", "label": "About Us Link", "action_type": "click", "locator": { "type": "link_text", "value": "About Us" } },
+        { "element_id": "contact_us", "label": "Contact Us", "action_type": "click", "locator": { "type": "link_text", "value": "Contact Us" } },
+        { "element_id": "testimonials", "label": "Testimonials Section", "action_type": "view", "locator": { "type": "text", "value": "Testimonials" } },
+        { "element_id": "newsletter", "label": "Newsletter Signup", "action_type": "input", "locator": { "type": "name", "value": "newsletter" } },
+        { "element_id": "subscribe_button", "label": "Subscribe", "action_type": "click", "locator": { "type": "css", "value": "#newsletter_form button" } }
+      ]
+    }
+  ]
+}

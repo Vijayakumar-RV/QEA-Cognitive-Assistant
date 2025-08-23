@@ -1,0 +1,53 @@
+{
+  "page": "Product Detail Page",
+  "flow_id": "PD",
+  "title": "Product Detail Page Business Flow",
+  "description": "Covers all user interactions on the product detail page including viewing product info, selecting quantity, and adding to cart.",
+  "steps": [
+    {
+      "step_id": "PD-001",
+      "user_action": "Open a product detail page from category or home page",
+      "expected_behavior": "Loads product image, title, price, and stock availability"
+    },
+    {
+      "step_id": "PD-002",
+      "user_action": "Read the product description",
+      "expected_behavior": "Product information tab is shown by default"
+    },
+    {
+      "step_id": "PD-003",
+      "user_action": "Change product quantity using the input box",
+      "expected_behavior": "Quantity is updated in the selection box"
+    },
+    {
+      "step_id": "PD-004",
+      "user_action": "Click on 'Add to Cart'",
+      "expected_behavior": "Product with selected quantity is added to the cart"
+    },
+    {
+      "step_id": "PD-005",
+      "user_action": "View product reviews tab",
+      "expected_behavior": "List of customer reviews is shown if available"
+    },
+    {
+      "step_id": "PD-006",
+      "user_action": "Click on 'Related Products' tab if available",
+      "expected_behavior": "Displays recommended/related items"
+    },
+    {
+      "step_id": "PD-007",
+      "user_action": "Check if color or size options are available",
+      "expected_behavior": "Color and size options are displayed if available"
+    },
+    {
+      "step_id": "PD-008",
+      "user_action": "Click on product tags if available",
+      "expected_behavior": "Navigates to filtered product listings based on that tag"
+    },
+    {
+      "step_id": "PD-009",
+      "user_action": "Select from the dropdown of size or color options if available",
+      "expected_behavior": "Selected option is applied to the product"
+    }
+  ]
+}

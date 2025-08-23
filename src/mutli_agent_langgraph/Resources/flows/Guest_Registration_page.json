@@ -1,0 +1,51 @@
+{
+  "application_url":"https://www.automationteststore.com/",
+  "page_id": "checkout_guest_registration_page",
+  "page_name": "Guest Checkout or Registration",
+  "description": "Billing details form for users choosing to checkout as Guest or Register. Based on selection, additional registration fields appear. All required fields are marked as mandatory.",
+  "before_page": ["checkout_login_page"],
+  "after_page": ["shipping_method_page"],
+  "tags": ["guest_checkout", "registration", "billing_details", "user_info_form"],
+  "variants": [
+    {
+      "variant_id": "guest_checkout",
+      "user_state": "guest",
+      "description": "User selects Guest Checkout. Displays mandatory fields for billing and shipping address.",
+      "elements": [
+        { "element_id": "radio_guest", "label": "Guest Checkout Option", "action_type": "select", "locator": { "type": "id", "value": "account-guest" } },
+        { "element_id": "firstname", "label": "First Name", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "firstname" } },
+        { "element_id": "lastname", "label": "Last Name", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "lastname" } },
+        { "element_id": "email", "label": "Email", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "email" } },
+        { "element_id": "telephone", "label": "Telephone", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "telephone" } },
+        { "element_id": "address_1", "label": "Address", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "address_1" } },
+        { "element_id": "city", "label": "City", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "city" } },
+        { "element_id": "postcode", "label": "Postcode", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "postcode" } },
+        { "element_id": "country_id", "label": "Country", "action_type": "select", "mandatory": true, "locator": { "type": "name", "value": "country_id" } },
+        { "element_id": "zone_id", "label": "Region/State", "action_type": "select", "mandatory": true, "locator": { "type": "name", "value": "zone_id" } },
+        { "element_id": "shipping_address_checkbox", "label": "Shipping Address same as Billing", "action_type": "check", "locator": { "type": "name", "value": "shipping_address" } },
+        { "element_id": "button_guest", "label": "Continue Button", "action_type": "click", "locator": { "type": "id", "value": "button-guest" } }
+      ]
+    },
+    {
+      "variant_id": "register_account",
+      "user_state": "new_user",
+      "description": "User selects Register Account. Displays billing fields and extra fields for password and agreement.",
+      "elements": [
+        { "element_id": "radio_register", "label": "Register Account Option", "action_type": "select", "locator": { "type": "id", "value": "account-register" } },
+        { "element_id": "firstname", "label": "First Name", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "firstname" } },
+        { "element_id": "lastname", "label": "Last Name", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "lastname" } },
+        { "element_id": "email", "label": "Email", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "email" } },
+        { "element_id": "telephone", "label": "Telephone", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "telephone" } },
+        { "element_id": "address_1", "label": "Address", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "address_1" } },
+        { "element_id": "city", "label": "City", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "city" } },
+        { "element_id": "postcode", "label": "Postcode", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "postcode" } },
+        { "element_id": "country_id", "label": "Country", "action_type": "select", "mandatory": true, "locator": { "type": "name", "value": "country_id" } },
+        { "element_id": "zone_id", "label": "Region/State", "action_type": "select", "mandatory": true, "locator": { "type": "name", "value": "zone_id" } },
+        { "element_id": "password", "label": "Password", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "password" } },
+        { "element_id": "confirm", "label": "Confirm Password", "action_type": "input", "mandatory": true, "locator": { "type": "name", "value": "confirm" } },
+        { "element_id": "agree_terms", "label": "Agree to Terms Checkbox", "action_type": "check", "mandatory": true, "locator": { "type": "name", "value": "agree" } },
+        { "element_id": "button_register", "label": "Continue Button", "action_type": "click", "locator": { "type": "id", "value": "button-register" } }
+      ]
+    }
+  ]
+}
