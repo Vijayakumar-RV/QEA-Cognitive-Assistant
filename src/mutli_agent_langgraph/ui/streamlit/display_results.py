@@ -28,7 +28,7 @@ class DisplayResultStreamlit:
         # show assistant replies **only** if they have no tool_calls
         elif msg.type == "ai" and not getattr(msg, "tool_calls", None):
             with st.chat_message("assistant"):
-                st.markdown(msg.content)
+                st.markdown(msg.content,unsafe_allow_html=True)
 
 
     def disply_result_on_ui(self):
@@ -122,7 +122,7 @@ class DisplayResultStreamlit:
                     with st.spinner("🤖 Generating response..."):
                         for event in graph.stream(state_input):
                             for value in event.values():
-                                # keep the latest state to read judge output later
+                             
                                 last_state = value
 
                                 if "messages" not in value:
@@ -134,11 +134,12 @@ class DisplayResultStreamlit:
                                     continue
 
                                 if isinstance(last_msg, AIMessage):
-                                    stream_area.markdown(last_msg.content)
+                                    stream_area.markdown(last_msg.content,unsafe_allow_html=True)
+                                    #stream_area.code(last_msg.content, language="markdown",unsafe_allow_html=True)
                                     text = last_msg.content or ""
                                     full_answer_chunks.append(text)
                                     token_estimate += max(1, len(text.split()))
-                                out = last_state or value
+                             
 
                 except Exception as e:
                     log_text_artifact(str(e), "errors/ui_stream_exception.txt")

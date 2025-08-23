@@ -51,14 +51,17 @@ KEEP_KEYS = {
     "Test Steps","Expected Result","Test Type","Priority","Tags"
 }
 
-def normalize_test_cases(obj) -> List[Dict]:
+def normalize_test_cases(obj,testcase_format) -> List[Dict]:
     cases = obj if isinstance(obj, list) else obj.get("items", [])
     norm = []
     for tc in cases:
         if not isinstance(tc, dict): 
             continue
         pre  = clean_list(tc.get("Preconditions", []))
-        step = clean_list(tc.get("Test Steps", []))
+        if testcase_format.lower() == "gherkin":
+            step = [tc.get("Test Steps", []).replace("\n", "<br>")]
+        else:
+            step = clean_list(tc.get("Test Steps", []))
         tags = clean_list(tc.get("Tags", []))
         norm.append({
             "Test Case ID": clean_text(tc.get("Test Case ID","")),
@@ -130,3 +133,34 @@ def cases_to_memory(cases: List[Dict], max_cases=3, max_steps=3) -> str:
             lines.append(f"  ... (+{len(tc['Test Steps'])-max_steps} more)")
         lines.append(f"  Expected: {tc['Expected Result']}")
     return "\n".join(lines)
+
+
+import re
+from typing import Dict, Any, List
+
+GHERKIN_KWS = r"(Feature:|Background:|Scenario(?: Outline)?:|Examples:|Given|When|Then|And|But|\|)"
+
+def normalize_gherkin_multiline(text: str) -> str:
+    # Ensure each keyword starts on its own line (but keep the first if already at start)
+    # Insert newline before any keyword that is not at the start of a line.
+    text = re.sub(rf"\s*(?<!\n)({GHERKIN_KWS})\s+", r"\n\1 ", text)
+
+    # Collapse accidental double spaces after keywords
+    text = re.sub(rf"({GHERKIN_KWS})\s+", r"\1 ", text)
+
+    # Remove any leftover spaces at line starts
+    text = re.sub(r"\n\s+", "\n", text)
+
+    # Strip outer whitespace
+    return text.strip()
+
+def repair_gherkin_in_json(cases: List[Dict[str, Any]], mode: str) -> List[Dict[str, Any]]:
+    if mode.lower() != "gherkin":
+        return cases
+    for obj in cases:
+        steps = obj.get("Test Steps")
+        print(f"Original Test Steps for {obj.get('Test Case ID', '')}: {steps}")
+        if isinstance(steps, str):
+            fixed = normalize_gherkin_multiline(steps)
+            obj["Test Steps"] = fixed
+    return cases

@@ -23,14 +23,13 @@ def _first_heading(md: str) -> str:
     return chunk or "tc"
 
 
-def save_testcase_excel_csv(state:State,transform):
+def save_testcase_excel_csv(transform,data):
     test_string = "### Testcase US-02-Testing"
 
     prefix = _first_heading(test_string)[:10]
     filename = f"{prefix}_{_timestamp()}"
     folder_path = os.getcwd()
-    print(f" Test rows inside save_test excel : {state['test_rows']}")
-    df = pd.DataFrame(state["test_rows"])
+    df = pd.DataFrame(data)
     if transform == "excel":
         df.to_excel(f"{folder_path}/generated_testcases/{filename}.xlsx", index=False)
     elif transform == "csv":
@@ -40,25 +39,25 @@ def save_testcase_excel_csv(state:State,transform):
     return filename
 
 
-def save_testscript_execute(status, state: State):
+def save_testscript_execute(status, script_content):
     cmd = []
-    test_script = state.get("test_script")
-    test_case = state.get("test_case")
-    filename = test_case.split("\n")[0].replace("### ", "").split(" — ")[0][:5] + "_test_cases"
-    filename = filename.replace("-", "_")
+    
+    filename = "last_testcase"
+    # filename = test_case.split("\n")[0].replace("### ", "").split(" — ")[0][:5] + "_test_cases"
+    # filename = filename.replace("-", "_")
     filename = f"{filename}_{_timestamp()}"
     folder_path = os.getcwd()
 
     if status == "both":
         
         with open(f"{folder_path}/generated_testscripts/{filename}.py", "w") as f:
-            f.write(test_script)
+            f.write(script_content)
         cmd = ["python", f"{folder_path}/generated_testscripts/{filename}.py"]
         result = subprocess.run(cmd, capture_output=True, text=True)
     else:
         if status == "save":
             with open(f"{folder_path}/generated_testscripts/{filename}.py", "w") as f:
-                f.write(test_script)
+                f.write(script_content)
         elif status == "execute":
             cmd = ["python", f"{folder_path}/generated_testscripts/{filename}.py"]
             result = subprocess.run(cmd, capture_output=True, text=True)
@@ -70,4 +69,4 @@ def save_testscript_execute(status, state: State):
     print(result.stdout)
     print("Test script executed. Errors:")
     print(result.stderr)
-    return state
+    return filename

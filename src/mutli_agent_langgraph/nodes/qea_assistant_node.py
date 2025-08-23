@@ -5,10 +5,11 @@ from src.mutli_agent_langgraph.agents import testcase_agent_, testscript_agent, 
 import time
 import hashlib
 from src.mutli_agent_langgraph.utils.llm_inspect import infer_llm_metadata
+from src.mutli_agent_langgraph.utils.session_store import save_session_rows,load_session_rows
 from src.mutli_agent_langgraph.utils.tracking.mlflow_utils import (
     log_params, log_metrics, log_text_artifact, log_json_artifact
 )
-import streamlit as st
+from src.mutli_agent_langgraph.utils.session_store import save_session_script_blob,load_session_script_blob
 
 # Llama Guard 3 (output moderation)
 from src.mutli_agent_langgraph.guardrails.llamaguard3 import LlamaGuard3
@@ -16,10 +17,13 @@ from src.mutli_agent_langgraph.guardrails.llamaguard3 import LlamaGuard3
 
 class QEAAssistantChatbot:
 
-    def __init__(self, model, temperature):
+    def __init__(self, model, temperature, test_case_format: str = "", test_script_lang: str = "", test_framework: str = ""):
         self.llm = model
         self.temperature = temperature
         self.moderator = LlamaGuard3()
+        self.test_case_format = test_case_format
+        self.test_script_lang = test_script_lang
+        self.test_framework = test_framework
 
     def chit_irrelevant(self):
         pass
@@ -30,7 +34,7 @@ class QEAAssistantChatbot:
         wanted = set(x.lower() for x in plan_generation or [])
         return bool(wanted.intersection({"testcase", "testscript", "userstory"}))
 
-    def process(self, state: State) -> dict:
+    def process(self, state: State) -> State:
         """Process the input state and generate a QEA chatbot response."""
         session_id = state["session_id"]
         user_input = state["messages"][-1].content
@@ -125,13 +129,20 @@ class QEAAssistantChatbot:
         try:
             if plan_generation and "testcase" in plan_generation:
                 updated_state = _time_call("agent_testcase",
-                    testcase_agent_.testcase, retriver=retriver, user_message=prompt, model=self.llm, state=state)
+                    testcase_agent_.testcase, retriver=retriver, user_message=prompt, model=self.llm, state=state, test_case_format=self.test_case_format)
                 state.update(updated_state)
+                rows_now = state.get("test_rows", [])
+                if rows_now:
+                    save_session_rows(session_id, rows_now)
+
 
             elif plan_generation and "testscript" in plan_generation:
                 updated_state = _time_call("agent_testscript",
-                    testscript_agent.testscript, retriver=retriver, user_message=prompt, model=self.llm, state=state)
+                    testscript_agent.testscript, retriver=retriver, user_message=prompt, model=self.llm, state=state, test_script_lang=self.test_script_lang, test_framework=self.test_framework)
                 state.update(updated_state)
+                scripts = state.get("testscript", {})
+                if scripts:
+                    save_session_script_blob(session_id, scripts)
 
             elif plan_generation and "userstory" in plan_generation:
                 _time_call("agent_userstory",
@@ -148,9 +159,10 @@ class QEAAssistantChatbot:
             elif save_ts:
                 state["messages"].append(AIMessage(content=f"Executing test scripts with options: {save_ts}"))
                 if "save" in (save_ts or []) or "both" in (save_ts or []):
-                    _time_call("agent_save_script", save_execute_agent.save_testscript_execute, status="save", state=state)
+                    script_content = load_session_script_blob(session_id)
+                    _time_call("agent_save_script", save_execute_agent.save_testscript_execute, status="save", script_content=script_content)
                 if "execute" in (save_ts or []) or "both" in (save_ts or []):
-                    _time_call("agent_execute_script", save_execute_agent.save_testscript_execute, status="execute", state=state)
+                    _time_call("agent_execute_script", save_execute_agent.save_testscript_execute, status="execute", script_content=script_content)
 
             # Save test cases
             try:
@@ -159,7 +171,7 @@ class QEAAssistantChatbot:
                 print(f"Error occurred while fetching test rows: {e}")
 
             if save_tc:
-                rows = state.get("test_rows", [])
+                rows = load_session_rows(session_id) or state.get("test_rows") 
                 print(f"Test Rows to save: {rows}")
                 if not rows:
                     state["messages"].append(AIMessage(content="⚠️ No test cases available to save. Generate first."))
@@ -186,16 +198,17 @@ class QEAAssistantChatbot:
             print(f"response text : {response_text}")
 
             # Llama Guard 3 output moderation
-            try:
-                mod = self.moderator.enforce_or_refuse(response_text, "output", session_id)
-                if not mod.get("allowed", True):
-                    response_text = "I can’t assist with that request."
-                    state["messages"][-1] = AIMessage(content=response_text)
-                    log_metrics({"moderation_forced_refusal": 1.0})
-                else:
-                    log_metrics({"moderation_forced_refusal": 0.0})
-            except Exception:
-                pass
+            if plan_generation and "testcase" in plan_generation:
+                try:
+                    mod = self.moderator.enforce_or_refuse(response_text, "output", session_id)
+                    if not mod.get("allowed", True):
+                        response_text = "I can’t assist with that request."
+                        state["messages"][-1] = AIMessage(content=response_text)
+                        log_metrics({"moderation_forced_refusal": 1.0})
+                    else:
+                        log_metrics({"moderation_forced_refusal": 0.0})
+                except Exception:
+                    pass
 
             # Persist memory
             try: memory.save_context({"input": user_input}, {"output": response_text})

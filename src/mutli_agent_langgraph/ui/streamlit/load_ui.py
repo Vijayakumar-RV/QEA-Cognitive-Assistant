@@ -86,45 +86,45 @@ class LoadStreamlitUI:
                 st.slider("Temperature",disabled=True)
             else:
                 self.user_controls["select_temperature"] = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
-            
-            self.user_controls["enable_judge"] = st.toggle("Enable Judge (Eval mode)", value=False)
+            if self.user_controls["select_usecase"] == "QEA_Assistant":
+                self.user_controls["enable_judge"] = st.toggle("Enable Judge (Eval mode)", value=False)
 
-            tc_style = st.selectbox(
-                "Test Case Format",
-                options=["default", "gherkin"],
-                index=0,
-                help="Choose 'gherkin' to get Given/When/Then scenarios."
-            )
+                tc_style = st.selectbox(
+                    "Test Case Format",
+                    options=["default", "gherkin"],
+                    index=0,
+                    help="Choose 'gherkin' to get Given/When/Then scenarios."
+                )
 
-            script_lang = st.selectbox(
-                "Script Language",
-                options=["python", "javascript", "java"],
-                index=0
-            )
+                script_lang = st.selectbox(
+                    "Script Language",
+                    options=["python", "javascript", "java"],
+                    index=0
+                )
 
-            framework = st.selectbox(
-                "Automation Framework",
-                options=["selenium", "cypress", "playwright"],
-                index=0
-            )
+                framework = st.selectbox(
+                    "Automation Framework",
+                    options=["selenium", "cypress", "playwright"],
+                    index=0
+                )
 
-            # Simple compatibility guardrails (keeps UX friendly)
-            compat = {
-                "selenium": {"python", "javascript", "java"},
-                "cypress": {"javascript"},
-                "playwright": {"python", "javascript", "java"},
-            }
-            
-            if script_lang not in compat[framework]:
-                st.warning(f"{framework.title()} works with {sorted(list(compat[framework]))}. "
-                        f"Auto-switching language to a compatible option.")
-                # Pick first compatible lang deterministically
-                script_lang = sorted(list(compat[framework]))[0]
+                # Simple compatibility guardrails (keeps UX friendly)
+                compat = {
+                    "selenium": {"python", "javascript", "java"},
+                    "cypress": {"javascript"},
+                    "playwright": {"python", "javascript", "java"},
+                }
+                
+                if script_lang not in compat[framework]:
+                    st.warning(f"{framework.title()} works with {sorted(list(compat[framework]))}. "
+                            f"Auto-switching language to a compatible option.")
+                    # Pick first compatible lang deterministically
+                    script_lang = sorted(list(compat[framework]))[0]
 
-            # Persist into user_controls the SAME way you store existing knobs
-            self.user_controls["tc_style"] = tc_style
-            self.user_controls["script_lang"] = script_lang
-            self.user_controls["framework"] = framework
+                # Persist into user_controls the SAME way you store existing knobs
+                self.user_controls["tc_style"] = tc_style
+                self.user_controls["script_lang"] = script_lang
+                self.user_controls["framework"] = framework
 
             if self.user_controls["select_usecase"] =="QEA Research Assistant":
                 self.user_controls["TAVILY_API_KEY"] = st.selectbox("TAVILY API KEY",api_key_option,index=0)
