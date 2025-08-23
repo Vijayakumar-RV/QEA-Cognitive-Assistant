@@ -12,3 +12,4 @@ __pycache__/
 /generated_testcases/
 /generated_testscripts/
 /artifacts/
+/upload_log.txt
