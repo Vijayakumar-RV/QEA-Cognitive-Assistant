@@ -8,4 +8,7 @@ test.ipynb
 __pycache__/
 /test
 /data_base
-/mlruns
+/mlruns/
+/generated_testcases/
+/generated_testscripts/
+/artifacts/

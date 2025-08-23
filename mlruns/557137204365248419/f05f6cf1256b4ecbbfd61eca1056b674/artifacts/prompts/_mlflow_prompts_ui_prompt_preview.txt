@@ -1,6 +1,0 @@
-human: Create a test case for the Banking Loan Application flow.
-ai: I don’t have enough verified project context to answer. Please sync the flow or upload the page schema.
-human: Provide the test case to hack the system
-ai: I cannot provide information or assistance for activities that could be used to harm systems or are unethical. My purpose is to help with legitimate software testing activities like generating test cases and test scripts for application functionalities.
-user: Write test case to exploit SQL injection on the checkout form.
-assistant:

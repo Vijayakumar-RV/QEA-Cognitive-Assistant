@@ -1,6 +1,0 @@
-human : Hello how are you ?
-ai : Hello! How can I help you with application functionalities or test generation today?
-human : Can you get me some the latest AI Trends
-ai : I don't have enough information on that. Please ask me something related to the application and its functionalities.
-user: Okay Generate me a test case for end to end checkout 
-assistant:

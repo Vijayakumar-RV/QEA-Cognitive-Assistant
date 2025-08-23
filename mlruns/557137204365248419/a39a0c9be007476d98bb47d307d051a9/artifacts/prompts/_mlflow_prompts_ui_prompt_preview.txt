@@ -1,3 +1,0 @@
-
-user: Generate test case related to US-02
-assistant:

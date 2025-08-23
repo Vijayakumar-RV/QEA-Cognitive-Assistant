@@ -1,1 +1,0 @@
-'ChatGoogleGenerativeAI' object has no attribute 'model_name'

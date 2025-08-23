@@ -1,3 +1,0 @@
-
-user: Provide a test case for  user story 08
-assistant:

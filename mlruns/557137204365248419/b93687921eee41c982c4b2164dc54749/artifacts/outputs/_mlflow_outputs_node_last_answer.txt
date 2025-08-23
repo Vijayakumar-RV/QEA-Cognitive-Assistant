@@ -1,7 +1,0 @@
-User Story ID: US-09
-Title: Login to account
-Description: As a returning user, I want to login so I can view my account and order history.
-Acceptance Criteria:
-- Login form accepts valid credentials.
-- Invalid login shows error message.
-- Successful login redirects to My Account dashboard.

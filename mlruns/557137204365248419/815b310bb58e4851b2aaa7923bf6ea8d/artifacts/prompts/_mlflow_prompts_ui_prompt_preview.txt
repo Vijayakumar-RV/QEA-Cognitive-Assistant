@@ -1,3 +1,0 @@
-
-user: Generate test cases related to US-09
-assistant:

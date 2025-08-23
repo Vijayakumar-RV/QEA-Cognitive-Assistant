@@ -1,4 +1,0 @@
-human: Generate me the use cases related to US-09
-ai: I don't have enough information on that. Please ask me something related to the application and its functionalities.
-user: Generate me the test cases related to US-09
-assistant:

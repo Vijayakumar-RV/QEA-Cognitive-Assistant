@@ -1,1 +1,0 @@
-'ChatGroq' object has no attribute 'model'

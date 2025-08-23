@@ -1,3 +1,0 @@
-
-user: Generate a test case for login
-assistant:

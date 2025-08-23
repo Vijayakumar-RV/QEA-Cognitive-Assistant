@@ -1,6 +1,0 @@
-human: Generate test cases for and end to end checkout as guest
-ai: Generate test cases for and end to end checkout as guest
-human: Generate test cases for and end to end checkout as guest
-ai: Generate test cases for and end to end checkout as guest
-user: Generate test cases for and end to end checkout as guest
-assistant:
