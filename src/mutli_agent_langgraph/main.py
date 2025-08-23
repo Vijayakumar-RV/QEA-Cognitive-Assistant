@@ -7,9 +7,8 @@ from src.mutli_agent_langgraph.LLMS.googlellm import GoogleLLM
 from src.mutli_agent_langgraph.graph.graph_builder import GraphBuilder
 from src.mutli_agent_langgraph.ui.streamlit.display_results import DisplayResultStreamlit
 from src.mutli_agent_langgraph.ui.streamlit.ui_configfile import Config
-from src.mutli_agent_langgraph.utils.tracking.mlflow_utils import init_mlflow, run_mlflow_run
+from src.mutli_agent_langgraph.utils.tracking.mlflow_utils import init_mlflow
 from huggingface_hub import login
-from src.mutli_agent_langgraph.ui.observability_tab import render_observe_tab
 import os
 def load_multi_agent_langgraph_ui():
     """
@@ -89,23 +88,21 @@ def load_multi_agent_langgraph_ui():
             usecase= user_input.get("select_usecase")
             print(usecase)
             enable_judge = user_input.get("enable_judge")
-
+            test_case_format = user_input.get("tc_style")
+            test_script_lang = user_input.get("script_lang")
+            test_framework = user_input.get("framework")
             if not usecase:
                 st.error("Error : No usecase selcted")
             
             #Graph Builder
 
-            graph_builder_ = GraphBuilder(model,selected_temperature,enable_judge)
+            graph_builder_ = GraphBuilder(model,selected_temperature,enable_judge,test_case_format,test_script_lang,test_framework)
 
             try:
                 graph = graph_builder_.setup_graph(usecase)
                 session_id = user_input.get("session_id")
-                # ---------------- TABS ----------------
-                tab_chat, tab_observe = st.tabs(["💬 Chat", "📈 Observability"])
 
-                with tab_chat:
-                    # your existing chat flow
-                    DisplayResultStreamlit(usecase, graph, user_message, session_id,enable_judge).disply_result_on_ui()
+                DisplayResultStreamlit(usecase, graph, user_message, session_id,enable_judge).disply_result_on_ui()
 
                 
                 

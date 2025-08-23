@@ -26,6 +26,7 @@ def retriever_agent(state: State):
             content = (retriver.clean_flow_text(user_message) or "").strip()
         else:
             content = ""
+        print(f"retrived content: {content}")
 
         state["retrived_content"] = content if content else None
 
@@ -34,7 +35,7 @@ def retriever_agent(state: State):
         state["safety"]["have_context"] = have_ctx
         state["safety"]["should_refuse"] = not have_ctx
 
-        log_metrics({"retrieved_context_len": float(len(content))})
+        log_metrics({"retrieved_context_len": (len(content))})
         log_json_artifact({
             "query": user_message,
             "have_context": have_ctx,

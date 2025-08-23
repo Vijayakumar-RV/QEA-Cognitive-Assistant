@@ -95,7 +95,7 @@ class Retrive:
                         query: str,
                         *,
                         top_k_exact: int = 3,
-                        top_k_semantic: int = 12,
+                        top_k_semantic: int = 8,
                         top_n_rerank: int = 6,
                         return_docs: bool = False) -> str | List[Document]:
 
@@ -124,16 +124,18 @@ class Retrive:
 
         log_params({
             "rag_source": "flows",
-            "search_k": 8,
-            "rerank_top_n": 5,
             "query": query
+        })
+        log_metrics({
+            "rag_search_k": float(top_k_semantic),
+            "rag_rerank_top_n": float(top_n_rerank)
         })
 
         t0 = time.time()
 
         docs = re_rank_retriever.get_relevant_documents(query=query)
         latency = time.time() - t0
-        log_metrics({"rag_latency_sec": latency, "rag_topk_count": float(len(docs))})
+        log_metrics({"rag_latency_sec": float(latency), "rag_topk_count": float(len(docs))})
 
         # Save small snapshot of top-k (avoid dumping huge pages)
         payload = []
@@ -157,7 +159,7 @@ class Retrive:
                          query: str,
                          *,
                          top_k_exact: int = 3,
-                         top_k_semantic: int = 12,
+                         top_k_semantic: int = 8,
                          top_n_rerank: int = 6,
                          return_docs: bool = False) -> str | List[Document]:
 
@@ -193,15 +195,18 @@ class Retrive:
         re_rank_retriever = ContextualCompressionRetriever(base_compressor=reranker, base_retriever=base)
         log_params({
             "rag_source": "flows",
-            "search_k": 12,
-            "rerank_top_n": 6,
             "query": query
+        })
+
+        log_metrics({
+            "rag_search_k": float(top_k_semantic),
+            "rag_rerank_top_n": float(top_n_rerank)
         })
 
         t0 = time.time()
         docs = re_rank_retriever.get_relevant_documents(query=query)
         latency = time.time() - t0
-        log_metrics({"rag_latency_sec": latency, "rag_topk_count": float(len(docs))})
+        log_metrics({"rag_latency_sec": float(latency), "rag_topk_count": float(len(docs))})
 
         # Save small snapshot of top-k (avoid dumping huge pages)
         payload = []

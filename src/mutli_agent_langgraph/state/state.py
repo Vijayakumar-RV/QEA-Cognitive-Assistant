@@ -3,7 +3,7 @@ from langgraph.graph.message import add_messages
 from typing import Annotated, Dict, Any
 from langchain_core.messages import AnyMessage,BaseMessage
 from src.mutli_agent_langgraph.state.planner import PlannerOutput
-
+import operator
 class State(TypedDict,total=False):
 
     "Represents the structure of current state used in graph"
@@ -20,5 +20,6 @@ class State(TypedDict,total=False):
     document_text: Optional[str]
     embedding_enabled: Optional[bool]
     user_query: Optional[str]
-    safety: Dict[str, Any]               # <- optional
-    retrieved_context: str 
+    safety: Dict[str, Any]
+    save_test_cases: Optional[List[Dict[str, Any]]]
+    save_test_scripts: Optional[str]

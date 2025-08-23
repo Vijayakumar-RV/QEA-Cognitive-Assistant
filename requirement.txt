@@ -6,6 +6,7 @@ langchain_groq
 langchain_openai
 langchain_ollama
 langchain-chroma
+langchain-tavily
 langchain-google-genai
 langchain-huggingface
 google-generativeai
@@ -22,10 +23,9 @@ sentence-transformers
 newspaper3k
 trafilatura
 requests
-langchain-tavily
+nltk
 arxiv
 wikipedia
 python-pptx
 selenium
 mlflow
-nemoguardrails

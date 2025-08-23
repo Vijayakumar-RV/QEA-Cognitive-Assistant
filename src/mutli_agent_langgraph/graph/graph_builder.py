@@ -15,10 +15,13 @@ from src.mutli_agent_langgraph.routers.planner_router import route_after_planner
 
 class GraphBuilder:
 
-    def __init__(self, model, temperature,enable_judge:bool= False):
+    def __init__(self, model, temperature,enable_judge:bool= False,test_case_format:str= "",test_script_lang:str= "",test_framework:str= ""):
         self.llm = model
         self.temperature = temperature
         self.enable_judge = enable_judge
+        self.test_case_format = test_case_format
+        self.test_script_lang = test_script_lang
+        self.test_framework = test_framework
         self.graph_builder = StateGraph(State)
 
 
@@ -29,7 +32,7 @@ class GraphBuilder:
                                                       └→ (to_qeacognitive) qeacognitive → END
         """
         planner = Planner(self.llm)
-        qea_chatbot = QEAAssistantChatbot(self.llm, self.temperature)
+        qea_chatbot = QEAAssistantChatbot(self.llm, self.temperature,self.test_case_format,self.test_script_lang,self.test_framework)
 
         self.graph_builder.add_node("guardrails", create_guardrails_node())
         self.graph_builder.add_node("planner", planner.planner_agent)
@@ -73,8 +76,8 @@ class GraphBuilder:
         tools = get_tools()
         tool_node = create_tool_node(tools)
         llm = self.llm
-        chatbot_oject = QEARESEARCHNODE(llm)
-        qea_research_chatbot = chatbot_oject.process(tools=tools)
+        chatbot_object = QEARESEARCHNODE(llm, self.temperature)
+        qea_research_chatbot = chatbot_object.process(tools=tools)
 
         self.graph_builder.add_node("chatbot", qea_research_chatbot)
         self.graph_builder.add_node("tools", tool_node)
@@ -84,7 +87,7 @@ class GraphBuilder:
         self.graph_builder.add_edge("tools", "chatbot")
 
     def document_analyzer(self):
-        analyzer = DocumentAnalyzerNode(self.llm)
+        analyzer = DocumentAnalyzerNode(self.llm, self.temperature)
         self.graph_builder.add_node("analyzer", analyzer.process)
         self.graph_builder.add_edge(START, "analyzer")
         self.graph_builder.add_edge("analyzer", END)
