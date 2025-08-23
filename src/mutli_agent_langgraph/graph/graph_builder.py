@@ -21,12 +21,6 @@ class GraphBuilder:
         self.enable_judge = enable_judge
         self.graph_builder = StateGraph(State)
 
-    def run_once(self, usecase: str, session_id: str, model_name: str, temperature: float, run_fn, *args, **kwargs):
-        tags = {"usecase": usecase, "session_id": session_id}
-        params = {"llm_model": model_name, "temperature": temperature}
-        with run_mlflow_run(run_name=f"{usecase}_{session_id}", tags=tags, params=params):
-            result = run_fn(*args, **kwargs)
-            return result
 
     def assistant_chatbot(self):
         """
