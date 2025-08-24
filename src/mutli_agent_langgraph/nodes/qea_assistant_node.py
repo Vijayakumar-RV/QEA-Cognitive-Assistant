@@ -162,7 +162,7 @@ class QEAAssistantChatbot:
                     script_content = load_session_script_blob(session_id)
                     _time_call("agent_save_script", save_execute_agent.save_testscript_execute, status="save", script_content=script_content)
                 if "execute" in (save_ts or []) or "both" in (save_ts or []):
-                    _time_call("agent_execute_script", save_execute_agent.save_testscript_execute, status="execute", script_content=script_content)
+                    _time_call("agent_execute_script", save_execute_agent.save_testscript_execute, status="run", script_content=script_content)
 
             # Save test cases
             try:

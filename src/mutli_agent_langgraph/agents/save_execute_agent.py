@@ -41,7 +41,6 @@ def save_testcase_excel_csv(transform,data):
 
 def save_testscript_execute(status, script_content):
     cmd = []
-    
     filename = "last_testcase"
     # filename = test_case.split("\n")[0].replace("### ", "").split(" — ")[0][:5] + "_test_cases"
     # filename = filename.replace("-", "_")
@@ -54,19 +53,24 @@ def save_testscript_execute(status, script_content):
             f.write(script_content)
         cmd = ["python", f"{folder_path}/generated_testscripts/{filename}.py"]
         result = subprocess.run(cmd, capture_output=True, text=True)
+        print("Test script executed. Output:")
+        print(result.stdout)
+        print("Test script executed. Errors:")
+        print(result.stderr)
     else:
         if status == "save":
             with open(f"{folder_path}/generated_testscripts/{filename}.py", "w") as f:
                 f.write(script_content)
-        elif status == "execute":
+        elif status == "run":
             cmd = ["python", f"{folder_path}/generated_testscripts/{filename}.py"]
             result = subprocess.run(cmd, capture_output=True, text=True)
+            print("Test script executed. Output:")
+            print(result.stdout)
+            print("Test script executed. Errors:")
+            print(result.stderr)
         else:
             print("Invalid status provided. Use 'save', 'execute', or 'both'.")
         
     cmd.clear()
-    print("Test script executed. Output:")
-    print(result.stdout)
-    print("Test script executed. Errors:")
-    print(result.stderr)
+    
     return filename
