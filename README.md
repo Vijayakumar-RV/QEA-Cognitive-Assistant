@@ -95,7 +95,7 @@ graph TD
   D --> H[ChromaDB: UI Flows + User Stories]
   E --> I[Doc Loader + OCR + Parsers]
   F --> J[Web Search + Summarization]
-  B --> K[Memory (SQLite)]
+  B --> K[Memory - SQLite]
   B --> L[MLflow Tracking]
   B --> M[LlamaGuard Guardrails]
 ```
