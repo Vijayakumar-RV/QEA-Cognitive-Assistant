@@ -15,5 +15,5 @@ def route_after_planner(state: State) -> str:
     """Return 'to_retriver' if the plan needs RAG context, else 'to_qeacognitive'."""
     plan_obj = state.get("plan", None)
     need_ctx = _requires_context_from_plan(plan_obj)
-    # (Optional) record a metric here if you want; otherwise QEAAssistant logs it too.
+   
     return "to_retriver" if need_ctx else "to_qeacognitive"
