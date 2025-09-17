@@ -5,6 +5,10 @@ import pandas as pd
 from PIL import Image
 import pytesseract
 import json
+import os
+from azure.ai.vision.imageanalysis import ImageAnalysisClient
+from azure.ai.vision.imageanalysis.models import VisualFeatures
+from azure.core.credentials import AzureKeyCredential
 
 def load_pdf(file):
     text = ""

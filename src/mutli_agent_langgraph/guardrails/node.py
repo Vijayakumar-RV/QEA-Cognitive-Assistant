@@ -23,7 +23,7 @@ def create_guardrails_node():
 
         if not mod["allowed"]:
             # Add refusal so END still returns a reply
-            state["messages"].append(AIMessage(content="I can’t assist with that request."))
+            state["messages"].append(AIMessage(content="Guardrail Triggered : I can’t assist with that request. I can help with test cases, scripts and user stories."))
             state["safety"].update({
                 "blocked_by": "llamaguard_input",
                 "reason": mod["reason"],

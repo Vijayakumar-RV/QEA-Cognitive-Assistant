@@ -36,22 +36,19 @@ def save_testcase_excel_csv(transform,data):
         df.to_csv(f"{folder_path}/generated_testcases/{filename}.csv", index=False)
     else:
         pass
-    return filename
+    return f"{folder_path}/generated_testcases/{filename}.csv"
 
 
-def save_testscript_execute(status, script_content):
+def save_testscript_execute(status, script_content, filename,test_script_lang):
     cmd = []
-    filename = "last_testcase"
-    # filename = test_case.split("\n")[0].replace("### ", "").split(" — ")[0][:5] + "_test_cases"
-    # filename = filename.replace("-", "_")
-    filename = f"{filename}_{_timestamp()}"
+    full_filename = f"{filename}_{_timestamp()}"
     folder_path = os.getcwd()
 
     if status == "both":
         
-        with open(f"{folder_path}/generated_testscripts/{filename}.py", "w") as f:
+        with open(f"{folder_path}/generated_testscripts/{full_filename}.py", "w") as f:
             f.write(script_content)
-        cmd = ["python", f"{folder_path}/generated_testscripts/{filename}.py"]
+        cmd = ["python", f"{folder_path}/generated_testscripts/{full_filename}.py"]
         result = subprocess.run(cmd, capture_output=True, text=True)
         print("Test script executed. Output:")
         print(result.stdout)
@@ -59,10 +56,18 @@ def save_testscript_execute(status, script_content):
         print(result.stderr)
     else:
         if status == "save":
-            with open(f"{folder_path}/generated_testscripts/{filename}.py", "w") as f:
-                f.write(script_content)
+            if test_script_lang.lower() == "python":
+                print(f"✅ Saved Test Script: {full_filename}.py")
+                with open(f"{folder_path}/generated_testscripts/{full_filename}.py", "w") as f:
+                    f.write(script_content)
+            elif test_script_lang.lower() == "javascript":
+                with open(f"{folder_path}/generated_testscripts/{full_filename}.js", "w") as f:
+                    f.write(script_content)
+            elif test_script_lang.lower() == "java":
+                with open(f"{folder_path}/generated_testscripts/{full_filename}.java", "w") as f:
+                    f.write(script_content)
         elif status == "run":
-            cmd = ["python", f"{folder_path}/generated_testscripts/{filename}.py"]
+            cmd = ["python", f"{folder_path}/generated_testscripts/{full_filename}.py"]
             result = subprocess.run(cmd, capture_output=True, text=True)
             print("Test script executed. Output:")
             print(result.stdout)
@@ -72,5 +77,5 @@ def save_testscript_execute(status, script_content):
             print("Invalid status provided. Use 'save', 'execute', or 'both'.")
         
     cmd.clear()
-    
-    return filename
+
+    return f"Script {status}d successfully under : {folder_path}/generated_testscripts/."

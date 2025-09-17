@@ -29,3 +29,4 @@ wikipedia
 python-pptx
 selenium
 mlflow
+azure-ai-vision-imageanalysis

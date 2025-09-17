@@ -30,7 +30,7 @@ def testcase(retriver,user_message,model,state:State,test_case_format:str)->Stat
             - Use only UI elements and labels exactly as they appear in the context.
             - Apply test design techniques (equivalence classes, boundaries, negatives) within the given context.
             - Do not invent steps or elements not present in the context.
-            - If info is missing, provide the best partial case and mark placeholders like "<MISSING: …>".
+            - If info is missing, provide the best alternate or suggestion to the user within sample tag.
             - Output MUST be a single valid JSON array (no text outside, no markdown, no comments).
 
             =====================

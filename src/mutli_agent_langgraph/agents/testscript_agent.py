@@ -3,7 +3,7 @@ from src.mutli_agent_langgraph.state.state import State
 import re
 import time
 import hashlib
-
+from src.mutli_agent_langgraph.utils.session_store import load_session_rows
 _TC_ID_RE = re.compile(r"\b(Test Case ID|TC[-\s]*ID)\b[^A-Za-z0-9]*([A-Za-z0-9_-]+)", re.IGNORECASE)
 
 def _infer_script_id(test_case_markdown: str) -> str:
@@ -17,8 +17,8 @@ def _infer_script_id(test_case_markdown: str) -> str:
     return f"script_{h}"
 
 
-def testscript(state:State,retriver,user_message,model,test_script_lang:str,test_framework:str)->State:
-    test_case = state.get("testcase")
+def testscript(state:State,session_id,retriver,user_message,model,test_script_lang:str,test_framework:str)->State:
+    test_case = load_session_rows(session_id)
 
     if  test_case:
 
@@ -62,11 +62,13 @@ def testscript(state:State,retriver,user_message,model,test_script_lang:str,test
         Guardrails & Constraints:
         - DO NOT invent new steps, element locators, actions, or assertions.
         - Use step order, field names, and locators exactly as provided.
-        - If an element locator or step is missing, output: "# ERROR: Step or locator missing: [describe missing piece]" at the appropriate place in the code.
+        - If an element locator or step is missing, output: Suggest an best alternate Locator.
         - Properly add waits, error handling, or logic that are industry standard.
         - Do NOT make assumptions about the application flow.
         - If insufficient information is provided to produce a script, output: "# ERROR: Insufficient context to generate test script."
         - Use the Test case provided and Retrived Context and create the test script
+        - Include maximizing the window size before performing actions.
+        - Generate test script with preconditions.
 
         Output Format:
         Output only valid code for {test_script_lang} + {test_framework} (no explanations).

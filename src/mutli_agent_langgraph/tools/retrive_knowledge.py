@@ -35,8 +35,7 @@ class Retrive:
             "pdp": "Product Detail Page",
         }
 
-    # ---------- helpers ----------
-    # >>> ADD: helper to stash retrieved text into state for the judge
+    
     def _store_context_in_state(state: dict, docs, max_chars: int = 8000) -> dict:
         ctxs = []
         used = 0
@@ -55,8 +54,7 @@ class Retrive:
         return state
 
     def _extract_flow_id(self, query: str) -> Optional[str]:
-        # e.g., "flow CO" or "CO" (two uppercase letters)
-        # keeps it conservative to avoid false positives
+       
         m = re.search(r"\bflow\s*([A-Z]{2})\b", query or "", re.IGNORECASE)
         if m:
             return m.group(1).upper()

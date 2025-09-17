@@ -196,7 +196,11 @@ class DisplayResultStreamlit:
 
         
         elif usecase == "QEA Document Assistant":
-            
+            run_tags = {"usecase": usecase, "session_id": session_id}
+            run_params = {"ui_component": "display_result_on_ui"}
+
+            with run_mlflow_run(run_name=f"{usecase}_{session_id}", tags=run_tags, params=run_params):
+                log_params({"session_id": session_id})
             state_input = {
             "session_id": session_id,
             "document_text": st.session_state.get("document_text"),

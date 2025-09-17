@@ -10,10 +10,7 @@ class Planner:
         self.llm = model
 
     def planner_agent(self,state:State)->dict:
-        try:
-            print(f"state['test_rows']: {state['test_rows']}")
-        except KeyError:
-            print("Key 'test_rows' not found in state.")
+
         user_message = str(state["messages"][-1].content)
         print(f"Last user message : {user_message}")
         parser = PydanticOutputParser(pydantic_object=PlannerOutput)

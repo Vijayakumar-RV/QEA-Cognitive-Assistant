@@ -80,5 +80,5 @@ class LlamaGuard3:
     def enforce_or_refuse(self, text: str, direction: Literal["input","output"], session_id: str) -> Dict[str, Any]:
         res = self.classify(text, direction, session_id)
         if res["label"] == "unsafe":
-            return {"allowed": False, "reason": f"llamaguard_{direction}_unsafe", "message": "I can’t assist with that request."}
+            return {"allowed": False, "reason": f"llamaguard_{direction}_unsafe", "message": "Guardrail Triggered : I can’t assist with that request. I can help with test cases, scripts and document analysis."}
         return {"allowed": True, "reason": "llamaguard_allow"}

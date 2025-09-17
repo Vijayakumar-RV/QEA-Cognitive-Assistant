@@ -7,6 +7,11 @@ from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.docstore.document import Document
+from langchain.chains.summarize import load_summarize_chain
+from src.mutli_agent_langgraph.utils.tracking.mlflow_utils import log_params, log_metrics, log_text_artifact
+from src.mutli_agent_langgraph.utils.timers import track_latency
+import hashlib
+from pathlib import Path
 
 def parse_document(file):
     filename = file.name
@@ -27,37 +32,114 @@ def parse_document(file):
     else:
         return "Unsupported file format", ""
     
+CACHE_DIR = Path("artifacts/doc_cache"); CACHE_DIR.mkdir(parents=True, exist_ok=True)
+_EMB = None
+def _embeddings():
+    global _EMB
+    if _EMB is None:
+        _EMB = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        try: log_params({"doc_node.embedding_model": "all-MiniLM-L6-v2"})
+        except Exception: pass
+    return _EMB
 
+def _doc_hash(text: str) -> str:
+    return hashlib.sha1((text or "").encode("utf-8")).hexdigest()[:16]
 
 def split_text_into_chunks(text, chunk_size=50, chunk_overlap=5):
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
-        separators=["\n\n", "\n", ".", " "]
+        separators=["\n\n", "\n", ".", " "],
+        length_function=len,
+        is_separator_regex=False
+
     )
-    return splitter.split_text(text)
 
-def get_summary_chain(llm):
-    prompt = PromptTemplate.from_template("""
-    You are a document summarization assistant.
-    Summarize the following content in a concise, clear, and structured format for a QA Engineer:
+    parts = splitter.split_text(text or "")
+    docs = [Document(page_content=t, metadata={"chunk_id": i+1}) for i, t in enumerate(parts)]
+    # MLflow stats
+    try:
+        avg = (sum(len(d.page_content) for d in docs) / max(len(docs),1))
+        log_metrics({
+            "doc_node.chunks": float(len(docs)),
+            "doc_node.chunk_size_avg": float(avg),
+            "doc_node.chunk_size_param": float(chunk_size),
+            "doc_node.chunk_overlap_param": float(chunk_overlap),
+        })
+    except Exception:
+        pass
+    return docs
 
-    {text}
-    """)
-    return LLMChain(llm=llm, prompt=prompt)
+MAP_PROMPT = PromptTemplate.from_template("""
+You are a precise analyst. Summarize the following passage with bullet points, keeping facts and numbers.
+Passage:
+{text}
+""")
+
+REDUCE_PROMPT = PromptTemplate.from_template("""
+Combine these partial summaries into a concise, well-structured brief for a QA Engineer.
+Keep sections: Overview, Key Entities, Flows/Steps, Data/Constraints, Risks.
+Summaries:
+{text}
+""")
 
 
 def summarize_text(text, llm):
     chunks = split_text_into_chunks(text)
-    summary_chain = get_summary_chain(llm)
-    all_summaries = [summary_chain.run(chunk) for chunk in chunks]
-    return "\n\n".join(all_summaries)
+    summary_chain = load_summarize_chain(llm, chain_type="map_reduce", 
+                                         map_prompt=MAP_PROMPT, 
+                                         combine_prompt=REDUCE_PROMPT, 
+                                         return_intermediate_steps=False,
+                                         verbose=False)
+    with track_latency("doc_node.summarize_chain_latency_sec", log_metrics):
+        summary =  summary_chain.run(chunks)
+    try:
+         log_metrics({"doc_node.summary_tokens_approx": float(len(summary or "")/4.0)})
+    except Exception:
+        pass
+    return summary
 
-def build_qa_engine(text, llm):
-    splitter = RecursiveCharacterTextSplitter(chunk_size=50, chunk_overlap=5)
-    texts = splitter.split_text(text)
-    docs = [Document(page_content=t) for t in texts]
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    vectordb = FAISS.from_documents(docs, embedding=embeddings)
-    return RetrievalQA.from_chain_type(llm=llm, retriever=vectordb.as_retriever())
+def build_qa_engine(text: str, llm, k: int = 4):
+    h = _doc_hash(text)
+    idx_dir = CACHE_DIR / f"faiss_{h}"
+    cache_hit = idx_dir.exists()
+
+    if cache_hit:
+        vectordb = FAISS.load_local(str(idx_dir), _embeddings(), allow_dangerous_deserialization=True)
+    else:
+        docs = split_text_into_chunks(text)
+        vectordb = FAISS.from_documents(docs, embedding=_embeddings())
+        vectordb.save_local(str(idx_dir))
+
+    try:
+        log_params({"doc_node.faiss_cache_dir": str(idx_dir)})
+        log_metrics({"doc_node.faiss_cache_hit": 1.0 if cache_hit else 0.0})
+    except Exception:
+        pass
+
+    retriever = vectordb.as_retriever(search_kwargs={"k": k})
+    try:
+        log_metrics({"doc_node.retriever_k": float(k)})
+    except Exception:
+        pass
+
+    from langchain.chains import RetrievalQA
+    from langchain.prompts import PromptTemplate
+    QA_PROMPT = PromptTemplate.from_template("""
+    Answer ONLY from the context. If unknown, say "Not found in the provided document."
+    Cite chunk ids like (chunk 3, 5).
+
+    Question: {question}
+
+    Context:
+    {context}
+    """)
+    qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        retriever=retriever,
+        return_source_documents=True,
+        chain_type="stuff",
+        chain_type_kwargs={"prompt": QA_PROMPT},
+    )
+    return qa
 

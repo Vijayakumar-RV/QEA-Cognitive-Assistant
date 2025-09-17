@@ -138,7 +138,7 @@ class QEAAssistantChatbot:
 
             elif plan_generation and "testscript" in plan_generation:
                 updated_state = _time_call("agent_testscript",
-                    testscript_agent.testscript, retriver=retriver, user_message=prompt, model=self.llm, state=state, test_script_lang=self.test_script_lang, test_framework=self.test_framework)
+                    testscript_agent.testscript, session_id=session_id, retriver=retriver, user_message=prompt, model=self.llm, state=state, test_script_lang=self.test_script_lang, test_framework=self.test_framework)
                 state.update(updated_state)
                 scripts = state.get("testscript", {})
                 if scripts:
@@ -157,13 +157,16 @@ class QEAAssistantChatbot:
                 state["messages"].append(AIMessage(content=plan_chitchat))
 
             elif save_ts:
-                state["messages"].append(AIMessage(content=f"Executing test scripts with options: {save_ts}"))
+                test_rows = load_session_rows(session_id)
+                filename = test_rows[0].get("Tags").split(",")[0] if test_rows else "last_testcase"
+                
                 if "save" in (save_ts or []) or "both" in (save_ts or []):
                     script_content = load_session_script_blob(session_id)
-                    _time_call("agent_save_script", save_execute_agent.save_testscript_execute, status="save", script_content=script_content)
+                    filename_return = _time_call("agent_save_script", save_execute_agent.save_testscript_execute, status="save", script_content=script_content, filename=filename, test_script_lang=self.test_script_lang)
+                    state["messages"].append(AIMessage(content=f"✅ Saved Test Script: {filename_return}"))
                 if "execute" in (save_ts or []) or "both" in (save_ts or []):
-                    _time_call("agent_execute_script", save_execute_agent.save_testscript_execute, status="run", script_content=script_content)
-
+                    filename_return = _time_call("agent_execute_script", save_execute_agent.save_testscript_execute, status="run", script_content=script_content, filename=filename, test_script_lang=self.test_script_lang)
+                    state["messages"].append(AIMessage(content=f"✅ Saved Test Script: {filename_return}"))
             # Save test cases
             try:
                 print(f"Generated test cases in test: {state.get('test_rows')}")
